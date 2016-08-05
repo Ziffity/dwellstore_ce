@@ -1,0 +1,17 @@
+a:5:{i:0;s:967:"Error in file: "C:\xampp\htdocs\dwellstores\app\code\core\Enterprise\Catalog\sql\enterprise_catalog_setup\install-1.13.0.0.php" - SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'enterprise_catalog_category_rewrite' already exists, query was: CREATE TABLE `enterprise_catalog_category_rewrite` (
+  `id` int UNSIGNED NOT NULL auto_increment COMMENT 'Relation Id' ,
+  `category_id` int UNSIGNED NOT NULL COMMENT 'Category Id' ,
+  `store_id` smallint UNSIGNED NOT NULL COMMENT 'Store Id' ,
+  `url_rewrite_id` int UNSIGNED NOT NULL COMMENT 'Rewrite Id' ,
+  PRIMARY KEY (`id`),
+  UNIQUE `UNQ_ENTERPRISE_CATALOG_CATEGORY_REWRITE_CATEGORY_ID_STORE_ID` (`category_id`, `store_id`),
+  CONSTRAINT `FK_415B32DA3DF924D5C803CF24EB3AC1D9` FOREIGN KEY (`url_rewrite_id`) REFERENCES `enterprise_url_rewrite` (`url_rewrite_id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) COMMENT='Relation between rewrites and categories' ENGINE=INNODB charset=utf8 COLLATE=utf8_general_ci";i:1;s:978:"#0 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Resource\Setup.php(645): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Resource\Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '1.13.0.9')
+#2 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Resource\Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('1.13.0.9')
+#3 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Resource\Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\App.php(417): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\App.php(343): Mage_Core_Model_App->_initModules()
+#6 C:\xampp\htdocs\dwellstores\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 C:\xampp\htdocs\dwellstores\index.php(87): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:13:"/dwellstores/";s:11:"script_name";s:22:"/dwellstores/index.php";s:4:"skin";s:7:"default";}

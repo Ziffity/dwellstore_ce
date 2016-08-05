@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<config>
+  
+    <tabs>
+        <md module="quickview">
+            <label>Mage-Designer</label>
+            <sort_order>110</sort_order>
+        </md>
+    </tabs>
+    <sections>
+        <quickview translate="label" module="quickview">
+            <class>separator-top</class>
+            <label>Quick View</label>
+            <tab>md</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <viewsetting translate="label" module="quickview">
+                    <label>Quick View Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enableview translate="label">
+                            <label>Enable Quick View</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableview>
+                        <dialog_width translate="label">
+                            <label>Dialog Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dialog_width>                  
+						<zoom_width translate="label">
+                            <label>Zoom width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_width>							
+						<zoom_height translate="label">
+                            <label>Zoom Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_height>
+                        <text_color translate="label">
+                            <label>Color Zoom Opacity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+								<![CDATA[<script>
+									 jQuery.noConflict();
+									jQuery('#quickview_viewsetting_text_color').ColorPicker({
+										onSubmit: function(hsb, hex, rgb, el) {
+											jQuery(el).val(hex);
+											jQuery(el).ColorPickerHide();
+										},
+										onBeforeShow: function () {
+											jQuery(this).ColorPickerSetColor(this.value);
+										}
+									})
+									.bind('keyup', function(){
+										jQuery(this).ColorPickerSetColor(this.value);
+									});										
+								</script>]]>
+							</comment>
+                        </text_color>
+                        <text_color1 translate="label">
+                            <label>background Color Outer</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+								<![CDATA[<script>
+									 jQuery.noConflict();
+									jQuery('#quickview_viewsetting_text_color1').ColorPicker({
+										onSubmit: function(hsb, hex, rgb, el) {
+											jQuery(el).val(hex);
+											jQuery(el).ColorPickerHide();
+										},
+										onBeforeShow: function () {
+											jQuery(this).ColorPickerSetColor(this.value);
+										}
+									})
+									.bind('keyup', function(){
+										jQuery(this).ColorPickerSetColor(this.value);
+									});										
+								</script>]]>
+							</comment>
+                        </text_color1>
+						<loading_icon translate="label comment">
+							<label>Loading</label>
+							<frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">md/quickview</upload_dir> 
+                            <base_url type="media" scope_info="1">md/quickview</base_url>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</loading_icon>							
+                    </fields>
+                </viewsetting>
+                <slidersetting translate="label" module="quickview">
+                    <label>Slider Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>						
+						<product_image_width translate="label">
+                            <label>Product Image Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_image_width>							
+						<product_image_height translate="label">
+                            <label>Product Image Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_image_height>							
+						<pagination_image_width translate="label">
+                            <label>Pagination Image Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pagination_image_width>							
+						<pagination_image_height translate="label">
+                            <label>Pagination Image Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pagination_image_height>							
+						<left_next_button translate="label">
+                            <label>Left Button Next</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </left_next_button>							
+						<left_prev_button translate="label">
+                            <label>Left Button prev</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </left_prev_button>							
+						<top_image translate="label">
+                            <label>Top Button Prev And Next</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </top_image>					
+                    </fields>
+				</slidersetting>
+            </groups>
+        </quickview>
+    </sections>
+</config>

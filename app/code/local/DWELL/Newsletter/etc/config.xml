@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Newsletter>
+            <version>1.0.1</version>
+        </DWELL_Newsletter>
+    </modules>
+    <global>
+      <blocks>
+		<newsletter>
+			<rewrite>
+				<subscribe before="Mage_Newsletter_Block_Subscribe">DWELL_Newsletter_Block_Subscribe</subscribe>
+			</rewrite>
+		</newsletter>
+	</blocks>
+        <routers>
+            <newsletter>
+                <args>
+                    <modules>
+                        <DWELL_Newsletter before="Mage_Newsletter">DWELL_Newsletter</DWELL_Newsletter>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers>
+    </global>
+</config>

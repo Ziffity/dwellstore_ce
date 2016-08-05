@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_DrupalSSO>
+            <version>1.0.1</version>
+        </DWELL_DrupalSSO>
+    </modules>
+    <global>
+        <helpers>
+            <drupalsso>
+                <class>DWELL_DrupalSSO_Helper</class>
+            </drupalsso>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <route_drupalsso>
+               <use>standard</use>
+               <args>
+                  <module>DWELL_DrupalSSO</module>
+                  <frontName>drupalsso</frontName>
+               </args>
+            </route_drupalsso>
+
+            <customer>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <DWELL_DrupalSSO before="Mage_Customer">DWELL_DrupalSSO</DWELL_DrupalSSO>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+		
+    </frontend>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <drupalsso_section>
+                                            <title>DrupalSSO</title>
+                                        </drupalsso_section>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>

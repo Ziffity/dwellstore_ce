@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Checkout>
+            <version>1.0.1</version>
+        </DWELL_Checkout>
+    </modules>
+    <global>
+    	 <models>
+    	    <DWELL_Checkout>
+    	      <class>DWELL_Checkout_Model</class>
+    	    </DWELL_Checkout>
+			<checkout>
+				<rewrite>
+					<type_onepage>DWELL_Checkout_Model_Type_Onepage</type_onepage>
+				</rewrite>
+			</checkout>
+        </models>
+        
+       <!-- Disabling Subscription cart promo in lieu of DWELL-964 -->
+       <!-- <events>
+			<checkout_cart_save_before>
+				<observers>
+                    <dwell_cart_subscription_check>
+                        <type>singleton</type>
+                        <class>DWELL_Checkout/observer</class>
+                        <method>checkForSubscription</method>
+                    </dwell_cart_subscription_check>
+                </observers>
+			</checkout_cart_save_before>
+		</events> -->
+		
+    </global>
+    <frontend>
+    	 <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <DWELL_Checkout before="Mage_Checkout">DWELL_Checkout</DWELL_Checkout>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+    </frontend>
+</config>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DWELL_Targetrule>
+      <version>0.1.0</version>
+    </DWELL_Targetrule>
+  </modules>
+  <global>
+    <helpers>
+      <targetrule>
+        <class>DWELL_Targetrule_Helper</class>
+      </targetrule>
+    </helpers>
+	<blocks>
+	  <targetrule>
+		<class>DWELL_Targetrule_Block</class>
+	  </targetrule>
+		<enterprise_targetrule>
+			<rewrite>
+				<checkout_cart_crosssell>DWELL_Targetrule_Block_TargetRule_Checkout_Cart_Crosssell</checkout_cart_crosssell>
+			</rewrite>
+		</enterprise_targetrule>
+	</blocks>
+  </global>
+</config> 

@@ -1,0 +1,21 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Amasty
+* @package Amasty_Conf
+*/
+class Amasty_Conf_Model_Attribute extends Mage_Core_Model_Abstract
+{
+    const FLAGS_FOLDER = 'amflags';
+    
+    protected function _construct()
+    {
+        $this->_init('amconf/attribute');
+    }
+	
+	public function getUseImageFromAttribute($attribute_id)
+    {
+		
+        return $this->_getResource()->getUseImageFromAttribute($attribute_id);
+    }
+}

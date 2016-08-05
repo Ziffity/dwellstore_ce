@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Redstage_GuestOrderView>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Redstage_GuestOrderView>
+	</modules>
+</config>

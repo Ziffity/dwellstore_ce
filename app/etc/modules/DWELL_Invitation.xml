@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Invitation>
+            <active>true</active>
+            <codePool>local</codePool>
+        </DWELL_Invitation>
+    </modules>
+</config>

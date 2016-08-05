@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <modules>
+    <Ziffity_Pci>
+      <version>1.0.0</version>
+    </Ziffity_Pci>
+  </modules>
+
+  <global>
+        <helpers>
+			<core>
+			   <encryption_model>Ziffity_Pci_Model_Encryption</encryption_model>
+		   </core>
+        </helpers>
+		
+		<models>
+			<ziffity_pci>
+				<class>Ziffity_Pci_Model</class>
+			</ziffity_pci>
+		</models>		
+		
+   </global>
+</config>

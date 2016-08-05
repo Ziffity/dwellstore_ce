@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dwell_section_tab translate="label">
+            <label>DWELL</label>
+            <sort_order>110</sort_order>
+        </dwell_section_tab>
+    </tabs>
+</config>

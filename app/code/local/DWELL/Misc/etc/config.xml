@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<DWELL_Misc>
+			<version>1.0.1</version>
+		</DWELL_Misc>
+	</modules>
+	<global>
+		<helpers>
+			<misc>
+				<class>DWELL_Misc_Helper</class>
+			</misc>
+		</helpers>
+	</global>
+	<adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <topbar>
+                                            <title>Top Bar Message</title>
+                                        </topbar>
+                                         <newsletter_text>
+                                            <title>Newsletter Texts</title>
+                                        </newsletter_text>
+                                         <homepage_text>
+                                            <title>Homepage Texts</title>
+                                        </homepage_text>       
+                                        <disclaimer_text>
+                                            <title>Disclaimer Message</title>
+                                        </disclaimer_text>                                    
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

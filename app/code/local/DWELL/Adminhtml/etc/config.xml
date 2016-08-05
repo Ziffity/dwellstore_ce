@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Adminhtml>
+            <version>1.0.1</version>
+        </DWELL_Adminhtml>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <DWELL_Adminhtml before="Mage_Adminhtml">DWELL_Adminhtml</DWELL_Adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Gateway>
+            <version>1.0.1</version>
+        </DWELL_Gateway>
+    </modules>
+    <global>
+        <models>     	
+			<gateway>DWELL_Gateway_Model_Gateway</gateway>
+        </models>
+    </global>
+    <frontend>
+		<routers>
+		  <gateway>
+			<use>standard</use>
+			<args>
+			  <module>DWELL_Gateway</module>
+			  <frontName>gateway</frontName>
+			</args>
+		  </gateway>
+		</routers>
+	</frontend>
+</config>

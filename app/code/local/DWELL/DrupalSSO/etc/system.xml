@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dwell_section_tab translate="label">
+            <label>DWELL</label>
+            <sort_order>110</sort_order>
+        </dwell_section_tab>
+    </tabs>
+    <sections>
+        <drupalsso_section translate="label">
+            <label>Drupal SSO settings</label>
+            <tab>dwell_section_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <drupalsso_group translate="label">
+                    <label>SSO Gateway</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <drupalsso_apikey translate="label">
+                            <label>Shared Secret Key: </label>
+                            <comment>This key is used to encrypt session ids in the user gateway and to authenticate with the session check API. Warning! If you change this the Dwell-Magento SSO gateway will not work until the key is updated on the Drupal end. Existing sessions will not be impacted.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </drupalsso_apikey>
+                        <drupalsso_drupalurl translate="label">
+                            <label>Drupal URL: </label>
+                            <comment>Drupal domain to use for authentication. Trailing slash required.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </drupalsso_drupalurl>
+                    </fields>
+                </drupalsso_group>
+            </groups>
+        </drupalsso_section>
+    </sections>
+</config>

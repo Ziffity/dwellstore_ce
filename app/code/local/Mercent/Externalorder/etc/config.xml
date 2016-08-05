@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Mercent_Externalorder>
+            <version>3.1.0</version> <!-- define version for sql upgrade -->
+        </Mercent_Externalorder>
+    </modules>
+    <global>
+        <models>
+            <mercent_externalorder>
+                <class>Mercent_Externalorder_Model</class>
+            </mercent_externalorder>
+        </models>
+        <events>
+            <!-- Add observer configuration -->
+            <sales_order_resource_init_virtual_grid_columns>
+                <observers>
+                    <mercent_externalorder>
+                        <model>mercent_externalorder/observer</model>
+                        <method>addColumnToResource</method>
+                    </mercent_externalorder>
+                </observers>
+            </sales_order_resource_init_virtual_grid_columns>
+        </events>
+        <resources>
+            <!-- initialize sql upgrade setup -->
+            <mercent_externalorder_setup>
+                <setup>
+                    <module>Mercent_Externalorder</module>
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+            </mercent_externalorder_setup>
+        </resources>
+    </global>
+    <adminhtml>
+        <layout>
+             <!-- layout upgrade configuration -->
+            <updates>
+                <mercent_externalorder>
+                    <file>mercent/externalorder.xml</file>
+                </mercent_externalorder>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

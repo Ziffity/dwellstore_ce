@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<KD_Kdcustom>
+			<version>1.0.1</version>
+		</KD_Kdcustom>
+	</modules>
+	<global>
+		<blocks>
+			<catalog>
+			  <rewrite>
+                <navigation>KD_Kdcustom_Block_Navigation</navigation>
+			  </rewrite>
+            </catalog>
+		</blocks>
+		<models>
+			<kdcustom>
+                <class>KD_Kdcustom_Model</class>
+            </kdcustom>
+		</models>
+		<helpers>
+			<kdcustom>
+				<class>KD_Kdcustom_Helper</class>
+			</kdcustom>
+		</helpers>	
+	</global> 
+</config>

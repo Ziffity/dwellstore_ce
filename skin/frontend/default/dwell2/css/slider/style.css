@@ -1,0 +1,9 @@
+/* CSS Document */
+
+.kdecom-man-prev {margin: 0px;padding: 0px;float:left;top:45%;z-index:3;position:relative;left:0px; width:13px;height:13px;cursor:pointer;background:url(image/slider-left-nav.png) no-repeat left 50%;} 
+.kdecom-man-prev.disabled {background:url(image/slider-left-nav-disabled.png) no-repeat left 50%;cursor:auto;}  
+.kdecom-man-next {margin: 0px;padding: 0px;float:left;top:50%;z-index:4;position:relative;right:0px;width:13px;height:13px;cursor:pointer;background:url(image/slider-right-nav.png) no-repeat left 45%;text-align:right;}
+.kdecom-man-next.disabled {background:url(image/slider-right-nav-disabled.png) no-repeat left 50%;cursor:auto;}  
+.anyClass{float:left;padding:10px 0px;background:transparent;width:304px !important;} 
+.anyClass ul li{padding:0px 5px;} 
+.kcecom-man-container{background-color: transparent;float:left; height:84px; overflow:hidden;width:334px;} 

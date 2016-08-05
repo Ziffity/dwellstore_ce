@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout version="0.1.0">
+    <customer_account translate="label">
+        <reference name="customer_account_navigation">
+                <action method="addLink" translate="label" module="amxnotif"><name>amxnotif.subscr</name><path>amxnotif/subscr/</path><label>My Out of Stock Subscriptions</label></action>
+        </reference>
+    </customer_account>
+    
+     <amxnotif_subscr_index translate="label">
+        <label>Stock Status Subscriptions</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="amxnotif/subscr" name="amxnotif.subscr">
+                    <label>My out of Stock Subscriptions</label>
+            </block>
+            <block type="customer/account_dashboard" name="customer.account.link.back" template="customer/account/link/back.phtml"/>
+        </reference>
+    </amxnotif_subscr_index>
+	<PRODUCT_TYPE_configurable>
+			<reference name="head">
+				<action method="addJs">
+					<script>amasty/amstockstatusxnotif/configurable.js</script>
+				</action>
+			</reference>
+	</PRODUCT_TYPE_configurable>
+</layout>

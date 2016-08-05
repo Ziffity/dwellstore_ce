@@ -1,0 +1,109 @@
+<?php 
+	if(Mage::app()->getRequest()->getControllerName() == 'order_edit'){
+	$payment = $this->_getSession()->getOrder()->getPayment();
+?>
+
+  
+ <div id="custom-shipping-area">
+  
+			<script type="text/javascript">
+                //<![CDATA[
+                AdminOrder.addMethods({
+                  
+                    submit : function()
+                    {
+                        if (this.orderItemChanged) {
+                            if (confirm('You have item changes')) {
+                                if (editForm.submit()) {
+                                    disableElements('save');
+                                }
+                            } else {
+                                this.itemsUpdate();
+                            }
+                        } else {
+						 
+ 
+						  stopCCValidation();
+
+					 
+						<?php //Mage::getSingleton('adminhtml/session_quote')->setOrderCustomPriceValue('9'); ?>
+
+						 if (setTimeout('editForm.submit()', 500)) {  
+                            //if (editForm.submit()) {
+                                 disableElements('save');
+                            }
+                        }
+                    }
+                });
+		
+		
+            </script>
+        </div>
+     
+ 
+
+<?php 
+
+if(Mage::app()->getRequest()->getControllerName() == 'order_edit')
+{
+	$payment = $this->_getSession()->getOrder()->getPayment();
+?>
+ <script> 
+ 
+  function hideCCValidationForm()
+  {		
+  		/* core magento available payment method + CIM extension */
+  		var currentPaymentMethod = '<?php echo $this->_getSession()->getOrder()->getPayment()->getMethod();?>';
+		if(currentPaymentMethod == 'acimpro' || currentPaymentMethod == 'ccsave' || currentPaymentMethod == 'authorizenet' || currentPaymentMethod == 'direct' || currentPaymentMethod == 'paypal_direct' || currentPaymentMethod == 'verisign')
+		{
+			if ($('p_method_'+currentPaymentMethod) && $('p_method_'+currentPaymentMethod).checked )
+			{
+				$(	'payment_form_'+currentPaymentMethod).hide();
+				
+				/*if(currentPaymentMethod == 'acimpro')
+				{
+					document.getElementById('p_method_acimpro_already').checked = true;document.getElementById('acimpro_cc_number').value = '4444333322221111';
+					document.getElementById('acimpro_cc_cid').value = '123';
+				}
+				if(currentPaymentMethod == 'ccsave')
+				{
+					document.getElementById('ccsave_cc_owner').value = 'test';document.getElementById('ccsave_cc_number').value = '4444333322221111'; 
+				}
+				if(currentPaymentMethod == 'authorizenet')
+				{
+					document.getElementById('authorizenet_cc_number').value = '4444333322221111'; 
+				}
+				if(currentPaymentMethod == 'verisign')
+				{
+					document.getElementById('verisign_cc_number').value = '4444333322221111'; document.getElementById('verisign_cc_cid').value = '123'; 
+				}*/
+                
+			}
+		}
+  }
+  
+  function stopCCValidation()
+  {		
+  		/* core magento available payment method + CIM extension */
+  		var currentPaymentMethod = '<?php echo $this->_getSession()->getOrder()->getPayment()->getMethod();?>';
+		if(currentPaymentMethod == 'acimpro' || currentPaymentMethod == 'ccsave' || currentPaymentMethod == 'authorizenet' || currentPaymentMethod == 'direct' || currentPaymentMethod == 'paypal_direct' || currentPaymentMethod == 'verisign')
+		{
+			if ($('p_method_'+currentPaymentMethod) && $('p_method_'+currentPaymentMethod).checked )
+			{
+				$('payment_form_'+currentPaymentMethod).hide();
+                 payment.switchMethod('');
+			}
+		}
+  }
+  
+     setTimeout('hideCCValidationForm()', 200);   
+	 
+	 function setCustomPriceOnSubmit()
+	 {
+	 		var customBoxPrice = document.getElementById('custom-shipping-rate').value;
+			order.setCustomShippingValues(customBoxPrice,'','customshippingrate');
+	 }
+</script>
+<?php } ?> 
+
+<?php } ?>

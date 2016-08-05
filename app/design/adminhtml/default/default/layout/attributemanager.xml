@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<layout version="0.1.0">
+	<adminhtml_category_category>
+        <reference name="content">
+            <block type="attributemanager/adminhtml_category" name="attributemanager_category" />
+        </reference>
+    </adminhtml_category_category>
+	
+	<!--<adminhtml_customer_customer>
+        <reference name="content">
+            <block type="attributemanager/adminhtml_customer" name="attributemanager_customer" />
+        </reference>
+    </adminhtml_customer_customer>-->
+	
+	<adminhtml_address_address>
+        <reference name="content">
+            <block type="attributemanager/adminhtml_address" name="attributemanager_address" />
+        </reference>
+    </adminhtml_address_address>
+</layout>

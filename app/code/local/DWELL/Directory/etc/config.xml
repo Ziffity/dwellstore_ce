@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Directory>
+            <version>1.0.1</version>
+        </DWELL_Directory>
+    </modules>
+    <global>
+        <helpers>     	
+			<directory>
+				<rewrite>
+					<data>DWELL_Directory_Helper_Data</data>
+				</rewrite>
+			</directory>
+        </helpers>
+    </global>
+</config>

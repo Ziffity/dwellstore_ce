@@ -1,0 +1,180 @@
+<script type="text/javascript">
+	!window.jQuery && document.write('<script type="text/javascript" src="<?php echo $this->getSkinUrl("quickview/js/jquery-1.7.2.min.js");?>" />');
+	
+</script>
+
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_dialogWidth   = Mage::helper('quickview/quickview')->getDialogWidth();
+    $_dialogHeight  = Mage::helper('quickview/quickview')->getDialogHeight();
+    $_isModal       = Mage::helper('quickview/quickview')->getIsModal();
+    $_library       = Mage::helper('quickview/quickview')->getLibrary();
+?>
+
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+		<!-- modal box -->
+               <?php if($_library  ==1 ) { ?> 
+				<script type="text/javascript">
+					jQuery.noConflict();
+					(function(jQuery) {
+					
+					  jQuery(function() {
+						jQuery("#various<?php echo $_product->getId(); ?>").fancybox({
+						
+								'autoScale'			: true,
+								'transitionIn'		: 'none',
+								'transitionOut'		: 'none',
+								'type'				: 'iframe'
+								<?php if($_isModal==="true") { ?>
+								,'modal'			    : true
+								<?php } ?>
+							});
+					  });
+					})(jQuery);
+				</script>
+			<?php } ?>
+		<!-- end modal box -->	
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php // Product Image ?>
+			<a id="various<?php echo $_product->getId(); ?>" href="<?php echo $this->getUrl('quickview/product/view', array('id' => $_product->getId())); ?>?width=<?php echo $_dialogWidth; ?>&height=<?php echo $_dialogHeight; ?>&modal=<?php echo $_isModal; ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="product-image-thickbox"><span>quick look</span></a>
+			<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php if($_product->isSaleable()): ?>
+                        <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+	
+               <?php if($_library ==1 ) { ?> 
+				<script type="text/javascript">
+					jQuery.noConflict();
+					(function(jQuery) {
+					
+					  jQuery(function() {
+						jQuery("#various<?php echo $_product->getId(); ?>").fancybox({
+						
+								'autoScale'			: true,
+								'transitionIn'		: 'none',
+								'transitionOut'		: 'none',
+								'type'				: 'iframe'
+								<?php if($_isModal==="true") { ?>
+								,'modal'			    : true
+								<?php } ?>
+							});
+					  });
+					})(jQuery);
+				</script>
+			<?php } ?>
+		<!-- end modal box -->	
+        <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+		<!-- end modal box -->
+				<a id="various<?php echo $_product->getId(); ?>" href="<?php echo $this->getUrl('quickview/product/view', array('id' => $_product->getId())); ?>?width=<?php echo $_dialogWidth; ?>&height=<?php echo $_dialogHeight; ?>&modal=<?php echo $_isModal; ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="thickbox"><span class="product-image-thickbox" id="thickbox<?php echo $_product->getId(); ?>" >quick look</span></a>
+				<a id="mover<?php echo $_product->getId(); ?>" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+				
+				<script type="text/javascript">
+					jQuery("#mover<?php echo $_product->getId(); ?>").hover(function(){
+						 jQuery('#thickbox<?php echo $_product->getId(); ?>').toggle();
+					});
+					jQuery("#various<?php echo $_product->getId(); ?>").hover(function(){
+						 jQuery('#thickbox<?php echo $_product->getId(); ?>').toggle();
+					});
+				</script>
+								
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                <?php if($_product->getRatingSummary()): ?>
+                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php endif; ?>
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                <div class="actions">
+                    <?php if($_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+<?php if($_library  !=1 ) { ?> 
+<script type="text/javascript">
+if (typeof jQuery == 'undefined') {
+    alert("<?php echo $this->__('Jquery library is not loaded. Please goto System > Configuration > Catalog > Feature Product and enable it.') ?>");
+} else {
+	jQuery.noConflict();
+    jQuery(document).ready(function() {
+        var tb_pathToImage = "<?php echo $this->getSkinUrl('quickview/images/loadingAnimation.gif'); ?>";
+        tb_init('a.thickbox, area.thickbox, input.thickbox');//pass where to apply thickbox
+        imgLoader = new Image();// preload image
+        imgLoader.src = tb_pathToImage;
+    });
+}
+</script>
+<?php } ?>

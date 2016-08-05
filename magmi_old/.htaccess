@@ -1,0 +1,5 @@
+AuthUserFile /home/storedev/store/.htpasswd
+AuthName "Login Area"
+AuthType Basic
+
+require user dwell

@@ -1,0 +1,80 @@
+<?php if(Mage::getModel('catalog/layer')->getCurrentCategory()->getCategoryLanding()=='71'):?>
+	<?php
+	$_categories     = $this->getCategories();
+	$_collectionSize = count($_categories);
+	
+	if (!$_collectionSize) :
+		return;
+	endif;
+	
+	$columnsCount = $this->getColumnCount();
+	$showImage    = $this->getShowImage();
+	$height       = $this->getImageHeight();
+	$width        = $this->getImageWidth();
+	$maxCategoryCount    = $this->getCategoryCount();
+	$maxSubcategoryCount = 0;//$this->getSubcategoryCount();
+	$i = 0;
+	?>
+	<?php
+		$_helper    = $this->helper('catalog/output');
+		$_category  = $this->getCurrentCategory();
+		
+		$_imgHtml   = '';
+		if ($_imgUrl = $_category->getImageUrl()) {
+			$_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /></p>';
+			$_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+		}
+	?>
+
+	<div class="category-view<?php if ($this->hasFeaturedProductCollection()) echo ' cat_view_short';?>">
+    <?php if($_imgUrl): ?>
+        <?php echo $_imgHtml ?>
+    <?php endif; ?>
+	</div>
+	
+	<?php echo $this->getChildHtml('featured_product_list');?>
+	
+	<div class="easycatalogimg">
+		<ul class="custom-products-grid category-grid">
+
+	<?php foreach ($_categories as $_category) : ?>
+		<?php
+			$category = Mage::getModel('catalog/category')->load($_category->getId());
+		?>
+		<?php if($category->getResource()->getAttribute('surface_on_landing_page')->getFrontend()->getValue($category) == 'Yes'){ ?>
+		<li class="item <?php echo ($i%$columnsCount==0)?'last':'';?>">
+			<div class="category-wrapper">
+				<div class="text-wrapper">
+					<h2 class="category-name"><?php echo ucwords(strtolower($this->htmlEscape($_category->getName()))) ?></h2>
+					<p><?php echo $_category->getDescription() ?></p>
+					<a class="button" href="<?php echo $_category->getUrl() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>">VIEW COLLECTION</a>
+				</div>
+
+				<div class="category-image">
+					<a href="<?php echo $_category->getUrl() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>">
+
+						<?php if(!$resizeImage = $this->getResizeImage()): ?>
+							<?php
+								$style = '';
+								if (!empty($width)):
+									$style = 'width: ' . (is_numeric($width) ? $width . 'px' : $width);
+								elseif (!empty($height)):
+									$style = 'height: ' . (is_numeric($height) ? $height . 'px' : $height);
+								endif;
+							?>
+							<img src="<?php echo $this->getImage($_category) ?>" style="<?php echo $style ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" />
+						<?php else: ?>
+							<img src="<?php echo Mage::helper('easycatalogimg/image')->resize($this->getImage($_category), $width, $height) ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" />
+						<?php endif; ?>
+
+					</a>
+				</div>
+			</div>
+		</li>
+		<?php } ?>
+	<?php endforeach; ?>
+		</ul>
+	</div>
+	
+	<script type="text/javascript">decorateGeneric($$('ul.category-grid li.item'), ['odd','even','first','last'])</script>
+<?php endif; ?>

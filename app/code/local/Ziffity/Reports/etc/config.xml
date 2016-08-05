@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ziffity_Reports>
+            <version>0.1.0</version>
+            <depends>
+                <Mage_Adminhtml />
+                <Mage_Sales />
+            </depends>
+        </Ziffity_Reports>
+    </modules>
+
+    <global>
+        <models>
+            <ziffity_reports>
+                <class>Ziffity_Reports_Model</class>
+                <resourceModel>ziffity_reports_mysql4</resourceModel>
+            </ziffity_reports>
+            <ziffity_reports_mysql4>
+                <class>Ziffity_Reports_Model_Mysql4</class>
+            </ziffity_reports_mysql4>
+        </models>
+        <helpers>
+            <ziffity_reports>
+                <class>Ziffity_Reports_Helper</class>
+            </ziffity_reports>
+        </helpers>
+        <blocks>
+            <ziffity_reports>
+                <class>Ziffity_Reports_Block</class>
+            </ziffity_reports>
+        </blocks>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ziffity_Reports before="Mage_Adminhtml">Ziffity_Reports_Adminhtml</Ziffity_Reports>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+	
+        <layout>
+            <updates>
+                <ziffity_reports>
+                    <file>ziffity_reports.xml</file>
+                </ziffity_reports>
+            </updates>
+        </layout>
+    </adminhtml>
+
+</config>

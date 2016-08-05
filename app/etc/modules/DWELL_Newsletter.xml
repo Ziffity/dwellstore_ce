@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DWELL_Newsletter>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.1.0</version>
+    </DWELL_Newsletter>
+  </modules>
+</config>

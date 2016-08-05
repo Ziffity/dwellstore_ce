@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_ziffity_reports_index>
+        <reference name="content">
+            <block type="ziffity_reports/adminhtml_report" template="report/grid/container.phtml" name="my_reports_report_grid_container">
+                <block type="ziffity_reports/adminhtml_filter_form" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_ziffity_reports_index>
+	 <adminhtml_orderbreakdown_reports_index>
+        <reference name="content">
+            <block type="ziffity_reports/adminhtml_orderbreakdown" template="report/grid/container.phtml" name="my_reports_report_grid_container">
+                <block type="ziffity_reports/adminhtml_filter_formfull" name="grid.filter.form" />
+            </block>
+        </reference>
+    </adminhtml_orderbreakdown_reports_index>
+</layout>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Premiumrate>
+            <version>1.0.0</version>
+        </DWELL_Premiumrate>
+    </modules>
+<!--
+    <global>
+        <models>     	
+			<premiumrate_shipping>
+				<rewrite>
+					<carrier_premiumrate>DWELL_Premiumrate_Model_Carrier_Premiumrate</carrier_premiumrate>
+				</rewrite>
+			</premiumrate_shipping>
+        </models>
+    </global>
+-->
+</config>

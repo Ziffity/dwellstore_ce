@@ -1,0 +1,109 @@
+<div class="footer-container">
+  <div class="dwell-footer">
+	<div class="footer-left">
+		<div class="newsletter_offer">
+  <p>Enjoy 15% off your first order by signing up for our newsletter.</p>
+</div>
+<form action="https://localhost/dwellstore1.9/newsletter/subscriber/newajax/?___SID=S" method="post" id="newsletter-validate-detail">
+    <input type="hidden" name="email_address" value="" />
+    <div class="form-subscribe">
+		<div class="subscribe-details">
+			<div class="v-fix"><input name="email" type="text" id="newsletter" placeholder="Enter email address" class="input-text required-entry validate-email" /></div>
+			<button type="submit" class="button" title="Submit"><span><span>Submit</span></span></button>
+		</div>
+    </div>
+</form>
+<div class="newsletter_success">
+  <p><span class="b">Thank you, your promo code will arrive in your inbox shortly.</span></p><p>Hotmail users: add mail@dwellmedia.com to your address book for white listing.</p>
+</div>
+<div class="newsletter_error">
+ <p>Hello again.</p>
+ <p>You're already on our list, so you'll continue to hear first about our new products and special features.</p>
+</div>
+<div class="newsletter_exclusions">
+  <a href="#details" id="ex_app">Exclusions Apply*</a>
+  <div id="details">
+    <p>Promotion code terms and restrictions</p>
+    Offer valid for new email subscribers only. Valid only on full priced merchandise. Cannot be combined with any other offers or promotions.
+    Products from Artek, Fermob, FLOS, Herman Miller, Libratone, Loll, and Maharam are excluded from this offer.
+  </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $jqfb = jQuery.noConflict();
+    jQuery(document).ready(function($) {
+		l = document.location.href.split('/');
+		if (!(l[3] == 'checkout' && l[4] == 'cart')) {
+	    	$jqfb('#ex_app').fancybox();
+	    }
+    });
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+</script>
+		<div class="footer-left-bottom" style="margin-top:10px;">
+			<p>Have a question? Email us at customerservice@dwell.com, or call us at 800-805-7820 Monday - Friday, 9am - 5pm PT.&nbsp;</p>		</div>
+	</div>
+	<div class="footer-right">
+		<ul>
+<li><a href="http://localhost/dwellstore1.9/customer-service/about_dwell/?___SID=U">Store Customer Service</a></li>
+<li><a href="http://localhost/dwellstore1.9/customer-service/shipping-delivery/?___SID=U">Shipping &amp; Delivery</a></li>
+<li><a href="http://localhost/dwellstore1.9/customer-service/returns_exchanges/?___SID=U">Returns &amp; Exchanges</a></li>
+<li><a href="http://localhost/dwellstore1.9/customer-service/faq/?___SID=U">FAQs</a></li>
+<li><a href="http://localhost/dwellstore1.9/customer-service/order_tracking/?___SID=U">Order Tracking</a></li>
+<li><a href="http://localhost/dwellstore1.9/customer-service/trade-program/?___SID=U">Trade Program</a></li>
+
+</ul>
+<ul class="privacy">
+<li><a href="http://localhost/dwellstore1.9/privacy_policy/?___SID=U">Privacy</a></li>
+<li><a href="http://localhost/dwellstore1.9/copyright/?___SID=U">Copyright</a></li>
+<li><a href="http://localhost/dwellstore1.9/terms/?___SID=U">Terms Of Use</a></li>
+</ul>	</div>
+	<script type="text/javascript">
+        EsNewsSubscribers.setCookieLifeTime(10);
+            EsNewsSubscribers.setCookieName('es_newssubscribers');
+        EsNewsSubscribers.setBaseUrl('https://localhost/dwellstore1.9/?___SID=S');
+</script>
+<div id="esns_background_layer">
+            <div id="esns_box_layer">
+			<div id="esns_box_close"></div>
+			<div class="dwell_header">
+        		Enjoy 15% off            </div>
+			<div class="dwell_body">
+                Sign up to receive the latest offers in modern design.            </div>
+            <div id="esns_box_subscribe">
+				<div id="esns_box_subscribe_response_error"></div>
+				<div id="esns_box_subscribe_response_success"></div>
+				<div id="esns_box_subscribe_form">
+					<div id="esns_box_subscribe_input"><input id="esns_email" name="subscribe_email" type="text"></div>
+					<div id="esns_box_subscribe_submit"><a href="javascript:void(0)" id="esns_submit" >Submit</a></div>
+				</div>
+			</div>
+			<div class="dwell_addtl">
+            	Offer valid only for new email subscribers. Enter your email address and receive 15% off your first order and a promo code will be sent to your inbox. Exclusions apply.        	</div>
+        	<div class="dwell_shop">
+        	  <a href="#" onclick="EsNewsSubscribers.boxClose();">Shop the Dwell Store</a>
+        	</div>
+	    </div>
+      </div>
+  </div>
+</div>
+<script type="text/javascript">
+	/*adroll_adv_id = "3AR2QLRGFJHA7GVAMSV5YQ";
+	adroll_pix_id = "3EOIKPFCC5AZPI3ALJCFVC";
+	(function () {
+		var oldonload = window.onload;
+		window.onload = function(){
+			__adroll_loaded=true;
+			var scr = document.createElement("script");
+			var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+			scr.setAttribute('async', 'true');
+			scr.type = "text/javascript";
+			scr.src = host + "/j/roundtrip.js";
+   			((document.getElementsByTagName('head') || [null])[0] || document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   			if(oldonload){
+   				oldonload()
+   			}
+   	  	};
+	}());*/
+</script>
+<!-- BM -->

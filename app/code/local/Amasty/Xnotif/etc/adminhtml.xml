@@ -1,0 +1,56 @@
+<?xml version="1.0"?> 
+<!--
+    Copyright (c) 2010 Amasty (http://www.amasty.com) 
+-->
+<config>
+       <menu>
+            <report>
+                <children>
+                    <amxnotif translate="title" module="amxnotif">
+                                <title>Out of Stock Notifications</title>
+                                <action>adminhtml/stock</action>
+                                <sort_order>120</sort_order>
+                    </amxnotif>
+                </children>
+            </report>
+        </menu>     
+   
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <report>
+                            <children>
+                                <amxnotif translate="title" module="amxnotif">
+                                            <title>Out of Stock Notifications</title>
+                                </amxnotif>
+                            </children>
+                        </report>
+			 <system>
+                           <children>
+                            <config>
+                                <children>
+                                    <amxnotif translate="title" module="amxnotif">
+                                        <title>Out of Stock Notifications</title>
+                                    </amxnotif>
+                                </children>
+                            </config>
+                         </children>
+                       </system> 
+                     </children>
+                </admin> 
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Amasty_Xnotif>
+                    <files>
+                        <default>Amasty_Xnotif.csv</default>
+                    </files>
+                </Amasty_Xnotif>
+            </modules>
+        </translate> 
+</config> 

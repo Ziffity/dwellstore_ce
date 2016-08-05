@@ -1,0 +1,178 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_order = $this->getOrder() ?>
+
+<!--<form id="items_form" method="post" action="<?php //echo Mage::getModel('adminhtml/url')->getUrl('ordereditor/adminhtml_ordereditor/saveItems') ?>">-->
+
+<form id="items_form" method="post">
+
+<div class="grid np">
+  <div class="hor-scroll">
+    <table cellspacing="0" class="data order-tables">
+        <col />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <col width="1" />
+        <thead>
+            <tr class="headings">
+                <th><?php echo $this->helper('sales')->__('Product') ?></th>
+                <th><span class="nobr"><?php echo $this->helper('sales')->__('Item Status') ?></span></th>
+                <th><span class="nobr"><?php echo $this->helper('sales')->__('Original Price') ?></span></th>
+                <th><?php echo $this->helper('sales')->__('Price') ?></th>
+                <th class="a-center"><?php echo $this->helper('sales')->__('Qty') ?></th>
+                <th><?php echo $this->helper('sales')->__('Subtotal') ?></th>
+                <th><span class="nobr"><?php echo $this->helper('sales')->__('Tax Amount') ?></span></th>
+                <th><span class="nobr"><?php echo $this->helper('sales')->__('Tax Percent') ?></span></th>
+                <th><span class="nobr"><?php echo $this->helper('sales')->__('Discount Amount') ?></span></th>
+                <th class="last"><span class="nobr"><?php echo $this->helper('sales')->__('Row Total') ?></span></th>
+				<th class="last"><span class="nobr"><?php echo $this->helper('sales')->__('Remove Item') ?></span></th>
+            </tr>
+        </thead>
+        <?php $_items = $this->getItemsCollection() ?>
+        <?php $i=0;foreach ($_items as $_item):?>
+            <?php if ($_item->getParentItem()) continue; else $i++;?>
+            <tbody class="<?php echo $i%2?'even':'odd' ?>">
+                <?php echo $this->getItemHtml($_item) ?>
+                <?php echo $this->getItemExtraInfoHtml($_item) ?>
+            </tbody>
+        <?php endforeach; ?>
+    </table>
+  </div>
+</div>
+
+<input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+<input type="hidden" name="order_id" id="order_id" value="<?php echo $_order->getId();?>" />
+	
+</form>
+<br />
+<div class="entry-edit">
+	<fieldset>
+		<button class="scalable save" onclick="saveItems()" style="float:right;">
+			<span><span><span><?php echo $this->helper('sales')->__('Save Items') ?></span></span></span>
+		</button> 
+	</fieldset> 
+</div>
+
+<script>
+
+ 
+
+function saveItems()
+{
+editForm = new varienForm('items_form');
+if(editForm.validate())
+{
+	var params = {};   	
+    var $form = $("items_form");
+    // let's select and cache all the fields
+	//$( "input, textarea, select" ).serialize();
+		var str = $("items_form").serialize();
+
+			var newItems = new Object();
+			newItems.type = 'newItems';
+			params['newItems'] = Object.toJSON(newItems);
+ 
+	
+	//send request for saving
+			new Ajax.Request('<?php echo Mage::getModel('adminhtml/url')->getUrl('ordereditor/adminhtml_ordereditor/saveItems') ?>', {
+				method: 'post',
+				parameters: str,
+				//parameters: params,
+				//data: "parameters="+str,
+				onSuccess: function(transport) {
+
+    				if(transport.responseText == 'Successfully updated.') {
+    					window.location.reload();
+    				} else {
+    					alert(transport.responseText);
+    				}
+				},
+				
+				onFailure: function()
+				{	alert("not worked");  
+				}
+
+
+			});	
+	}	
+}
+</script>
+<script>
+function removeItemRow(id)
+{
+
+	if($('remove_'+id).checked == 0){$('tablerow'+id).setStyle({ 'color': ''});}
+	else{$('tablerow'+id).setStyle({ 'color': '#CCCCCC', fontSize: '12px' });}
+	
+	
+}
+</script>
+<script>
+function saveShipping()
+{
+
+shippingForm = new varienForm('shiping_form');
+if(shippingForm.validate())
+{
+	var params = {};   	
+    var $form = $("shiping_form");
+		var str = $("shiping_form").serialize();
+
+			var shippingData = new Object();
+			shippingData.type = 'shippingData';
+			params['shippingData'] = Object.toJSON(shippingData);
+ 
+	
+	//send request for saving
+			new Ajax.Request('	<?php echo Mage::getModel('adminhtml/url')->getUrl('ordereditor/adminhtml_ordereditor/saveshipping') ?>', {
+				method: 'post',
+				parameters: str,
+				onSuccess: function(transport) {
+
+    				if(transport.responseText == 'Successfully updated.') {
+    					window.location.reload();
+    				} else {
+    					alert(transport.responseText);
+    				}
+				},
+				
+				onFailure: function()
+				{	alert("not worked");  
+				}
+
+
+			});	
+	}	
+
+}
+</script>

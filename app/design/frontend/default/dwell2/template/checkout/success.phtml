@@ -1,0 +1,182 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='" 
++ ((document.location.protocol == "https:") ? "https:" : "http:")
++ "//p.bm23.com/bta.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var bta = new __bta('bebuodfofmcycuswyqcworixfyifbeo');
+bta.setHost("app.bronto.com");
+</script>
+<div class="page-title">
+    <h1><?php echo $this->__('Thank you for your order from the Dwell Store!') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<br />
+<p><strong>Your order has been received.</strong></p>
+
+<?php if ($this->getOrderId()):?>
+
+<?php if ($this->getCanViewOrder()) :?>
+    <p><strong><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></strong></p>
+<?php  else :?>
+    <p><strong><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></strong></p>
+<?php endif;?>
+
+    <p><?php echo $this->__('You will receive an order confirmation email with details shortly. When your order ships, you will receive an email with your shipment tracking information.') ?></p>
+    <p><?php echo $this->__('If you ordered furniture or an item requiring special delivery, we will contact you within two business days.');?></p>
+    <p><?php echo $this->__('For subscription orders, you should receive your first issue in six to eight weeks. Special Interest Issues are typically shipped within five business days.') ?></p>
+    <p><?php echo $this->__('If you have any questions regarding your order, please email us at <a href="mailto:customerservice@dwell.com">customerservice@dwell.com</a>.');?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+
+<?php 
+	$order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
+	$total = $order->getGrandTotal();
+	$subtotal = $order->getSubtotal();
+?>
+<?php if ($order->getCustomerIsGuest()) { ?>
+  <!-- Bronto contact import image -->
+  <img src="http://email.dwell.com/public/?q=direct_add&fn=Public_DirectAddForm&id=bebuodfofmcycuswyqcworixfyifbeo&list1=0bd303ec000000000000000000000003e082&email=<?php echo $order->getCustomerEmail(); ?>" width="0" height="0" border="0" alt=""/> 
+<?php } ?>
+<!-- Start CJ Affiliate Script (DWELL-628) -->
+<script type = "text/javascript">
+var MasterTmsUdo = { 
+	'CJ' : { 
+		'CID': '1529404', 
+		'TYPE': '367940',
+		'OID': '<?php echo $this->getOrderId(); ?>', 
+		'CURRENCY' : 'USD',
+		<?php if ($order->getDiscountAmount()): ?>
+			'DISCOUNT' : '<?php echo abs( (int) $order->getDiscountAmount()); ?>',
+		<?php endif; ?>
+		<?php if ($order->getCouponCode()): ?>
+			'COUPON' : '<?php echo $order->getCouponCode(); ?>',
+		<?php endif; ?>
+		PRODUCTLIST : [
+		<?php 
+			foreach ($order->getAllItems() as $item) { 
+				if ($item->getParentItemId()) {
+                	continue;
+                }
+				$_product = Mage::getModel('catalog/product')->load($item->getProductId());
+				
+		?>
+			{ 
+				'ITEM' : '<?php echo $_product->getSku();?>', 
+				'AMT' : '<?php echo $item->getPrice(); ?>', 
+				'QTY' : '<?php echo (int) $item->getQtyOrdered(); ?>'
+				<?php if ($item->getDiscountAmount()): ?>
+					,'DCNT' : '<?php echo abs( (int) $item->getDiscountAmount() ); ?>',
+				<?php endif; ?>
+			},
+		<?php } ?>
+		]
+	} 
+}; 
+</script>
+<script>/*DO NOT ALTER *** dwell.com*/(function(e){var t="1064",n=document,r,i,s={http:"http://cdn.mplxtms.com/s/MasterTMS.min.js",https:"https://secure-cdn.mplxtms.com/s/MasterTMS.min.js"},o=s[/\w+/.exec(window.location.protocol)[0]];i=n.createElement("script"),i.type="text/javascript",i.async=!0,i.src=o+"#"+t,r=n.getElementsByTagName("script")[0],r.parentNode.insertBefore(i,r),i.readyState?i.onreadystatechange=function(){if(i.readyState==="loaded"||i.readyState==="complete")i.onreadystatechange=null}:i.onload=function(){try{e()}catch(t){}}})(function(){});</script>
+<!-- End CJ Affiliate Script (DWELL-628) -->
+
+
+<script type = "text/javascript">
+	adroll_conversion_value_in_dollars = <?php echo $total ?>;
+	adroll_custom_data = {"ORDER_ID": "<?php echo $this->__($this->escapeHtml($this->getOrderId())) ?>"};
+</script>
+
+<script type="text/javascript">
+// In most cases, values in the cookie are used to associate an order
+// with a contact and a delivery, so there is no need to pass in email or
+// contact_id. If you do pass in email or contact_id and these values do not
+// match what is in the cookie (or the cookie does not exist), then the order
+// will only be associated with the email or contact_id passed in. If you pass
+// in email or contact_id and these values match what is in the cookie, then the
+// order will be associated with the email or contact_id passed in, and the delivery
+// from the cookie.
+
+bta.addOrder({ "order_id": "", "email": "", "contact_id": "", "date": "", "items": [
+<?php foreach ($order->getAllItems() as $item) { 
+  $product = Mage::getModel('catalog/product')->load($item->getProductId());
+?>
+  { "item_id": "<?php echo $item->getProductId(); ?>",
+    "desc": "<?php echo $product->getDescription(); ?>",
+    "amount": "<?php echo $item->getPrice(); ?>",
+	  "quantity": "<?php echo (int) $item->getQtyOrdered(); ?>",
+    "name": "<?php echo $product->getName(); ?>",
+    "category": "",
+    "image": "<?php echo $product->getImageUrl(); ?>",
+    "url": "<?php $_product->getProductUrl(); ?>"
+  },
+<?php } ?>
+]});
+
+</script>
+
+<!-- Google Code for Purchases Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 989104003;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "44q-CPbJ4mMQg4_S1wM";
+var google_conversion_value = '<?php echo $subtotal; ?>';
+var google_conversion_currency = "USD";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/989104003/?value=<?php echo $subtotal; ?>&currency_code=USD&label=44q-CPbJ4mMQg4_S1wM&guid=ON&script=0"/>
+</div>
+</noscript>

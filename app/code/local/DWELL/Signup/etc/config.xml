@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DWELL_Signup>
+      <version>0.1.1</version>
+    </DWELL_Signup>
+  </modules>
+  <global>
+    <helpers>
+      <signup>
+        <class>DWELL_Signup_Helper</class>
+      </signup>
+    </helpers>
+	<blocks>
+	  <dwell_signup>
+		<class>DWELL_Signup_Block</class>
+	  </dwell_signup>
+	  <adminhtml>
+	    <rewrite>
+	      <newsletter_subscriber_grid>DWELL_Signup_Block_Adminhtml_Subscriber_Grid</newsletter_subscriber_grid>
+	    </rewrite>
+	  </adminhtml>
+	</blocks>
+	<models>
+	  <newsletter>
+	    <rewrite>
+	      <subscriber before="Mage_Newsletter_Model_Subscriber">DWELL_Signup_Model_Subscriber</subscriber>
+	    </rewrite>
+	  </newsletter>
+	  <signup>
+		<class>DWELL_Signup_Model</class>
+		<resourceModel>signup_mysql4</resourceModel>
+	  </signup>
+	  <signup_mysql4>
+		<class>DWELL_Signup_Model_Mysql4</class>
+		<entities>		  
+			  <signup>
+				<table>dwell_signup</table>
+			  </signup>
+        </entities>
+	  </signup_mysql4>
+	</models>
+	<resources>
+	  <signup_setup>
+		<setup>
+		  <module>DWELL_Signup</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </signup_setup>
+	  <signup_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </signup_write>
+	  <signup_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </signup_read>
+	</resources>
+	<events>
+	  <product_alert_stock_subscription_save> <!-- identifier of the event we want to catch -->
+        <observers>
+          <signup_observer> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>signup/observer</class> <!-- observers class alias -->
+            <method>addToDwellSignup</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </signup_observer>
+        </observers>
+      </product_alert_stock_subscription_save>
+      <newsletter_subscribe> <!-- identifier of the event we want to catch -->
+        <observers>
+          <signup_observer> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>signup/observer</class> <!-- observers class alias -->
+            <method>addToDwellSignup</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </signup_observer>
+        </observers>
+      </newsletter_subscribe>
+    </events>
+  </global>
+  <admin>
+	<routers>
+	  <signup>
+	    <use>admin</use>
+		<args>
+		  <module>DWELL_Signup</module>
+		  <frontName>signup</frontName>
+		</args>
+	  </signup>
+	</routers>
+  </admin>
+  <adminhtml>
+  
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<signup translate="title" module="signup">
+			  <title>Signup</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+			  <report_signup translate="title">
+				<title>Manage Signup Report</title>
+				<sort_order>0</sort_order>
+			  </report_signup>
+			  </children>
+			</signup>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<signup>
+		  <file>signup.xml</file>
+		</signup>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

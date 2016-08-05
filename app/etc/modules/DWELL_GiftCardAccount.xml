@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_GiftCardAccount>
+            <active>true</active>
+            <codePool>local</codePool>
+        </DWELL_GiftCardAccount>
+    </modules>
+</config>

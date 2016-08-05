@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <dwell_section_tab translate="label">
+            <label>DWELL</label>
+            <sort_order>110</sort_order>
+        </dwell_section_tab>
+    </tabs>
+	<sections>
+        <dwell translate="label">
+            <label>MyRegistry.com</label>
+            <tab>dwell_section_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <registry translate="label">
+                    <label>MyRegistry.com</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>My Registry Enabled</label>
+                            <comment>Enable MyRegistry on Product Detail Page.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </registry>
+            </groups>
+        </dwell>
+    </sections>
+</config>

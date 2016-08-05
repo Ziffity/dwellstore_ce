@@ -1,0 +1,147 @@
+<?php
+/**
+ * GoMage.com
+ *
+ * GoMage Feed Pro
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2013 GoMage.com (http://www.gomage.com)
+ * @author       GoMage.com
+ * @license      http://www.gomage.com/licensing  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.3
+ * @since        Class available since Release 2.0
+ */
+?>
+<?php
+$feed = $this->getFeed();
+
+if($data = $this->getFeed()->getContent()){
+
+    $data = json_decode($data, true);
+
+}else{
+    $data = array();
+}
+
+if(empty($data)){
+    $rows_count = 5;
+}else{
+    $rows_count = count($data);
+}
+
+?>
+<?php for($i=0;$i<$rows_count;$i++):?>
+    <tr>
+        <td><div class="gfp-input-wrapper"><input type="text" class="input-text" name="field[<?php echo $i;?>][order]" value="<?php echo @$data[$i]['order'];?>" /></div></td>
+        <td><div class="gfp-input-wrapper"><input type="text" class="input-text" name="field[<?php echo $i;?>][name]" value="<?php echo @$data[$i]['name'];?>" /></div></td>
+
+        <td><div style="margin: 2px;">
+                <select style="width:100%;" id='mapping-<?php echo $i;?>-prefix-type' onchange="changeValuePrefixType(this, <?php echo $i;?>)" name="field[<?php echo $i;?>][prefix_type]">
+                    <option <?php echo isset($data[$i]['prefix_type']) && $data[$i]['prefix_type'] == 'attribute' ? 'selected="selected"' : '';?> value="attribute"><?php echo $this->__('Attribute')?></option>
+                    <option <?php echo isset($data[$i]['prefix_type']) && $data[$i]['prefix_type'] == 'parent_attribute' ? 'selected="selected"' : '';?> value="parent_attribute"><?php echo $this->__('Parent Attribute')?></option>
+                    <option <?php echo isset($data[$i]['prefix_type']) && $data[$i]['prefix_type'] == 'static' ? 'selected="selected"' : '';?> value="static"><?php echo $this->__('Static Value')?></option>
+
+                </select>
+            </div>
+        </td>
+
+        <td>
+            <input  style="width:98%; display:none;" type="text" id="mapping-<?php echo $i;?>-static-prefix-value" class="input-text" name="field[<?php echo $i;?>][prefix_value]" value="<?php echo @$data[$i]['prefix_value'];?>"  />
+            <?php
+            $slect_prefix_type = Mage::helper('gomage_feed')->getAttributeSelect($i, @$data[$i]['attribute_prefix_value'], (isset($data[$i]['prefix_type']) && in_array($data[$i]['prefix_type'], array('attribute','parent_attribute')) || !isset($data[$i]['prefix_type'])));
+            $slect_prefix_type = str_replace('attribute_value', 'attribute_prefix_value', $slect_prefix_type);
+            $slect_prefix_type = str_replace('attribute-value', 'attribute-prefix-value', $slect_prefix_type);
+            $slect_prefix_type = str_replace('width:260px;', 'width:60px;', $slect_prefix_type);
+            echo $slect_prefix_type; ?>
+        </td>
+        <td>
+            <div style="margin: 2px;">
+                <select style="width:100%;" id="mapping-<?php echo $i;?>-value-type" onchange="changeValueType(this, <?php echo $i;?>)" name="field[<?php echo $i;?>][type]">
+                    <option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'attribute' ? 'selected="selected"' : '';?> value="attribute"><?php echo $this->__('Attribute')?></option>
+                    <option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'parent_attribute' ? 'selected="selected"' : '';?> value="parent_attribute"><?php echo $this->__('Parent Attribute')?></option>
+                    <option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'static' ? 'selected="selected"' : '';?> value="static"><?php echo $this->__('Static Value')?></option>
+                    <option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'if_empty_parent_attribute' ? 'selected="selected"' : '';?> value="if_empty_parent_attribute"><?php echo $this->__('If Parent attr. is empty')?></option>
+                    <option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'if_empty_child_attribute' ? 'selected="selected"' : '';?> value="if_empty_child_attribute"><?php echo $this->__('If Child attr. is empty')?></option>
+                </select>
+            </div>
+        </td>
+        <td>
+            <input style="width:98%;display:<?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'static' ? 'block' : 'none';?>;"  id="mapping-<?php echo $i;?>-static-value" type="text" class="input-text" name="field[<?php echo $i;?>][static_value]" value="<?php echo @$data[$i]['static_value'] ?>" />
+            <?php $select_value =  Mage::helper('gomage_feed')->getAttributeSelect($i, @$data[$i]['attribute_value'], (isset($data[$i]['type']) && in_array($data[$i]['type'], array('attribute','parent_attribute')) || !isset($data[$i]['type'])));
+            $select_value = str_replace('width:260px;', 'width:120px;', $select_value);
+            echo $select_value;
+            ?>
+        </td>
+
+
+        <td><div style="margin: 2px;">
+                <select style="width:100%;" id='mapping-<?php echo $i;?>-suffix-type' onchange="changeValueSuffixType(this, <?php echo $i;?>)" name="field[<?php echo $i;?>][suffix_type]">
+                    <option <?php echo isset($data[$i]['suffix_type']) && $data[$i]['suffix_type'] == 'attribute' ? 'selected="selected"' : '';?> value="attribute"><?php echo $this->__('Attribute')?></option>
+                    <option <?php echo isset($data[$i]['suffix_type']) && $data[$i]['suffix_type'] == 'parent_attribute' ? 'selected="selected"' : '';?> value="parent_attribute"><?php echo $this->__('Parent Attribute')?></option>
+                    <option <?php echo isset($data[$i]['suffix_type']) && $data[$i]['suffix_type'] == 'static' ? 'selected="selected"' : '';?> value="static"><?php echo $this->__('Static Value')?></option>
+                </select>
+            </div>
+        </td>
+
+        <td>
+            <input style="width:98%; display:none;" type="text" id="mapping-<?php echo $i;?>-static-suffix-value" class="input-text" name="field[<?php echo $i;?>][suffix_value]" value="<?php echo @$data[$i]['suffix_value'];?>"  />
+            <?php
+            $slect_sufix_type = Mage::helper('gomage_feed')->getAttributeSelect($i, @$data[$i]['attribute_suffix_value'], (isset($data[$i]['suffix_type']) && in_array($data[$i]['suffix_type'], array('attribute','parent_attribute')) || !isset($data[$i]['suffix_type'])));
+            $slect_sufix_type = str_replace('attribute_value', 'attribute_suffix_value', $slect_sufix_type);
+            $slect_sufix_type = str_replace('attribute-value', 'attribute-suffix-value', $slect_sufix_type);
+            $slect_sufix_type = str_replace('width:260px;', 'width:60px;', $slect_sufix_type);
+
+            echo $slect_sufix_type;
+            ?>
+        </td>
+
+        </td>
+        <td>
+            <div style="margin: 2px;" class="nowrap">
+                <?php echo Mage::helper('gomage_feed')->getOutputTypeSelect($i, (isset($data[$i]['output_type']) ? $data[$i]['output_type'] : '')); ?>
+            </div>
+        </td>
+        <td><div class="gfp-input-wrapper"><input type="text" class="input-text" name="field[<?php echo $i;?>][limit]" value="<?php echo @$data[$i]['limit'];?>" /></div></td>
+        <td><button onclick="removeMappingRow(this);return false;" class="button"><span><span><?php echo $this->__('Remove')?></span></span></button></td>
+    </tr>
+
+    <script type="text/javascript">
+        //<![CDATA[
+
+        var  i = <?php echo $i ;?>;
+
+        var prefix = $('mapping-'+i+'-prefix-type');
+        var suffix = $('mapping-'+i+'-suffix-type');
+        var val = $('mapping-'+i+'-value-type');
+        if(prefix.value == 'static'){
+            $('mapping-'+i+'-static-prefix-value').style.display = 'block';
+            $('mapping-'+i+'-attribute-prefix-value').style.display = 'none';
+        }else{
+            $('mapping-'+i+'-static-prefix-value').style.display = 'none';
+            $('mapping-'+i+'-attribute-prefix-value').style.display = 'block';
+        }
+        if(suffix.value == 'static'){
+            $('mapping-'+i+'-static-suffix-value').style.display = 'block';
+            $('mapping-'+i+'-attribute-suffix-value').style.display = 'none';
+        }else{
+            $('mapping-'+i+'-static-suffix-value').style.display = 'none';
+            $('mapping-'+i+'-attribute-suffix-value').style.display = 'block';
+        }
+
+        if(val.value == 'static'){
+            $('mapping-'+i+'-static-value').style.display = 'block';
+            $('mapping-'+i+'-attribute-value').style.display = 'none';
+        }else{
+            $('mapping-'+i+'-static-value').style.display = 'none';
+            $('mapping-'+i+'-attribute-value').style.display = 'block';
+        }
+
+
+
+
+        //]]>
+
+
+    </script>
+<?php endfor;?>

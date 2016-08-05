@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_DrupalCart>
+            <version>1.0.1</version>
+        </DWELL_DrupalCart>
+    </modules>
+    <api>
+        <resources>
+            <drupalcart translate="title" module="DWELL_DrupalCart">
+                <model>DWELL_DrupalCart_Model_Api</model>
+                <title>Retrieve cart items by customer id</title>
+                <acl>customer</acl>
+                <methods>
+                    <items translate="title" module="DWELL_DrupalCart">
+                        <title>Retrieve cart items by customer id</title>
+                        <acl>customer/info</acl>
+                        <method>items</method>
+                    </items>
+                    <total_items translate="title" module="DWELL_DrupalCart">
+                        <title>Retrieve total cart items</title>
+                        <acl>customer/info</acl>
+                        <method>totalItems</method>
+                    </total_items>
+                </methods>
+                <faults module="DWELL_DrupalCart"> 
+                    <not_exists>
+                        <code>100</code>
+                        <message>Customer doesn't exist.</message>
+                    </not_exists>                  
+                </faults>
+            </drupalcart>
+        </resources>
+        <acl>
+            <resources>
+                <drupalcart translate="title" module="DWELL_DrupalCart">
+                    <title>Customers</title>
+                    <items translate="title" module="DWELL_DrupalCart">
+                        <title>Retrieve cart items by customer id</title>
+                    </items>
+                    <total_items translate="title" module="DWELL_DrupalCart">
+                        <title>Retrieve total cart items</title>
+                    </total_items>
+                </drupalcart>
+                <all>
+                </all>
+            </resources>
+        </acl>
+    </api>
+</config>

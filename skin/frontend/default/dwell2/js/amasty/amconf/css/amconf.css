@@ -1,0 +1,130 @@
+.amconf-image
+{
+    padding: 3px;
+    margin-right: 5px; 
+}
+
+.zoomLens {
+    background-color: white;
+}
+
+/* .zoomContainer {
+z-index: 10;
+}
+
+.zoomWindow {
+    z-index: 70000 !important;
+}*/
+
+.zoomWrapper {
+margin: 0 auto;
+}
+
+.product-view .product-img-box .product-image {
+overflow: visible;
+z-index: 0 !important;
+
+}
+
+.swatch-title{
+	font-weight: 600;
+	position: absolute;
+	padding-left: 3px;
+}
+
+.amconf-image-selected
+{
+    padding: 0px;
+    border: 3px solid #eaff00;
+}
+
+.amconf-image-outofstock
+{
+    padding: 0px;
+    border: 3px solid #303030;
+    opacity:0.6;
+    filter:alpha(opacity=60);
+}
+
+.amconf-images-container
+{
+    width: 100%;
+    clear: both;
+}
+
+.amconf-image-container
+{
+    float:left;
+    position:relative;
+    text-align: center;
+}
+
+.amconf-image-title
+{
+    margin-bottom:5px;
+}
+
+#amconf_price_clone_container 
+{
+    float: left;
+}
+#amconf_price_clone_container ul
+{
+    clear: both;
+}
+
+.MagicScrollArrows {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+}
+
+.MagicScrollArrowPrev { 
+    width: 35px;
+    height: 35px;
+    background: url(/js/amasty/amconf/images/arrows.png) 0 -35px no-repeat transparent;
+    left:0;
+}
+
+.MagicScrollArrowNext {
+    width: 35px;
+    height: 35px; 
+    background: url(/js/amasty/amconf/images/arrows.png) -35px -35px no-repeat transparent;
+    right:0;
+}
+
+#nextGallery.disabled, #prevGallery.disabled {
+    opacity: 0.4;
+    filter: alpha(opacity = 40);
+    cursor: default;
+}
+
+.caroufredsel_wrapper {
+    margin:0 auto !important;    
+}
+
+#amasty_gallery a{
+     text-decoration: none;
+}
+
+#ampagination {
+    text-align: center;
+}
+#ampagination a {
+    
+    width: 15px;
+    height: 15px;
+    margin: 0 5px 0 0;
+    display: inline-block;
+}
+#ampagination a.selected {
+    background-position: -25px -300px;
+    cursor: default;
+}
+#ampagination a span {
+    display: none;
+}
+
+.no-display{
+display: none !important;
+}

@@ -1,0 +1,117 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $zoomWidth   = Mage::helper('quickview/quickview')->getZoomWidth();
+    $zoomHeight  = Mage::helper('quickview/quickview')->getZoomHeight();	
+    $zoomPosition  = Mage::helper('quickview/quickview')->getZoomPosition();	
+	$zoomColor  = Mage::helper('quickview/quickview')->getZoomColor();	
+	
+	$top  = Mage::helper('quickview/quickview')->getTOP();	
+	$leftNext  = Mage::helper('quickview/quickview')->getLeftNext();	
+	$leftPrev  = Mage::helper('quickview/quickview')->getLeftPrev();	
+	$pHeight  = Mage::helper('quickview/quickview')->getPaginationHeight();	
+	$pWidth  = Mage::helper('quickview/quickview')->getPaginationWidth();	
+	$imgWidth  = Mage::helper('quickview/quickview')->getImageWidth();	
+	$imgHeight  = Mage::helper('quickview/quickview')->getImageHeight();	
+?>
+<script type="text/javascript">
+//<![CDATA[
+jQuery.noConflict();
+jQuery(document).ready(function() {
+	jQuery('.cloud-zoom').CloudZoom({ showTitle: false });
+	jQuery(function(){
+		jQuery('#product_img_slider').slides({
+			preload: true,
+			preloadImage: '<?php echo $this->getSkinUrl('md/quickview/images/loadingAnimation.gif'); ?>',
+			effect: 'fade',
+			crossfade: true,
+			slideSpeed: 350,
+			fadeSpeed: 500,
+			generateNextPrev: true,
+			generatePagination: false,
+			paginationClass: 'pagination'
+		});		
+	});
+
+});	
+//]]>
+</script>
+<style>
+#product_img_slider {
+    float: left;
+    width: 390px;
+}
+#product_img_slider .slides_container {
+	width: <?php echo $imgWidth.'px'?>;
+	height:<?php echo $imgHeight.'px'?>;
+	float:right;
+	position:relative;
+	border:1px solid #dfdfdf;
+
+}
+.slides_container a {
+	display:block;
+}
+#product_img_slider .next,#product_img_slider .prev {
+   display: block;
+    height: 12px;
+    left: <?php echo $leftPrev.'px'?>;
+    overflow: hidden;
+    padding-top: 21px;
+    position: absolute;
+    top: <?php echo $top.'px'?>;
+    width: 32px;
+    z-index: 101;
+}
+#product_img_slider .next {
+	left:<?php echo $leftNext.'px'?>;
+}
+#product_img_slider .pagination {
+	width:<?php echo ($pWidth+10).'px' ?>;
+}
+#product_img_slider .pagination li a {
+	width:<?php echo $pWidth.'px' ?>;
+}
+</style>
+<div id="product_img_slider">
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="slides_container">
+	<?php foreach ($this->getGalleryImages() as $_image): ?>
+		<a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(600); ?>" class ='cloud-zoom' rel="position:'<?php echo $zoomPosition?>' ,tint: '<?php echo $zoomColor ?>',tintOpacity:0.5 ,smoothMove:5,zoomWidth:<?php echo $zoomWidth?>,zoomHeight:<?php echo $zoomHeight?>,adjustY:-4, adjustX:10, zoomFlyOut:false,zoomSizeMode:'lens' ">
+			<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($imgWidth,$imgHeight); ?>" width="<?php echo $imgWidth ?>" height="<?php echo $imgHeight ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /> 
+		</a>		
+	<?php endforeach; ?>
+</div>
+<?php else:?>
+	<p class="product-image">
+		<a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>" class ='cloud-zoom' rel="position:'<?php echo $zoomPosition?>' ,tint: '<?php echo $zoomColor ?>',tintOpacity:0.5 ,smoothMove:5,zoomWidth:<?php echo $zoomWidth?>,zoomHeight:<?php echo $zoomHeight?>,adjustY:-4, adjustX:10, zoomFlyOut:false,zoomSizeMode:'lens' ">	
+    <?php
+        $_img = '<img id="image" width="'.$imgWidth.'" height="'.$imgHeight.'" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth,$imgHeight).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+		</a>
+	</p>
+<?php endif; ?>
+
+<?php else: ?>
+<p class="product-image">
+	<a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600); ?>" class ='cloud-zoom' rel="position:'<?php echo $zoomPosition?>' ,tint: '<?php echo $zoomColor ?>',tintOpacity:0.5 ,smoothMove:5,zoomWidth:<?php echo $zoomWidth?>,zoomHeight:<?php echo $zoomHeight?>,adjustY:-40, adjustX:100, zoomFlyOut:false,zoomSizeMode:'lens' ">	
+<?php
+	$_img = '<img id="image" width="'.$imgWidth.'" height="'.$imgHeight.'" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth,$imgHeight).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+	echo $_helper->productAttribute($_product, $_img, 'image');
+?>
+	</a>
+</p>
+<?php endif; ?>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<ul class="pagination" >
+<?php foreach ($this->getGalleryImages() as $_image): ?>
+	<li>
+		<a class="pagination_img" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"><img class="p_image_hover" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($pWidth,$pHeight); ?>" width="<?php echo $pWidth?>" height="<?php echo $pHeight?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>	
+	</li>
+<?php endforeach; ?>
+</ul>
+<?php endif; ?>
+</div>

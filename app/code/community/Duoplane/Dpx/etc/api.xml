@@ -1,0 +1,51 @@
+<config>
+	<api>
+		<resources>
+            <duoplane_product translate="title" module="dpx">
+                <model>duoplane_dpx_model_catalog_product_api</model>
+                <title>Duoplane Product API</title>
+                <methods>
+                    <ping translate="title" module="dpx">
+                        <title>Returns true if API endpoint is reached</title>
+                    </ping>
+                    <count_all translate="title" module="dpx">
+                        <title>Returns the number of products managed</title>
+                    </count_all>
+                    <configure translate="title" module="dpx">
+                        <title>Assigns attributes and simple products to a configurable product</title>
+                    </configure>
+                </methods>
+                <faults module="dpx">
+                    <not_exists>
+                        <code>100</code>
+                        <message>That configurable product does not exist.</message>
+                    </not_exists>
+                </faults>
+            </duoplane_product>
+            <duoplane_sales_order translate="title" module="dpx">
+                <model>duoplane_dpx_model_sales_order_api</model>
+                <title>Duoplane Sales Order API</title>
+                <methods>
+                    <ping translate="title" module="dpx">
+                        <title>Returns true if API endpoint is reached</title>
+                    </ping>
+                    <gift_message_info translate="title" module="dpx">
+                        <title>Returns gift message for an order</title>
+                    </gift_message_info>
+                </methods>
+                <faults module="dpx">
+                    <not_exists>
+                        <code>100</code>
+                        <message>That order does not exist.</message>
+                    </not_exists>
+                </faults>
+            </duoplane_sales_order>
+		</resources>
+		<acl>
+			<resources>
+				<all>
+				</all>
+			</resources>
+		</acl>
+	</api>
+</config>

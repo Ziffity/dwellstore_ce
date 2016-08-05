@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_config_edit>
+    	<reference name="head">
+    		<action method="addCss"><stylesheet>md/quickview/css/colorpicker.css</stylesheet></action>
+    		<action method="addJs"><script>md/quickview/js/jquery-1.7.2.min.js</script></action>
+    		<action method="addJs"><script>md/quickview/colorpicker.js</script></action>
+    	</reference>
+    </adminhtml_system_config_edit>
+</layout>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ziffity_Cataloglanding>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends></depends>
+        </Ziffity_Cataloglanding>
+    </modules>
+</config>

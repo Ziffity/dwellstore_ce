@@ -1,0 +1,136 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php $quote = Mage::getSingleton('checkout/cart')->getQuote(); 
+
+if ($quote->getCouponCode() != '') { 
+  $button_copy = "Cancel";
+  $remove = 1;
+} else {
+  $button_copy = "Apply";
+  $remove = 0;
+}
+
+?>
+<script type="text/javascript">
+  $jj = jQuery.noConflict();
+  function paymentApplyCoupon() {
+    var code = $('coupon_code').value;
+	$jj('#coupon_message_lookup').hide();
+	$jj("#coupon_message_main_text_shown").remove();
+    if (code == '') {
+      return false;
+    }			
+	
+	remove = $('remove-coupone').value;
+	$('gc-please-wait').show();
+	$jj.post(
+	  "/checkout/cart/couponPostAjax/",
+	  {
+	   "coupon_code" : code,
+	   "is_remove": remove
+	  },
+	  function(data) {
+	    var $response = $jj.parseJSON(data);
+	
+		$('gc-please-wait').hide();
+	
+	    switch ($response['status']) {
+	      case 'removed': 
+	        updateCouponBlock("Apply promo code", 0, $response['msg']);
+	        break;
+	      case 'error':
+			$jj('#coupon_message_lookup p').html($response['msg']);
+			$jj('#coupon_message_lookup p').removeClass("success-msg");
+			$jj('#coupon_message_lookup p').addClass("error-msg");
+		    $jj('#coupon_message_lookup').show();
+		
+			if($response['newslettercode'] == 1) {
+				var messageText = $jj('#coupon_message_main_text').clone();
+				$jj('.col-main').prepend(messageText);
+				messageText.show();
+				messageText.attr("id","coupon_message_main_text_shown");
+			}	
+			
+	        break;
+	      default: 
+	        updateCouponBlock('Cancel promo code', 1, $response['msg']);
+			checkForZeroTotal();
+	        break;
+	      }
+	  }
+	);
+	  return false;
+    }
+  function updateCouponBlock(msg, remove, status) {
+    $jj('#coupon_message_lookup p').html(status);
+	$jj('#coupon_message_lookup p').addClass("success-msg");
+	$jj('#coupon_message_lookup p').removeClass("error-msg");
+    $jj('#coupon_message_lookup').show();
+
+	$jj('#discount-coupon-form button span span').html(msg);
+	
+    $jj('.remove-coupone').value = remove;
+    if (remove == 0) { 
+      $('coupon_code').value = '';
+      $('remove-coupone').value = 0;
+    } else {
+      $('remove-coupone').value = 1;
+    }
+    checkout.reloadProgressBlock();
+  }
+
+
+  function checkForZeroTotal() {
+		var gc_update = new Ajax.Request(
+ 			'/gateway/index/zerosubtotal', {
+      		method:'get',
+              onSuccess: function(transport) {
+					var data = transport.responseText.evalJSON();
+              		if (data.is_zero) {						
+							$('checkout-payment-method-load').insert('<dt id="freepay"><input id="p_method_free" value="free" type="radio" name="payment[method]" title="No Payment Information Required" onclick="payment.switchMethod(\'free\')" class="radio"><label for="p_method_free">No Payment Information Required </label></dt>');
+							disableNonFreePayments();
+
+						}
+					}
+          }
+  	);
+  }
+</script>
+<div class="discount">
+    <h2>Redeem Promo Code</h2>
+	<div id="coupon_message_lookup" style="display: none;"><p></p></div>
+    <div class="discount_message">Promo code number</div>
+    <form id="discount-coupon-form" method="post">
+        <fieldset>
+            <input type="hidden" name="remove" id="remove-coupone" value="<?php echo $remove;?>" />
+            <div class="v-fix"><input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($quote->getCouponCode()) ?>" /></div>
+            <button class="button" onclick="paymentApplyCoupon();" type="button" class="apply_coupon" value="<?php echo $this->__($button_copy . ' promo code') ?>"><span><span><?php echo $this->__($button_copy . ' promo code') ?></span></span></button>
+        </fieldset>
+    </form>
+</div>
+
+<div id="coupon_message_main_text" style="display: none;"><p class="error-msg">Promotional offers such as discount codes apply to select merchandise only, excluding gift cards, shipping and taxes. These offers are nontransferable and cannot be combined with any other promotions or discounts, including but not limited to items from Artek, Cherner, Fermob, FLOS, Herman Miller, Libratone, Marimekko, and Vitra. </p></div>

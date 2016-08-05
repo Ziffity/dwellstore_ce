@@ -1,0 +1,130 @@
+// New footer (DWELL-603)
+.footer-container {
+  text-align: left; 
+  background: $lightgrey; 
+  padding: 0px;
+  margin: 0px auto;
+}
+.dwell-footer {
+  width: $contentwidth;
+  margin: auto;
+  padding-top:40px;
+  padding-bottom:50px;
+  .footer-right, .footer-left {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .footer-left {
+    width: 655px;
+    p {
+      width:200px;
+      font: 14px/17px $sans-med;
+      color: $black;
+    }
+    .newsletter_exclusions {
+      clear:both;
+      padding-top:10px;
+      a {
+        font: 11px $sans-reg;
+      }
+      #details {
+        display: none;
+      }
+    }
+  }
+  .footer-right {
+    width: 300px;
+    ul {
+      display: inline-block;
+      vertical-align:top;
+      padding-left:40px;
+      li a {
+        font: 14px/20px $sans-reg;
+      }
+    }
+  }
+  .newsletter_success, .newsletter_error {
+    display: none;
+    clear: both;
+    padding: 10px;
+    font: 14px $sans-reg;
+    width: 303px;
+    background: $white; 
+    p { 
+      width: auto;
+      .b {
+        color: $black;
+      }
+      color: $grey72;
+    }
+  }
+  .newsletter_error p {
+    color: $black;
+  }
+}
+.form-subscribe-header { 
+  color:#525252; 
+  font-size:20px; 
+  font-weight:normal; 
+  text-decoration:none; 
+  text-transform:uppercase; 
+}
+
+.form-subscribe {
+  text-align: center;
+  float: none;
+  width: $contentwidth;
+  a { 
+    color:#777;
+  }
+  .validation-advice { 
+    width:180px; 
+  }
+  label {
+    display:block; 
+    margin:0 0 6px 0;
+  }
+  input.input-text {
+    background:$white;
+    font-family: $sans-reg;
+    height: 28px;
+    border: 0px;
+    padding-left:10px;
+    width:235px;
+  }
+  button.button {
+    margin:0px; 
+    float:left;
+    background:$tomatored;
+    color: $white;
+    height: 33px;
+    vertical-align: top;
+    span span {
+      padding-left: 8px;
+      padding-right: 15px;
+      font: 14px/17px $sans-med;
+    }
+  }
+}
+.subscribe-details {
+  float:none;
+  text-align:center;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+.fancybox-wrap {
+  text-align: left;
+  #details {
+    width: 300px;
+    font: 16px/21px $sans-reg;
+    color: $gray20;
+    p {
+      font-family: $sans-med;
+    }
+  }
+}
+.checkout-cart-index {
+  .footer-left * {
+    display:none;
+  }
+}

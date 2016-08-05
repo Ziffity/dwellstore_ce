@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<DWELL_Invitation>
+			<version>1.0.1</version>
+		</DWELL_Invitation>
+	</modules>
+	<frontend>
+		<routers>
+			<enterprise_invitation>
+				<use>standard</use>
+				<args>
+					<modules>
+						<DWELL_Invitation before="Enterprise_Invitation">DWELL_Invitation</DWELL_Invitation>
+						<frontName>invitation</frontName>
+					</modules>
+				</args>
+			</enterprise_invitation>
+		</routers>
+	</frontend>
+</config>

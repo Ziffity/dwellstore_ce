@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_GiftCardAccount>
+            <version>1.0.1</version>
+        </DWELL_GiftCardAccount>
+    </modules>
+    <global>
+        <models>     	
+			<enterprise_giftcardaccount>
+				<rewrite>
+					<giftcardaccount>DWELL_GiftCardAccount_Model_Giftcardaccount</giftcardaccount>
+				</rewrite>
+			</enterprise_giftcardaccount>
+        </models>
+    </global>
+</config>

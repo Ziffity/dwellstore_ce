@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Ziffity_Pci>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Ziffity_Pci>
+	</modules>
+	</config>

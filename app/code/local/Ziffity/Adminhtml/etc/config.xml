@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ziffity_Adminhtml>
+            <version>1.0.0</version>
+        </Ziffity_Adminhtml>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Ziffity_Adminhtml before="Mage_Adminhtml">Ziffity_Adminhtml_Adminhtml</Ziffity_Adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	          
+    <global>
+        <blocks>
+		<zadminhtml>
+					<class>Ziffity_adminhtml_Block</class>
+				</zadminhtml>
+            <adminhtml>
+                <rewrite>
+                    <catalog_category_tab_product>Ziffity_Adminhtml_Block_Catalog_Category_Tab_Product</catalog_category_tab_product>
+                    <promo_quote_edit_tab_main>Ziffity_Adminhtml_Block_Edit_Tab_Main</promo_quote_edit_tab_main>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <resources> 
+            <ziffityadminhtml_setup>
+                <setup>
+                    <module>Ziffity_Adminhtml</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ziffityadminhtml_setup>
+        </resources>
+        <models>
+            <ziffity_adminhtml>
+                <class>Ziffity_Adminhtml_Model</class>
+            </ziffity_adminhtml>
+        </models>
+    </global>
+ 
+    <adminhtml>   
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                
+                                    <children>
+                                        <attributeselection>
+                                            <label>Attribute Selection</label>
+                                        </attributeselection>
+                                    </children>
+                                   
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>     
+        <layout>
+            <updates>
+                <customermessage>
+                    <file>adminfileds.xml</file>
+                </customermessage>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

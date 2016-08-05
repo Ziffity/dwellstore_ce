@@ -1,0 +1,65 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<div class="newsletter_offer">
+  <p><?php echo Mage::helper('misc')->getNewsletterOfferMessage(); ?></p>
+</div>
+<form action="<?php echo $this->getFormAjaxActionUrl() ?>" method="post" id="newsletter-validate-detail">
+    <input type="hidden" name="email_address" value="" />
+    <div class="form-subscribe">
+		<div class="subscribe-details">
+			<div class="v-fix"><input name="email" type="text" id="newsletter" placeholder="Enter email address" class="input-text required-entry validate-email" /></div>
+			<button type="submit" class="button" title="<?php echo $this->__('Submit') ?>"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+		</div>
+    </div>
+</form>
+<div class="newsletter_success">
+  <p><span class="b"><?php echo Mage::helper('misc')->getNewsletterMessageForEmailSignup(); ?></span></p><p><?php echo Mage::helper('misc')->getNewsletterMessageForEmailSignupLine2(); ?></p>
+</div>
+<div class="newsletter_error">
+ <p>Hello again.</p>
+ <p>You're already on our list, so you'll continue to hear first about our new products and special features.</p>
+</div>
+<div class="newsletter_exclusions">
+  <a href="#details" id="ex_app">Exclusions Apply*</a>
+  <div id="details">
+    <p>Promotion code terms and restrictions</p>
+    Offer valid for new email subscribers only. Valid only on full priced merchandise. Cannot be combined with any other offers or promotions.
+    Products from Artek, Fermob, FLOS, Herman Miller, Libratone, Loll, and Maharam are excluded from this offer.
+  </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $jqfb = jQuery.noConflict();
+    jQuery(document).ready(function($) {
+		l = document.location.href.split('/');
+		if (!(l[3] == 'checkout' && l[4] == 'cart')) {
+	    	$jqfb('#ex_app').fancybox();
+	    }
+    });
+    var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+//]]>
+</script>

@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php /** @var $this Mage_Checkout_Block_Onepage_Shipping_Method_Available */ ?>
+<?php $_skipNonFreeMethods = false;
+      $_items = $this->getAddress()->getAllItems();
+      $_longestDeliveryTime = Mage::helper("dwell_utility")->getLongestDeliveryTime($_items);		
+	  if($_longestDeliveryTime > 0) 
+			$_skipNonFreeMethods = true;
+	  $_skipFreeMethods = ! Mage::helper("dwell_utility")->checkCartItemsForFreeShipping($_items);
+	  
+	  $_grandTotal = Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal();
+	  			
+	  $expediteShipping = array("productmatrix_2_Day_:", "productmatrix_Next_Day_Air_:", "premiumrate_2_Day_:", "premiumrate_Next_Day_Air_:");		
+?>
+
+<?php $_shippingRateGroups = $this->getShippingRates(); ?>
+<ul class="messages free-shipping-error-message" style="display: none; ">
+  <li class="error-msg">
+	<ul>
+		<li>
+			<?php echo Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getStoreId())->load("free_shipping_error_message")->getData('content') ?>
+		</li>
+	</ul>
+  </li>
+</ul>
+
+<?php if (!$_shippingRateGroups): ?>
+    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else: ?>
+    <dl class="sp-methods">
+    <?php $shippingCodePrice = array(); ?>
+    <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>				
+        <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
+        <dd>
+            <ul>
+            <?php $_sole = $_sole && count($_rates) == 1;
+				$default_price = 0;
+				$default_method = '';
+				if($code=='matrixrate'): 
+					foreach ($_rates as $_rate):
+						if($default_price > $_rate->getPrice() || $default_method==''):
+							$default_price = $_rate->getPrice();
+							$default_method = $_rate->getCode();
+						endif;
+					endforeach;
+				endif;
+				
+				$set_default = true;
+				
+				foreach ($_rates as $_rate): ?>
+				<?php //skiping expediate shipping for long deliveries ?>
+				<?php if($_skipNonFreeMethods && $_rate->getPrice() > 0 && in_array($_rate->getCode(), $expediteShipping)) continue; ?>
+				<?php //skiping free shipping for deliveries with non-free-shipping items ?>
+				<?php if($_skipFreeMethods && $_rate->getPrice() <= 0): ?>
+					<script>jQuery(".free-shipping-error-message").show();</script>
+					<?php continue; ?>
+				<?php endif;?>	
+				<?php //skiping free shipping for deliveries with non-free-shipping items ?>
+				<?php if($_grandTotal > 100 && $_rate->getCode() == "productmatrix_Standard_Shipping_:" && (!$_skipNonFreeMethods || !$_skipFreeMethods)) continue; ?>
+								
+                <?php $shippingCodePrice[] = "'".$_rate->getCode()."':".(float)$_rate->getPrice(); ?>
+                <li>
+                   <?php if ($_rate->getErrorMessage()): ?>
+                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li></ul></li></ul>
+                   <?php else: ?>
+                        <?php if ($_sole) : ?>
+                        <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
+                        <?php else: ?>
+                        <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($set_default || $_rate->getCode()===$this->getAddressShippingMethod() || ($default_method==$_rate->getCode() && !($_rate->getCode()===$this->getAddressShippingMethod()))) echo ' checked="checked"' ?>  class="radio"/>
+
+                        <?php 
+                        	$set_default=false;
+                        	if ($_rate->getCode() === $this->getAddressShippingMethod()): 
+                        ?>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                                lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+                            //]]>
+                        </script>
+                        <?php endif; ?>
+
+                        <?php endif; ?>
+                        <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
+                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                        <?php if($_rate->getPrice() > 0):?>
+						<?php echo $_excl;?>
+                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                        <?php endif; ?>
+						<?php endif; ?>
+                        </label>
+                   <?php endif ?>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </dd>
+    <?php endforeach; ?>
+    </dl>
+<script type="text/javascript">
+//<![CDATA[
+    <?php if (!empty($shippingCodePrice)): ?>
+        var shippingCodePrice = {<?php echo implode(',',$shippingCodePrice); ?>};
+    <?php endif; ?>
+
+    $$('input[type="radio"][name="shipping_method"]').each(function(el){
+        Event.observe(el, 'click', function(){
+            if (el.checked == true) {
+                var getShippingCode = el.getValue();
+                <?php if (!empty($shippingCodePrice)): ?>
+                    var newPrice = shippingCodePrice[getShippingCode];
+                    if (!lastPrice) {
+                        lastPrice = newPrice;
+                        quoteBaseGrandTotal += newPrice;
+                    }
+                    if (newPrice != lastPrice) {
+                        quoteBaseGrandTotal += (newPrice-lastPrice);
+                        lastPrice = newPrice;
+                    }
+                <?php endif; ?>
+                checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+                return false;
+            }
+       });
+    });
+//]]>
+</script>
+<?php endif; ?>

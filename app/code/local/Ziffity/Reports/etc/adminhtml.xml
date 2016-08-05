@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <report>
+            <children>
+                <salesroot translate="title">
+                    <children>
+                        <ziffity_reports translate="title">
+                            <title>Avalara Tax Reports</title>
+                            <action>adminhtml/ziffity_reports</action>
+                            <sort_order>100</sort_order>
+                        </ziffity_reports>
+						<orderbreakdown_reports translate="title">
+                            <title>Order Breakdown Reports</title>
+                            <action>adminhtml/orderbreakdown_reports</action>
+                            <sort_order>50</sort_order>
+                        </orderbreakdown_reports>
+                    </children>
+                </salesroot>
+            </children>
+        </report>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ziffity_reports>
+                                        <title>My Reports Section</title>
+                                    </ziffity_reports>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <report>
+                        <children>
+                            <salesroot>
+                                <children>
+                                    <ziffity_reports translate="title">
+                                        <title>Avalara Tax Reports</title>
+                                        <children>
+                                            <view translate="title">
+                                                <title>View</title>
+                                            </view>
+                                        </children>
+                                    </ziffity_reports>
+                                </children>
+                            </salesroot>
+                        </children>
+                    </report>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

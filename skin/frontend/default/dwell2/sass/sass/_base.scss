@@ -1,0 +1,105 @@
+// Variables
+// -----------------------------------------------------------------------------
+
+// Page structure
+$contentwidth: 1000px;
+$fullpage: 100%;
+$phonewidth: 480px;
+$tabletwidth: 768px;
+$laptopwidth: 1040px;
+$desktopwidth: 1200px;
+
+$gutter_one: 10px;
+$gutter_two: 15px;
+$gutter_three: 20px;
+$gutter_four: 30px;
+$gutter_five: 40px;
+$gutter_six: 50px;
+
+// Ad structure
+
+$banneradwidth: 970px;
+$banneradheight: 90px;
+
+// Fonts
+
+$sans-reg: "TheinhardtRegular-Regular", Arial, sans-serif;
+$sans-reg-italic: "TheinhardtRegular-Italic", Arial, sans-serif;
+$sans-med: "TheinhardtMedium-Regular", Arial, sans-serif;
+$sans-bold: "TheinhardtBold-Regular", Arial, sans-serif;
+$serif-reg: "Milo Serif Web Pro", Georgia, serif;
+$serif-bold: "MiloSerifWebPro-Bold", Georgia, serif;
+$Milo-serif-reg: "MiloSerifPro";
+$Milo-serif-bold: "MiloSerifPro-Bold";
+
+// Theme colors
+
+$transparent: transparent;
+$white: #fff;
+$black: #000;
+
+$teal: #116e82;
+$brightteal: #1999b4;
+$paleteal: #eef3f2;
+$tomatored: #ed3e3a;
+$lightgrey: #EBEBEB;
+$grey72: #727272;
+$gray20: #333;
+
+$yellow: #fd4000;
+$blue_grey: #a5bbdb;
+$plumred: #940034;
+$warmgrey: #939598;
+$teal: #40b0ae;
+$verylightgrey: #e9eaea;
+
+$darkgrey: #525252;
+$darkergrey: #555;
+$grey: #767676;
+$moregrey: #727272;
+$medgrey: #999; /* #808285 */
+$medlightgrey: #a9a9a9;
+$lightestgrey: #ebebeb;
+$whispergrey: #ebeced;
+$linegrey: #dedede;
+$almostwhite: #f5f5f5;
+
+$bodylink: #939597;
+$bodylinkhover: #A5BBDB;
+$bodylinkfocus: #D93B20;
+
+$tabyellow: #F2CF00;
+/*RWD*/
+$darkblack: #1f1f1f;
+$footer-yellow: #ebff0b;
+
+// Mixins
+// -----------------------------------------------------------------------------
+
+// Media Queries
+
+@mixin respond-to($media) {
+  @if $media == phone {
+    @media only screen and (max-width: 480px) { @content; }
+  }
+  @if $media == phone-none {
+    @media only screen and (min-width: 480px) and (max-width: 480px) { @content; }
+  }  
+  @else if $media == phone-desktop {
+    @media only screen and (min-width: 481px) { @content; }
+  }  
+  @else if $media == tablet {
+    @media only screen and (max-width: 767px) { @content; }
+  }
+  @else if $media == laptop {
+    @media only screen and (min-width: 768px) and (max-width: 979px) { @content; }
+  }  
+  @else if $media == laptop-tablet {
+    @media only screen and (min-width: 1040px) and (max-width: 1040px) { @content; }
+  }    
+  @else if $media == desktop {
+    @media only screen and (min-width: 1200px) { @content; }
+  }
+}
+
+

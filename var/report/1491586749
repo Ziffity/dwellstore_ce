@@ -1,0 +1,9 @@
+a:5:{i:0;s:441:"Error in file: "C:\xampp\htdocs\dwellstore1.9\app\code\core\Enterprise\Catalog\sql\enterprise_catalog_setup\upgrade-1.13.0.1-1.13.0.2.php" - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '7-catalog_product_entity-entity_id' for key 'UNQ_ENT_MVIEW_SUBSCRIBER_METADATA_ID_TARGET_TABLE_TARGET_COLUMN', query was: INSERT INTO `enterprise_mview_subscriber` (`metadata_id`, `target_table`, `target_column`) VALUES (?, ?, ?)";i:1;s:1014:"#0 C:\xampp\htdocs\dwellstore1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(644): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 C:\xampp\htdocs\dwellstore1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(437): Mage_Core_Model_Resource_Setup->_modifyResourceDb('upgrade', '1.13.0.0', '1.13.0.9')
+#2 C:\xampp\htdocs\dwellstore1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(320): Mage_Core_Model_Resource_Setup->_upgradeResourceDb('1.13.0.0', '1.13.0.9')
+#3 C:\xampp\htdocs\dwellstore1.9\app\code\core\Mage\Core\Model\Resource\Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 C:\xampp\htdocs\dwellstore1.9\app\code\core\Mage\Core\Model\App.php(417): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 C:\xampp\htdocs\dwellstore1.9\app\code\core\Mage\Core\Model\App.php(343): Mage_Core_Model_App->_initModules()
+#6 C:\xampp\htdocs\dwellstore1.9\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 C:\xampp\htdocs\dwellstore1.9\index.php(87): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:15:"/dwellstore1.9/";s:11:"script_name";s:24:"/dwellstore1.9/index.php";s:4:"skin";s:7:"default";}

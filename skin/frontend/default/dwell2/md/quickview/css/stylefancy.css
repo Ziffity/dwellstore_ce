@@ -1,0 +1,37 @@
+#content {
+	width: 400px;
+	margin: 40px auto 0 auto;
+	padding: 0 60px 30px 60px;
+	border: solid 1px #cbcbcb;
+	background: #fafafa;
+	-moz-box-shadow: 0px 0px 10px #cbcbcb;
+	-webkit-box-shadow: 0px 0px 10px #cbcbcb;
+}
+
+h1 {
+	margin: 30px 0 15px 0;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: Arial;
+}
+
+h1 span {
+	font-size: 50%;
+	letter-spacing: -0.05em;
+}
+
+hr {
+	border: none;
+	height: 1px; line-height: 1px;
+	background: #E5E5E5;
+	margin-bottom: 20px;
+	padding: 0;
+}
+
+a img.last { margin-right: 0;}
+.product-image-thickbox { color: #E26703; cursor: pointer; display: none; font-size: 12px; height: 18px; padding: 3px; position: absolute; text-align: center; top: 81px; width: 83px; z-index: 2; text-transform: uppercase; text-decoration: none; font-weight: bold; background: none repeat scroll 0 0 #000000; margin-left: 21px;}
+
+.product-image-thickbox:hover { color: #E26703; cursor: pointer; display: block; font-size: 12px; height: 18px; padding: 3px; position: absolute; text-align: center; top: 81px; width: 83px; z-index: 2; text-transform: uppercase; text-decoration: none; font-weight: bold; background: none repeat scroll 0 0 #333; margin-left: 21px; }
+
+
+

@@ -1,0 +1,21 @@
+<div class="quickview-main">
+	<?php echo $this->getChildHtml('content') ?>
+</div>
+<script type="text/javascript">
+	var default_stock_status = $('stock_status').innerHTML;
+	dwell_ga.rebindQuickView();
+	
+	var formatted_price_range = DwellConfigProdRange.getFormattedPriceRange();
+ 	if (formatted_price_range) {
+ 		target = jQuery('.product-main-info .price-area .dwell-special-price').length > 0 ?
+ 			jQuery('.product-main-info .price-area .dwell-special-price .price') :
+ 			jQuery('.product-main-info .price-area .regular-price');
+ 		target.html(formatted_price_range);
+	}
+	
+	var formatted_special_price_range = DwellConfigProdRange.getFormattedSpecialPriceRange();
+ 	if (formatted_special_price_range) {
+		jQuery('.product-main-info .price-area .old-price').html(formatted_special_price_range);
+	}
+
+</script>

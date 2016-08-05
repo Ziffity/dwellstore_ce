@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <DWELL_Utility>
+            <version>1.0.0</version>
+        </DWELL_Utility>
+    </modules>
+
+	<global>			
+		<helpers>
+            <dwell_utility>
+                <class>DWELL_Utility_Helper</class>
+            </dwell_utility>
+        </helpers>		
+		<models>
+            <dwell_utility>
+                <class>DWELL_Utility_Model</class>
+            </dwell_utility> 						
+        </models>
+	</global>
+	
+	<frontend>
+        <routers>
+            <dwell_utility>
+                <use>standard</use>
+                <args>
+                    <module>DWELL_Utility</module>
+                    <frontName>dutility</frontName>
+                </args>
+            </dwell_utility>
+        </routers>	
+    </frontend>
+
+<!--
+	<crontab>
+        <jobs>
+            <dwell_update_product_tax_class>
+                <schedule>
+					<cron_expr>0 0 * * *</cron_expr>
+				</schedule>
+                <run>
+					<model>dwell_utility/observer::setTaxClassForAllProducts</model>
+				</run>
+            </dwell_update_product_tax_class>            
+        </jobs>
+	</crontab>
+-->
+
+</config>

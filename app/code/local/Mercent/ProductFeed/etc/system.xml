@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<!--
+/**
+// Copyright (c) Mercent Corporation.  All rights reserved.
+// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+// Author: Tara Goshi
+// Date: 2012-04-10
+// Summary: Integrates Magento Sites with Mercent Retail
+// SCOPE OF LICENSE
+// The software is licensed, not sold. This agreement only gives you some rights to use the software. Mercent reserves all other rights.
+// You may not 
+// * reverse engineer, decompile or disassemble the software, except and only to the extent that applicable law expressly permits, despite this limitation;
+// * publish the software for others to copy;
+// * rent, lease or lend the software;
+// * transfer the software or this agreement to any third party; or
+// * use the software for commercial software hosting services.
+*/
+-->
+<config>
+    <tabs>
+        <mercent_tab translate="label">
+            <label>Mercent Retail</label>
+            <sort_order>350</sort_order>
+        </mercent_tab>
+    </tabs>
+    <sections>
+        <mercent_productfeedconfig translate="label">
+            <label>Mercent Product Feed</label>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>mercent_tab</tab>
+            <groups>
+                <productfeed_group translate="label">
+                    <label>Product Feed FTP Settings</label>
+                    <comment>Enter the FTP credentials provided by your Mercent Onboarding Team. If you have multiple stores, change Current Configuration Scope to the Website or Store before setting credentials.  Enabling for the Default Config will ignore any enabled stores.</comment>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <productfeed_active translate="label">
+                            <label>Generate Feed</label>
+                            <comment>To generate feed for a specific store, set "Current Configuration Scope"</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_active>
+                        <productfeed_account translate="label">
+                            <label>FTP Username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_account>
+                        <!--productfeed_ftpserver translate="label">
+                            <label>FTP Server</label>
+                            <comment>Default is "sftp.mercent.com"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_ftpserver>
+                        <productfeed_ftpfolder translate="label">
+                            <label>FTP Folder</label>
+                            <comment>Default is "incoming"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_ftpfolder-->
+                        <productfeed_ftppassword translate="label">
+                            <label>FTP Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_ftppassword>
+                        <productfeed_excludecategoryids translate="label">
+                            <label>Category IDs to Exclude</label>
+                            <comment>Separate multiple categories with a comma - all subcategories are excluded as well</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_excludecategoryids>
+                        <productfeed_multiselectattribues translate="label">
+                            <label>MultiSelect Attributes</label>
+                            <comment>Provide attribute codes for multiselect attributes separated with a comma - you may want to wait for guidance from Mercent Onboarding Team before populating</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </productfeed_multiselectattribues>
+                    </fields>
+                </productfeed_group>
+                <productfeedschedule_group translate="label">
+                    <label>Product Feed Schedule</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <productfeedschedule_active translate="label">
+                            <label>Enable Automation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeedschedule_active>
+                        <productfeedschedule_time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeedschedule_time>
+                        <productfeedschedule_frequency translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mercent_productfeed/feedfrequency</source_model>
+                            <backend_model>mercent_productfeed/system_config_backend_export_cron</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeedschedule_frequency>
+                    </fields>
+                </productfeedschedule_group>
+                <productfeedinventoryschedule_group translate="label">
+                    <label>Inventory Feed Schedule</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <productfeedinventoryschedule_active translate="label">
+                            <label>Enable Automation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeedinventoryschedule_active>
+                        <productfeedinventoryschedule_time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeedinventoryschedule_time>
+                        <productfeedinventoryschedule_frequency translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>mercent_productfeed/feedfrequencyinventory</source_model>
+                            <backend_model>mercent_productfeed/system_config_backend_export_cron</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </productfeedinventoryschedule_frequency>
+                    </fields>
+                </productfeedinventoryschedule_group>
+            </groups>
+        </mercent_productfeedconfig>
+    </sections>
+</config>

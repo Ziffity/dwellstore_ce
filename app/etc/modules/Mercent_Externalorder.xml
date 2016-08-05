@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Module bootstrap file
+-->
+<config>
+    <modules>
+        <Mercent_Externalorder>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Sales />
+            </depends>
+        </Mercent_Externalorder>
+    </modules>
+</config>

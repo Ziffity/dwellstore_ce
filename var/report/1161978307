@@ -1,0 +1,8 @@
+a:4:{i:0;s:63:"Module "Enterprise_Catalog" requires module "Enterprise_Index".";i:1;s:758:"#0 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Config.php(849): Mage::throwException('Module "Enterpr...')
+#1 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Config.php(812): Mage_Core_Model_Config->_sortModuleDepends(Array)
+#2 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\Config.php(315): Mage_Core_Model_Config->_loadDeclaredModules()
+#3 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\App.php(414): Mage_Core_Model_Config->loadModules()
+#4 C:\xampp\htdocs\dwellstores\app\code\core\Mage\Core\Model\App.php(343): Mage_Core_Model_App->_initModules()
+#5 C:\xampp\htdocs\dwellstores\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\dwellstores\index.php(87): Mage::run('', 'store')
+#7 {main}";s:3:"url";s:111:"/dwellstores/index.php/admin/process/list/key/4374cb02c52d4e4fc7151456edd2c6c7df1cd5db8ed81c2fe7baeb0513b6fd10/";s:11:"script_name";s:22:"/dwellstores/index.php";}

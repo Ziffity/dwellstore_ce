@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <KD_Quickconnect>
+            <version>1.0.1</version>
+        </KD_Quickconnect>
+    </modules>
+
+    <global>
+        <blocks>
+            <quickconnect>
+                <class>KD_Quickconnect_Block</class>
+            </quickconnect>
+        </blocks>
+        <helpers>
+            <quickconnect>
+                <class>KD_Quickconnect_Helper</class>
+            </quickconnect>
+        </helpers>
+
+        <models>
+            <quickconnect>
+                <class>KD_Quickconnect_Model</class>
+            </quickconnect>
+        </models>
+    </global>
+    <adminhtml> 	
+		<layout>
+			<updates>
+				<quickconnect>
+					<file>kd_quickconnect.xml</file>
+				</quickconnect>
+			</updates>
+		</layout>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<kd_quickconnect translate="title" module="quickconnect">
+											<title>Quickconnect Settings</title>
+											<sort_order>50</sort_order>
+										</kd_quickconnect>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+    </adminhtml> 
+    <frontend>
+        <routers>
+            <quickconnect>
+                <use>standard</use>
+                <args>
+                    <module>KD_Quickconnect</module>
+                    <frontName>quickconnect</frontName>
+                </args>
+            </quickconnect>
+        </routers>
+        <layout>
+            <updates>
+                <quickconnect>
+                    <file>kd_quickconnect.xml</file>
+                </quickconnect>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <quickconnect>
+			<general>
+				<enable>1</enable>
+                <loading_icon>loadingAnimation.gif</loading_icon>
+            </general>
+        </quickconnect>
+    </default>
+</config>

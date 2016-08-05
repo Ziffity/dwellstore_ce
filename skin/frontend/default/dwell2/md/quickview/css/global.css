@@ -1,0 +1,172 @@
+.quickview-index-view {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+#product_img_slider {
+    float: left;
+    margin-left: 5px;
+    width: 360px;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+#product_img_slider .slides_container {
+	width: 265px;
+	/* overflow:hidden; */
+	float:right;
+	position:relative;
+	border:1px solid #dfdfdf;
+	/* display:none; */
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container a {
+	width:265px;
+	height:265px;
+	display:block;
+}
+
+/*
+	Next/prev buttons
+*/
+
+#product_img_slider .next,#product_img_slider .prev {
+   display: block;
+    height: 12px;
+    left: 123.5px;
+    overflow: hidden;
+    padding-top: 21px;
+    position: absolute;
+    top: 165px;
+    width: 32px;
+    z-index: 101;
+}
+#product_img_slider .prev:hover{
+    background-position: -38px 0;
+}
+#product_img_slider .next:hover{
+    background-position: -38px 0;
+}
+
+#product_img_slider .prev {
+	background:url(../images/arrow-prev.gif) no-repeat scroll 0 0 transparent;
+}
+
+#product_img_slider .next {
+	left:361px;
+	background:url(../images/arrow-next.gif) no-repeat scroll 0 0 transparent;
+}
+
+/*
+	Pagination
+*/
+
+
+#product_img_slider .pagination {
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    padding: 5px;
+    position: absolute;
+    width: 66px;
+    z-index: 99;
+	background: none repeat scroll 0 0 #878787;
+}
+
+#product_img_slider .pagination li {
+	float:left;
+	margin:2px 4px;
+	list-style:none;
+}
+
+#product_img_slider .pagination li a {
+	display:block;
+	width:55px;
+	/* height:41px; */
+	margin:1px;
+	float:left;
+	background:#f9f9f9;
+}
+
+#product_img_slider .pagination li.current a {
+	border:1px solid #7f7f7f;
+	margin:0;
+}
+.slides_control {
+	width:265px  !important;
+	height:265px !important;
+}
+
+/* zoom */
+.cloud-zoom-lens {
+	border: 4px solid #888;
+	margin:-4px;	/* Set this to minus the border thickness. */
+	background-color:#fff;	
+	cursor:move;
+	z-index: 999999;
+	position:absolute !important;
+	width: 50px; 
+	height: 50px;
+}
+
+/* This is for the title text. */
+.cloud-zoom-title {
+	font-family:Arial, Helvetica, sans-serif;
+	position:absolute !important;
+	background-color:#000;
+	color:#fff;
+	padding:3px;
+	width:100%;
+	text-align:center;	
+	font-weight:bold;
+	font-size:10px;
+	top:0px;
+}
+
+/* This is the zoom window. */
+.cloud-zoom-big {
+border: 5px solid white;
+-moz-box-shadow: 1px 1px 3px #555;
+-webkit-box-shadow: 1px 1px 3px #555;
+box-shadow: 1px 1px 3px #555;
+/* z-index: 9999999999999 !important;
+position: fixed !important;
+left: 417px !important;
+top: 38px !important; */
+}
+/* This is the loading message. */
+.cloud-zoom-loading { color:white; background:#222; padding:3px; border:1px solid #000;}
+
+.mousetrap{ width: 265px !important; height: 265px !important;}
+.product-collateral { background: none repeat scroll 0 0 #FFFFFF;height: 0;width: 0;padding: 0;margin: 0;}
+.product-essential {  background: none repeat scroll 0 0 #FFFFFF;}
+.product-view { background: none repeat scroll 0 0 #FFFFFF; border: medium none !important;  text-align: left;}
+.product-view .product-shop { float: right; width: 443px;}
+/* .product-view { text-align: center;}
+    background: none repeat scroll 0 0 #FFFFFF;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    width: 0;
+ */
+.product-options {
+    max-height: 220px;
+    overflow: auto;
+}
+.md-more-info > a  > span {
+    color: #333333;
+    display: block;
+    font-size: 14px;
+    margin: 30px 0 0;
+    text-decoration: underline;
+}

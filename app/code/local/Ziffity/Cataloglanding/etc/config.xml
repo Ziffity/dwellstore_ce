@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Ziffity_Cataloglanding>
+      <version>0.0.1</version>
+    </Ziffity_Cataloglanding>
+  </modules>
+    <global>
+      <resources>
+          <cataloglanding_setup>
+            <setup>
+              <module>Ziffity_Cataloglanding</module>
+              <class>Mage_Eav_Model_Entity_Setup</class>
+            </setup>
+            <connection>
+              <use>default_setup</use>
+            </connection>
+          </cataloglanding_setup>
+      </resources>
+    </global>
+</config>

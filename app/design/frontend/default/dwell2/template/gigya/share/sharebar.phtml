@@ -1,0 +1,55 @@
+<?php
+//TODO: add comments
+ ?>
+ <?php if (Mage::helper('Gigya_Social')->isShareBarEnabled('cart')) : ?>
+ <?php
+  $product = $this->getProduct();
+  $desc = ($product->getShortDescription() !== NULL) ? $product->getShortDescription() : $product->getDescription();
+  $ua = Mage::helper('core')->jsonEncode(array(
+    'title'       => $product->getName(),
+    'description' => $this->stripTags($desc),
+    'linkBack'    => $product->getProductUrl(),
+    'imageUrl'    => $product->getImageUrl()
+  ));
+  ?>
+  <?php /* Ziffity Guna */ ?>
+  <?php /* Gigya share buttons customization */ ?>
+  <?php 
+  $config = Mage::helper('Gigya_Social')->getPluginConfigCustom('gigya_share/gigya_sharebar');
+  if($config['enable_cart'] == '1' || $config['enable_cart'] == '1'){
+	$enablecart = 'true';
+	$enableorder = 'true';
+  } else if($config['enable_cart'] == '0' || $config['enable_cart'] == '0'){
+	$enablecart = 'false';
+	$enableorder = 'false';
+  }
+  $buttons = explode(",",$config['shareButtons']);
+  ?>
+  <script type="text/javascript">//<![CDATA[
+    var gigyaSettings = gigyaSettings || {};
+    gigyaSettings.sharebar = {enable_cart:'<?php echo $enablecart ?>',enable_order:'<?php echo $enableorder ?>',containerID:'<?php echo $config['containerID'] ?>',layout:'<?php echo $config['layout'] ?>',showCounts:'<?php echo $config['showCounts'] ?>',imageBehavior:'<?php echo $config['imageBehavior'] ?>',
+	shareButtons:
+        [
+			<?php foreach($buttons as $button){ ?>
+			<?php $image = 'images/socialicons/'.$button.'.jpg'?>
+			<?php $hoverimage = 'images/socialicons/'.$button.'-hover.jpg'?>
+            { 
+                provider:'<?php echo $button ?>',
+                iconImgUp:'<?php echo $this->getSkinUrl($image); ?>',
+				iconImgOver:'<?php echo $this->getSkinUrl($hoverimage); ?>',
+				noButtonBorders:true
+            },
+			<?php } ?>
+			
+        ]
+    };
+    gigyaSettings.sharebar.ua = <?php echo $ua ?>
+    //]]>
+  </script>
+  
+  <?php /* End of Ziffity Guna */ ?>
+  <div class="socialicons"> 
+	<div class="socialsharetext">Share</div>	
+  <div id="<?php echo Mage::helper('Gigya_Social')->getPluginContainerId('gigya_share/gigya_sharebar') ?>" class="gigya-sharebar" ></div>
+  </div>
+  <?php endif ?>

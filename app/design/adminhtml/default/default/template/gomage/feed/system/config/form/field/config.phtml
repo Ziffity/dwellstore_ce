@@ -1,0 +1,189 @@
+<?php
+ /**
+ * GoMage.com
+ *
+ * GoMage Feed Pro
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2013 GoMage.com (http://www.gomage.com)
+ * @author       GoMage.com
+ * @license      http://www.gomage.com/licensing  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.3
+ * @since        Class available since Release 3.2
+ */
+
+?>
+<?php
+$_htmlId = $this->getHtmlId() ? $this->getHtmlId() : '_' . uniqid();
+ $x = '#{_id}'; 
+$_colspan = 2;
+if (!$this->_addAfter) {
+    $_colspan -= 1;
+}
+$_colspan = $_colspan > 1 ? 'colspan="' . $_colspan . '"' : '';
+?>
+
+<div class="grid" id="grid<?php echo $_htmlId ?>">
+    <table cellpadding="0" cellspacing="0" class="border">
+        <tbody>
+
+            <tr class="headings" id="headings<?php echo $_htmlId ?>">
+<?php foreach ($this->_columns as $columnName => $column):?>
+                <?php  if($column['label'] != 'code'): ?>               
+                <th><?php echo $column['label'] ?></th>
+                <?php endif;?>
+<?php endforeach;?>
+                <th <?php echo $_colspan?>></th>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="<?php echo $this->getElement()->getName() ?>[__empty]" value="" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var gomage_feed_config_generate_url = "<?php echo Mage::helper("adminhtml")->getUrl('gomage_feed/adminhtml_amazon/generatecode')?>"; 
+// create row creator
+var arrayRow<?php echo $_htmlId ?> = {
+    // define row prototypeJS template
+    
+
+    template : new Template(
+        '<tr id="#{_id}">'
+<?php foreach ($this->_columns as $columnName => $column):?>
+    <?php  if($columnName == 'input_code'): ?> 
+             +'<td style="display:none">'
+                +'<?php  echo $this->_renderCellTemplate($columnName);?>'
+            +'<\/td>'
+        <?php else: ?>
+            +'<td>'
+                +'<?php
+
+              $temp = $this->_renderCellTemplate($columnName);
+              $temp = str_replace('id=""','id="'.$columnName.'_#{_id}"', $temp);
+              $temp = str_replace('id=""','id="'.$columnName.'_#{_id}"', $temp);
+              $temp = str_replace('id="value"','id="'.$columnName.'_#{_id}"', $temp);
+              $temp = str_replace('id="value_txt"','id="'.$columnName.'_txt_#{_id}"', $temp);                         
+              $temp = str_replace('onchange=""','onchange="changeValueType(this, '.$x.')" ', $temp);
+              $temp = str_replace('onchange="selectvalue"','onchange="changeSelectValue(this, '.$x.')" ', $temp);
+              $temp = str_replace('onchange="action"','onchange="changeFormElement('.$x.')" ', $temp);
+              $temp = str_replace('onchange="inputvalue"','onchange="changeFormElement('.$x.')" ', $temp);
+              echo $temp;
+                       
+                        
+                        ?>'
+            +'<\/td>'
+        <?php endif;?>
+<?php endforeach;?>
+
+            +'<td><button id="button_#{_id}" onclick="gfpGenerate(#{_id});" class="scalable save" type="button"><span><span><span id="button_span_#{_id}"><?php echo Mage::helper('adminhtml')->__('Generate') ?><\/span><\/span><\/span><\/button><button style="display:none" id="save_#{_id}" onclick="gfpSaveConfig(this);" class="scalable save" type="button"><span><span><span id="save_span_#{_id}"><?php echo Mage::helper('gomage_feed')->__('Save Config') ?><\/span><\/span><\/span><\/button><\/td>\n\
+        '
+        +'<\/tr>'
+    ),
+
+    rowsCount : 0,
+
+    add : function(templateData, insertAfterId)
+    {
+        // generate default template data
+        if ('' == templateData) {
+            var d = new Date();
+            var templateData = {
+<?php foreach ($this->_columns as $columnName => $column):?>
+                <?php echo $columnName ?> : '',
+<?php endforeach;?>
+                _id : '_' + d.getTime() + '_' + d.getMilliseconds()
+            };
+        }
+
+        // insert before last row
+        if ('' == insertAfterId) {
+            Element.insert($('addRow<?php echo $_htmlId ?>'), {before: this.template.evaluate(templateData)});
+        }
+        // insert after specified row
+        else {
+            Element.insert($(insertAfterId), {after: this.template.evaluate(templateData)});
+        }
+
+<?php if ($this->_addAfter):?>
+        Event.observe('addAfterBtn' + templateData._id, 'click', this.add.bind(this, '', templateData._id));
+<?php endif;?>
+
+        this.rowsCount += 1;
+    }
+
+}
+
+
+<?php
+$_addAfterId = "headings{$_htmlId}";
+foreach ($this->getArrayRows() as $_rowId => $_row) {
+    echo "arrayRow{$_htmlId}.add(" . $_row->toJson() . ", '{$_addAfterId}');\n";
+    $_addAfterId = $_rowId;
+}
+?>
+</script>
+
+
+<script type="text/javascript">
+			//<![CDATA[
+                        
+                        
+var  typevalue = '';
+
+<?php $data= Mage::getStoreConfig('gomage_feedpro/amazon/config'); 
+$array = @unserialize($data);
+
+?>	
+  
+<?php foreach ($array as $key=>$val): ?>
+
+typevalue = $('type_<?php echo $key ?>');  
+ 
+$('button_span_<?php echo $key ?>').innerHTML += ' <?php echo strtoupper($val['input_code']); ?>' ;
+$('save_span_<?php echo $key ?>').innerHTML += ' <?php echo strtoupper($val['input_code']); ?>' ;
+
+if(typevalue.value == '0'){
+
+	$('value_<?php echo $key ?>').style.display = 'none';	       
+        $('value_txt_<?php echo $key ?>').style.display = 'block';
+
+   
+}else{
+	$('value_<?php echo $key ?>').style.display = 'block';						
+        $('value_txt_<?php echo $key ?>').style.display = 'none';
+
+	}
+    
+
+<?php endforeach; ?>
+				
+				function changeValueType(e, i){
+					
+                                        $('button_'+i.id).style.display = 'none';
+                                        $('save_'+i.id).style.display = 'block';
+					if(e.value == '0'){
+						$('value_'+i.id).style.display = 'none';						
+                                                $('value_txt_'+i.id).style.display = 'block';
+                                                $('value_txt_'+i.id).value = '';
+					}else{
+						$('value_'+i.id).style.display = 'block';						
+                                                $('value_txt_'+i.id).style.display = 'none';
+					}
+					
+				}
+                                
+                                
+                              function  changeSelectValue(e, i){                                 
+                                $('value_txt_'+i.id).value = e.value;  
+                                $('button_'+i.id).style.display = 'none';
+                                $('save_'+i.id).style.display = 'block';
+                              }
+                              
+                              function  changeFormElement(i){ 
+                                $('button_'+i.id).style.display = 'none';
+                                $('save_'+i.id).style.display = 'block';
+                              }
+                                //]]>		
+</script>

@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Customer
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <sections>
+        <customer translate="label" module="customer">
+            <class>separator-top</class>
+            <label>Customer Configuration</label>
+            <tab>customer</tab>
+            <sort_order>130</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <address_templates translate="label">
+                    <label>Address Templates</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <editorder>
+                            <label>Edit Order</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                      </editorder>
+					   
+						
+						
+				  </fields>
+                </address_templates>
+				
+				
+            </groups>
+        </customer>
+		
+		<editorder module="ordereditor" label="label">
+            <class>separator-top</class>
+            <label>Order Editor</label>
+            <tab>customer</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>45</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Order Editor</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<reauth translate="label">
+                            <label>Re-Authorization Payment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<comment>Your payment method must be able to re-authorize,enable this will call authorize on the orders current Payment Method.</comment>
+                        </reauth>
+						<ostatuses translate="label comment">
+                            <label>Order status allowed to be edited</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>3</sort_order>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Set order that needs to be edited, by default all the status will be allowed to be edited.]]></comment>
+                        </ostatuses> 
+						<more_status translate="label">
+                            <label>Allow More Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<comment>It will allow more order status (Suspected Fraud,Payment Review,Pending Payment,Pending PayPal).</comment>
+                        </more_status>
+					 
+									
+                    </fields>
+                </general>
+				
+				
+	
+				<opermission translate="label">
+                    <label>Add-Editing Permissions on Login Level</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                       
+					   <penable translate="label comment">
+                            <label>Enable Permission</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Enable it to use the below process.]]></comment>
+                        </penable> 
+					   
+                        <oepermission translate="comment">
+                            <label></label>
+                            <frontend_model>Oeditor_Ordereditor_Block_Permission</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <comment><![CDATA[Use this button to allow to editing on different sub admin permission.
+							<span><br>Sub admin means more admin user created in admin</span>
+							<span class="notice"><br>1)If want to allow update order status then put 'order_status' in 'Edit Functionality'.</span>
+							<span class="notice"><br>2)If want to allow update order name then put 'order_name' in 'Edit Functionality'.</span>
+							<span class="notice"><br>3)If want to allow update customer information then put 'cust_info' in 'Edit Functionality'.</span>
+							<span class="notice"><br>4)If want to allow update billing_shipping detail then put 'bill_ship_info' in 'Edit Functionality'.</span>
+							<span class="notice"><br>5)If want to allow add/update shipping method(carrier),item then put 'ship_item_info' in 'Edit Functionality'.</span>]]>
+							
+							</comment>
+                        </oepermission>
+					    
+						<edit_order_invoice_status translate="comment">
+                            <label></label>
+                            <frontend_model>Oeditor_Ordereditor_Block_Invoicestatus</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <comment><![CDATA[
+							<span class="notice"><br>Use this button to add N number of invoices.</span>]]>
+							
+							</comment>
+                        </edit_order_invoice_status>
+						
+                    </fields>
+                </opermission>
+            </groups>
+        </editorder>
+		
+    </sections>
+</config>

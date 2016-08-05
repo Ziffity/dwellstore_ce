@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <mercent_sales_order translate="title" module="mercent_sales">
+                <model>mercent_sales/order_api</model>
+                <title>Sales Order API</title>
+                <methods>
+                    <create translate="title" module="mercent_sales">
+                        <title>Creates an order</title>
+                        <acl>sales/order/create</acl>
+                    </create>
+                    <listId translate="title" module="mercent_sales">
+                        <title>Retrieve list of order ids by filters</title>
+                        <method>items</method>
+                        <acl>sales/order/info</acl>
+                    </listId>
+                    <listIdByPoNumber translate="title" module="mercent_sales">
+                        <title>Retrieve list of order ids by po_number</title>
+                        <acl>sales/order/info</acl>
+                    </listIdByPoNumber>
+                    <deletePending translate="title" module="mercent_sales">
+                        <title>Deletes a Mercent-submitted pending order</title>
+                        <acl>sales/order/change</acl>
+                    </deletePending>
+                </methods>
+            </mercent_sales_order>
+            <mercent_sales_order_shipment translate="title" module="mercent_sales">
+                <model>mercent_sales/order_shipment_api</model>
+                <title>My custom shipment api</title>
+                <methods>
+                    <listNew translate="title" module="mercent_sales">
+                        <title>Retrieve list of external shipments by filters</title>
+                        <acl>sales/order/shipment/info</acl>
+                    </listNew>
+                    <confirmReceipt translate="title" module="mercent_sales">
+                        <title>Confirm shipment received</title>
+                        <acl>sales/order/shipment/info</acl>
+                    </confirmReceipt>
+                    <unConfirmReceipt translate="title" module="mercent_sales">
+                        <title>UnConfirm shipment received</title>
+                        <acl>sales/order/shipment/info</acl>
+                    </unConfirmReceipt>
+                </methods>
+            </mercent_sales_order_shipment>
+            <mercent_sales_order_creditmemo translate="title" module="mercent_sales">
+                <model>mercent_sales/order_creditmemo_api</model>
+                <title>My custom creditmemo api</title>
+                <methods>
+                    <listNew translate="title" module="sales">
+                        <title>Retrieve list of external creditmemos by filters</title>
+                        <acl>sales/order/creditmemo/info</acl>
+                    </listNew>
+                    <confirmReceipt translate="title" module="mercent_sales">
+                        <title>Confirm creditmemo received</title>
+                        <acl>sales/order/creditmemo/info</acl>
+                    </confirmReceipt>
+                    <unConfirmReceipt translate="title" module="mercent_sales">
+                        <title>UnConfirm creditmemo received</title>
+                        <acl>sales/order/creditmemo/info</acl>
+                    </unConfirmReceipt>
+                </methods>
+                <faults module="mercent_sales">
+                    <not_exists>
+                        <code>100</code>
+                        <message>Requested creditmemo not exists.</message>
+                    </not_exists>
+                    <filters_invalid>
+                        <code>101</code>
+                        <message>Invalid filters given. Details in error message.</message>
+                    </filters_invalid>
+                    <data_invalid>
+                        <code>102</code>
+                        <message>Invalid data given. Details in error message.</message>
+                    </data_invalid>
+                    <order_not_exists>
+                        <code>103</code>
+                        <message>Requested order not exists.</message>
+                    </order_not_exists>
+                </faults>
+            </mercent_sales_order_creditmemo>
+        </resources>
+        <resources_alias>
+            <mercent_order>mercent_sales_order</mercent_order>
+            <mercent_order_shipment>mercent_sales_order_shipment</mercent_order_shipment>
+            <mercent_order_creditmemo>mercent_sales_order_creditmemo</mercent_order_creditmemo>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <mercent_order>mercentSalesOrder</mercent_order>
+                <mercent_order_shipment>mercentSalesOrderShipment</mercent_order_shipment>
+                <mercent_order_creditmemo>mercentSalesOrderCreditmemo</mercent_order_creditmemo>
+            </resources_function_prefix>
+        </v2>
+    </api>
+</config>

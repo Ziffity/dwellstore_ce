@@ -1,0 +1,19 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2012 Amasty (http://www.amasty.com)
+* @package Amasty_Xnotif
+*/   
+?>
+<div style="margin-bottom: 5px;"> 
+    <div class="notif-label"><label><?php echo $this->__('Notify me when the item is back in stock'); ?> </label></div>
+	 <form method="get" action="<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl()) ?>" id="form-guest-email">
+        <input type="text" name="guest_email" id="guest_email" value="Add email address" onFocus="if (this.value == 'Add email address') this.value='';" onBlur="if (this.value == '') this.value='Add email address';" onKeyPress="return checkIt(event, 'form-guest-email')" class="input-text validate-email required-entry" size="33" />
+        <input type="hidden" name="product_id" value="<?php echo Mage::registry('product')->getId()?>" />
+        <input type="hidden" name="type" value="email" />
+        <input type="hidden" name="parent_id" value="<?php echo Mage::registry('par_product_id')?>" />
+        <input type="hidden" name="<?php echo Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED ?>" value="<?php echo Mage::helper('amxnotif')->getEncodedUrl()?>" />
+        <button type="button" class="button btn-cart amcart-ignore" id="button-alert-email"  onclick="return send_email('form-guest-email');" title="<?php echo $this->__('Submit'); ?>"><span><?php echo $this->__('Submit'); ?></span> </button>
+    </form>  
+</div>    
+ 

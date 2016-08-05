@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+
+<layout>
+        <adminhtml_sales_order_view>
+			<reference name="order_items">
+				<action method="addItemRender"><type>bundle</type><block>bundle/adminhtml_sales_order_view_items_renderer</block><template>ordereditor/bundle/sales/order/view/items/renderer.phtml</template></action>
+			</reference>
+    	</adminhtml_sales_order_view>
+		
+		<adminhtml_sales_order_edit_index>
+	        <update handle="adminhtml_sales_order_create_index" />	
+			 <reference name="left">
+				 <remove name="sidebar"></remove>
+			</reference>		
+	    </adminhtml_sales_order_edit_index>
+	
+	
+	<adminhtml_sales_order_create_index>
+	
+		<reference name="items">
+				<block type="adminhtml/sales_order_create_items_grid" template="ordereditor/sales/order/create/items/grid.phtml" name="items_grid">
+					<block type="adminhtml/sales_order_create_coupons" template="sales/order/create/coupons/form.phtml" name="coupons">
+						<block type="adminhtml/sales_order_create_coupons_form" template="sales/order/create/coupons/form.phtml" name="form" />
+					</block>
+				</block>
+		</reference>
+			
+    </adminhtml_sales_order_create_index>
+	
+	<adminhtml_sales_order_create_load_block_data>
+		 
+		<!-- <remove name="sidebar"></remove>-->
+			
+		<reference name="items">
+				<block type="adminhtml/sales_order_create_items_grid" template="ordereditor/sales/order/create/items/grid.phtml" name="items_grid">
+					<block type="adminhtml/sales_order_create_coupons" template="sales/order/create/coupons/form.phtml" name="coupons">
+						<block type="adminhtml/sales_order_create_coupons_form" template="sales/order/create/coupons/form.phtml" name="form" />
+					</block>
+				</block>
+		</reference>
+
+	</adminhtml_sales_order_create_load_block_data>
+	
+	<!-- custom shipping form-->
+ 	<adminhtml_sales_order_create_index>
+        <reference name="shipping_method">
+            <block type="adminhtml/sales_order_create_shipping_method_form" template="ordereditor/customshippingrate/form_custom.phtml" name="form_custom" />
+        </reference> 
+    </adminhtml_sales_order_create_index>
+	<!-- custom shipping form ends-->	
+	
+</layout>

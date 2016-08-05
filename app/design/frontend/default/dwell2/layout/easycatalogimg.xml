@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <!--<default>
+        <reference name="head">
+            <action method="addItem" ifconfig="easycatalogimg/general/enabled"><type>skin_css</type><name>css/easycatalogimg.css</name></action>
+        </reference>
+    </default>-->
+
+    <catalog_category_default>
+        <reference name="content">
+			
+            <block type="easycatalogimg/list" name="subcategories" after="featured_product_list"  template="easycatalogimg/list.phtml">
+            	<block type="featuredproducts/product_list" name="featured_product_list" as="featured_product_list" template="inchoo/featuredproducts/list.phtml">
+					<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+							<block type="page/html_pager" name="product_list_toolbar_pager"/>
+					</block>
+					<action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+				</block>
+                <action method="addDataFromConfig"><path>easycatalogimg/category</path></action>
+                <action method="setDataFromConfig"><key>use_image_attribute</key><path>easycatalogimg/general/use_image_attribute</path></action>
+                <action method="setDataFromConfig"><key>resize_image</key><path>easycatalogimg/general/resize_image</path></action>
+            </block>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="content">
+			<block type="featuredproducts/product_list" name="featured_product_list" as="featured_product_list" after="catalog.content.top" template="inchoo/featuredproducts/list.phtml">
+				<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+						<block type="page/html_pager" name="product_list_toolbar_pager"/>
+				</block>
+				<action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+			</block>
+            <block type="easycatalogimg/list" name="subcategories" after="featured_product_list"  template="easycatalogimg/list.phtml">
+                <action method="addDataFromConfig"><path>easycatalogimg/category</path></action>
+                <action method="setDataFromConfig"><key>use_image_attribute</key><path>easycatalogimg/general/use_image_attribute</path></action>
+                <action method="setDataFromConfig"><key>resize_image</key><path>easycatalogimg/general/resize_image</path></action>
+            </block>
+        </reference>
+    </catalog_category_layered>
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Redstage Networks
+ *
+ * NOTICE OF LICENSE
+ *
+ * @category   Redstage
+ * @package    Redstage_GuestOrderView
+ * @copyright  Copyright (c) 2011 Redstage Networks (http://www.redstage.com)
+
+ */
+-->
+<config>
+	<modules>
+		<Redstage_GuestOrderView>
+			<version>0.1.0</version>
+		</Redstage_GuestOrderView>
+	</modules>
+	<global>
+		<blocks>
+			<guestorderview>
+				<class>Redstage_GuestOrderView_Block</class>
+			</guestorderview>
+		</blocks>
+		<helpers>
+			<guestorderview>
+				<class>Redstage_GuestOrderView_Helper</class>
+			</guestorderview>
+		</helpers>
+		<models>
+			<customer>
+				<rewrite>
+					<session>Redstage_GuestOrderView_Model_Customer_Session</session>
+				</rewrite>
+			</customer>
+		</models>
+		<rewrite>
+			<rsn_guestorderview_order>
+				<from><![CDATA[#^/sales/order/#]]></from>
+				<to>/guestorderview/order/</to>
+			</rsn_guestorderview_order>
+		</rewrite>
+		<resources>
+			<guestorderview_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</guestorderview_write>
+			<guestorderview_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</guestorderview_read>
+		</resources>
+	</global>
+	<frontend>
+		<layout>
+			<updates>
+				<guestorderview>
+					<file>guestorderview.xml</file>
+				</guestorderview>
+			</updates>
+		</layout>
+		<routers>
+			<rsn_guestorderview>
+				<use>standard</use>
+				<args>
+					<module>Redstage_GuestOrderView</module>
+					<frontName>guestorderview</frontName>
+				</args>
+			</rsn_guestorderview>
+		</routers>
+	</frontend>
+</config>

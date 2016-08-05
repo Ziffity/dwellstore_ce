@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_Catalog>
+            <active>true</active>
+            <codePool>local</codePool>
+        </DWELL_Catalog>
+    </modules>
+</config>

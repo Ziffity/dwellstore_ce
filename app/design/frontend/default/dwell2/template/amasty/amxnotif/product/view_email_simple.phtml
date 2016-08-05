@@ -1,0 +1,51 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2012 Amasty (http://www.amasty.com)
+* @package Amasty_Xnotif
+*/   
+?>
+<?php $_productId = Mage::registry('product')->getId()?>
+ <script type="text/javascript">
+    function send_alert_email(url, button)
+    {
+        var f = $('product_addtocart_form');
+		var productId = button.id.replace(/\D+/g,"");
+		if($('amxnotif_guest_email-' + productId)){
+			$('amxnotif_guest_email-' + productId).addClassName("validate-email required-entry");
+		}
+        var validator = new Validation(f);
+        if (validator.validate()) {
+            f.action = url;
+            f.id = 'am_product_addtocart_form';
+            f.submit();
+            button.remove();
+            return true;  
+        }
+        /*button.style.position = 'relative';
+        button.style.top = '-50px';
+        button.style.left = '180px';*/
+		if($('amxnotif_guest_email-' + productId)){
+			$('amxnotif_guest_email-' + productId).removeClassName("validate-email required-entry");
+		}
+        return false;
+    }
+    
+    function checkIt(evt,url, button) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;  
+        if (charCode == 13) {
+               return send_alert_email(url, button);
+        }
+        return true;
+    }
+</script>
+<div class="amxnotif-block">
+	<div class="notif-label"><label><?php echo $this->__('Notify me when the item is back in stock'); ?> </label></div>
+	<input type="text" name="guest_email" id="amxnotif_guest_email-<?php echo $_productId;?>"  value="Add email address" onFocus="if (this.value == 'Add email address') this.value='';" onBlur="if (this.value == '') this.value='Add email address';" onKeyPress="return checkIt(event, '<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl());?>', $('button-email-send-<?php echo $_productId;?>'))" class="input-text" size="33" />
+	<input type="hidden" name="product_id" value="<?php echo $_productId;?>" />
+	<input type="hidden" name="type" value="email" />
+	<input type="hidden" name="parent_id" value="<?php echo Mage::registry('par_product_id')?>" />
+	<input type="hidden" name="<?php echo Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED ?>" value="<?php echo Mage::helper('amxnotif')->getEncodedUrl()?>" />
+	<button type="button" id="button-email-send-<?php echo $_productId;?>" class="button btn-cart amcart-ignore" onclick="send_alert_email('<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getEmailUrl());?>', this)" title="<?php echo $this->__('Submit'); ?>"><span><?php echo $this->__('Submit'); ?></span> </button> 
+</div>

@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <!--wsdl:import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" /-->
+            <complexType name="mercentSalesOrderListIdEntity">
+                <all>
+                    <element name="increment_id" type="xsd:string" minOccurs="0" />
+                    <element name="status" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderListIdEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:mercentSalesOrderListIdEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderEntityToCreate">
+                <all>
+                    <element name="cancel_out_of_stock" type="xsd:string" minOccurs="0" />
+                    <element name="channel_order_id" type="xsd:string" minOccurs="0" />
+                    <element name="channel_account_id" type="xsd:string" minOccurs="0" />
+                    <element name="channel_name" type="xsd:string" minOccurs="0" />
+                    <element name="payment_transaction_id" type="xsd:string" minOccurs="0" />
+                    <!--element name="increment_id" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="parent_id" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="store_id" type="xsd:string" minOccurs="0" /-->
+                    <element name="created_at" type="xsd:string" minOccurs="0" />
+                    <!--element name="updated_at" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="is_active" type="xsd:string" minOccurs="0" /-->
+                    <element name="customer_id" type="xsd:string" minOccurs="0" />
+                    <element name="tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_amount" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="discount_amount" type="xsd:string" minOccurs="0" />
+                    <element name="subtotal" type="xsd:string" minOccurs="0" />
+                    <element name="grand_total" type="xsd:string" minOccurs="0" />
+                    <element name="total_paid" type="xsd:string" minOccurs="0" />
+                    <element name="total_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="total_qty_ordered" type="xsd:string" minOccurs="0" />
+                    <element name="total_canceled" type="xsd:string" minOccurs="0" />
+                    <element name="total_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="total_online_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="total_offline_refunded" type="xsd:string" minOccurs="0" />
+                    <!--element name="base_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_shipping_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_discount_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_subtotal" type="xsd:string" minOccurs="0" />
+                    <element name="base_grand_total" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_paid" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_qty_ordered" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_canceled" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_online_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="base_total_offline_refunded" type="xsd:string" minOccurs="0" /-->
+                    <element name="billing_address_id" type="xsd:string" minOccurs="0" />
+                    <element name="billing_firstname" type="xsd:string" minOccurs="0" />
+                    <element name="billing_lastname" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_address_id" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_firstname" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_lastname" type="xsd:string" minOccurs="0" />
+                    <element name="billing_name" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_name" type="xsd:string" minOccurs="0" />
+                    <!--element name="store_to_base_rate" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="store_to_order_rate" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="base_to_global_rate" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="base_to_order_rate" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="weight" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="store_name" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="remote_ip" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="status" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="state" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="applied_rule_ids" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="global_currency_code" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="base_currency_code" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="store_currency_code" type="xsd:string" minOccurs="0" /-->
+                    <element name="order_currency_code" type="xsd:string" minOccurs="0" />
+                    <element name="convert_base_to_usd" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_method" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_description" type="xsd:string" minOccurs="0" />
+                    <element name="customer_email" type="xsd:string" minOccurs="0" />
+                    <element name="customer_firstname" type="xsd:string" minOccurs="0" />
+                    <element name="customer_lastname" type="xsd:string" minOccurs="0" />
+                    <!--element name="quote_id" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="is_virtual" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="customer_group_id" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="customer_note_notify" type="xsd:string" minOccurs="0" /-->
+                    <element name="customer_is_guest" type="xsd:string" minOccurs="0" />
+                    <!--element name="email_sent" type="xsd:string" minOccurs="0" /-->
+                    <!--element name="order_id" type="xsd:string" minOccurs="0" /-->
+                    <element name="shipping_address" type="typens:salesOrderAddressEntity" minOccurs="0" />
+                    <element name="billing_address" type="typens:salesOrderAddressEntity" minOccurs="0" />
+                    <element name="items" type="typens:mercentSalesOrderItemEntityArray" minOccurs="0" />
+                    <element name="payment_method" type="xsd:string" minOccurs="0" />
+                    <!--element name="payment" type="typens:salesOrderPaymentEntity" minOccurs="0" /-->
+                    <!--element name="status_history" type="typens:salesOrderStatusHistoryEntityArray" minOccurs="0" /-->
+                    <element name="is_fba" type="xsd:string" minOccurs="0" />
+                    <element name="is_cba" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderItemEntity">
+                <all>
+                    <element name="channel_order_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="item_id" type="xsd:string" minOccurs="0" />
+                    <element name="order_id" type="xsd:string" minOccurs="0" />
+                    <element name="quote_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="created_at" type="xsd:string" minOccurs="0" />
+                    <element name="updated_at" type="xsd:string" minOccurs="0" />
+                    <element name="product_id" type="xsd:string" minOccurs="0" />
+                    <element name="product_type" type="xsd:string" minOccurs="0" />
+                    <element name="product_options" type="xsd:string" minOccurs="0" />
+                    <element name="weight" type="xsd:string" minOccurs="0" />
+                    <element name="is_virtual" type="xsd:string" minOccurs="0" />
+                    <element name="sku" type="xsd:string" minOccurs="0" />
+                    <element name="name" type="xsd:string" minOccurs="0" />
+                    <element name="applied_rule_ids" type="xsd:string" minOccurs="0" />
+                    <element name="free_shipping" type="xsd:string" minOccurs="0" />
+                    <element name="is_qty_decimal" type="xsd:string" minOccurs="0" />
+                    <element name="no_discount" type="xsd:string" minOccurs="0" />
+                    <element name="qty_canceled" type="xsd:string" minOccurs="0" />
+                    <element name="qty_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="qty_ordered" type="xsd:string" minOccurs="0" />
+                    <element name="qty_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="qty_shipped" type="xsd:string" minOccurs="0" />
+                    <element name="cost" type="xsd:string" minOccurs="0" />
+                    <element name="price" type="xsd:string" minOccurs="0" />
+                    <element name="base_price" type="xsd:string" minOccurs="0" />
+                    <element name="original_price" type="xsd:string" minOccurs="0" />
+                    <element name="base_original_price" type="xsd:string" minOccurs="0" />
+                    <element name="tax_percent" type="xsd:string" minOccurs="0" />
+                    <element name="tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="tax_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="base_tax_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_amount" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="discount_promotion_id" type="xsd:string" minOccurs="0" />
+                    <element name="discount_promotion_code" type="xsd:string" minOccurs="0" />
+                    <element name="discount_percent" type="xsd:string" minOccurs="0" />
+                    <element name="discount_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_discount_amount" type="xsd:string" minOccurs="0" />
+                    <element name="discount_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="base_discount_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="amount_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="base_amount_refunded" type="xsd:string" minOccurs="0" />
+                    <element name="row_total" type="xsd:string" minOccurs="0" />
+                    <element name="base_row_total" type="xsd:string" minOccurs="0" />
+                    <element name="row_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="base_row_invoiced" type="xsd:string" minOccurs="0" />
+                    <element name="row_weight" type="xsd:string" minOccurs="0" />
+                    <element name="gift_message_available" type="xsd:string" minOccurs="0" />
+                    <element name="base_tax_before_discount" type="xsd:string" minOccurs="0" />
+                    <element name="tax_before_discount" type="xsd:string" minOccurs="0" />
+                    <element name="weee_tax_applied" type="xsd:string" minOccurs="0" />
+                    <element name="weee_tax_applied_amount" type="xsd:string" minOccurs="0" />
+                    <element name="weee_tax_applied_row_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_weee_tax_applied_amount" type="xsd:string" minOccurs="0" />
+                    <element name="base_weee_tax_applied_row_amount" type="xsd:string" minOccurs="0" />
+                    <element name="weee_tax_disposition" type="xsd:string" minOccurs="0" />
+                    <element name="weee_tax_row_disposition" type="xsd:string" minOccurs="0" />
+                    <element name="base_weee_tax_disposition" type="xsd:string" minOccurs="0" />
+                    <element name="base_weee_tax_row_disposition" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderItemEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:mercentSalesOrderItemEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderShipmentEntity">
+                <all>
+                    <element name="channel_order_id" type="xsd:string" minOccurs="0" />
+                    <element name="channel_account_id" type="xsd:string" minOccurs="0" />
+                    <element name="channel_name" type="xsd:string" minOccurs="0" />
+                    <element name="increment_id" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+                    <element name="store_id" type="xsd:string" minOccurs="0" />
+                    <element name="created_at" type="xsd:string" minOccurs="0" />
+                    <element name="updated_at" type="xsd:string" minOccurs="0" />
+                    <element name="is_active" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_address_id" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_firstname" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_lastname" type="xsd:string" minOccurs="0" />
+                    <element name="order_id" type="xsd:string" minOccurs="0" />
+                    <element name="order_increment_id" type="xsd:string" minOccurs="0" />
+                    <element name="order_created_at" type="xsd:string" minOccurs="0" />
+                    <element name="total_qty" type="xsd:string" minOccurs="0" />
+                    <element name="shipment_id" type="xsd:string" minOccurs="0" />
+                    <element name="items" type="typens:mercentSalesOrderShipmentItemEntityArray" minOccurs="0" />
+                    <element name="tracks" type="typens:salesOrderShipmentTrackEntityArray" minOccurs="0" />
+                    <element name="comments" type="typens:salesOrderShipmentCommentEntityArray" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderShipmentEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:mercentSalesOrderShipmentEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderShipmentItemEntity">
+                <all>
+                    <element name="channel_order_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="increment_id" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+                    <element name="created_at" type="xsd:string" minOccurs="0" />
+                    <element name="updated_at" type="xsd:string" minOccurs="0" />
+                    <element name="is_active" type="xsd:string" minOccurs="0" />
+                    <element name="sku" type="xsd:string" minOccurs="0" />
+                    <element name="name" type="xsd:string" minOccurs="0" />
+                    <element name="order_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="product_id" type="xsd:string" minOccurs="0" />
+                    <element name="weight" type="xsd:string" minOccurs="0" />
+                    <element name="price" type="xsd:string" minOccurs="0" />
+                    <element name="qty" type="xsd:string" minOccurs="0" />
+                    <element name="item_id" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderShipmentItemEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:mercentSalesOrderShipmentItemEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderShipmentIdArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderCreditmemoEntity">
+                <all>
+                    <element name="channel_order_id" type="xsd:string" minOccurs="0" />
+                    <element name="channel_account_id" type="xsd:string" minOccurs="0" />
+                    <element name="channel_name" type="xsd:string" minOccurs="0" />
+                    <element name="creditmemo_id" type="xsd:string" minOccurs="0" />
+                    <element name="mercent_adjustment_reason" type="xsd:string" minOccurs="0" />
+                    <element name="increment_id" type="xsd:string" minOccurs="0" />
+                    <element name="order_id" type="xsd:string" minOccurs="0" />
+                    <element name="store_id" type="xsd:string" minOccurs="0" />
+                    <element name="created_at" type="xsd:string" minOccurs="0" />
+                    <element name="updated_at" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_amount" type="xsd:string" minOccurs="0" />
+                    <element name="shipping_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="adjustment" type="xsd:string" minOccurs="0" />
+                    <element name="discount_amount" type="xsd:string" minOccurs="0" />
+                    <element name="subtotal" type="xsd:string" minOccurs="0" />
+                    <element name="grand_total" type="xsd:string" minOccurs="0" />
+                    <element name="items" type="typens:mercentSalesOrderCreditmemoItemEntityArray" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderCreditmemoItemEntity">
+                <all>
+                    <element name="channel_order_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="creditmemo_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="item_id" type="xsd:string" minOccurs="0" />
+                    <element name="order_item_id" type="xsd:string" minOccurs="0" />
+                    <element name="parent_id" type="xsd:string" minOccurs="0" />
+                    <element name="product_id" type="xsd:string" minOccurs="0" />
+                    <element name="sku" type="xsd:string" minOccurs="0" />
+                    <element name="name" type="xsd:string" minOccurs="0" />
+                    <element name="qty" type="xsd:string" minOccurs="0" />
+                    <element name="price" type="xsd:string" minOccurs="0" />
+                    <element name="tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="discount_amount" type="xsd:string" minOccurs="0" />
+                    <element name="original_price" type="xsd:string" minOccurs="0" />
+                    <element name="original_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="original_shipping_amount" type="xsd:string" minOccurs="0" />
+                    <element name="original_shipping_tax_amount" type="xsd:string" minOccurs="0" />
+                    <element name="row_total" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="mercentSalesOrderCreditmemoItemEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:mercentSalesOrderCreditmemoItemEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderCreditmemoEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:mercentSalesOrderCreditmemoEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="mercentSalesOrderCreditmemoIdArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+        </schema>
+    </types>
+    <message name="mercentSalesOrderListIdRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="filters" type="typens:filters" />
+    </message>
+    <message name="mercentSalesOrderListIdResponse">
+        <part name="result" type="typens:mercentSalesOrderListIdEntityArray" />
+    </message>
+    <message name="mercentSalesOrderListIdByPoNumberRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="poNumber" type="xsd:string" />
+    </message>
+    <message name="mercentSalesOrderListIdByPoNumberResponse">
+        <part name="result" type="typens:mercentSalesOrderListIdEntityArray" />
+    </message>
+    <message name="mercentSalesOrderCreateRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="customerData" type="typens:mercentSalesOrderEntityToCreate" />
+    </message>
+    <message name="mercentSalesOrderCreateResponse">
+        <part name="result" type="typens:mercentSalesOrderListIdEntity" />
+    </message>
+    <message name="mercentSalesOrderShipmentListNewRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="filters" type="typens:filters" />
+    </message>
+    <message name="mercentSalesOrderShipmentListNewResponse">
+        <part name="result" type="typens:mercentSalesOrderShipmentEntityArray" />
+    </message>
+    <message name="mercentSalesOrderDeletePendingRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="orderIncrementId" type="xsd:string" />
+    </message>
+    <message name="mercentSalesOrderDeletePendingResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <message name="mercentSalesOrderShipmentConfirmReceiptRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="shipmentId" type="typens:mercentSalesOrderShipmentIdArray" />
+    </message>
+    <message name="mercentSalesOrderShipmentConfirmReceiptResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <message name="mercentSalesOrderShipmentUnConfirmReceiptRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="shipmentIdList" type="typens:mercentSalesOrderShipmentIdArray" />
+    </message>
+    <message name="mercentSalesOrderShipmentUnConfirmReceiptResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <message name="mercentSalesOrderCreditmemoListNewRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="filters" type="typens:filters" />
+    </message>
+    <message name="mercentSalesOrderCreditmemoListNewResponse">
+        <part name="result" type="typens:mercentSalesOrderCreditmemoEntityArray" />
+    </message>
+    <message name="mercentSalesOrderCreditmemoConfirmReceiptRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="creditmemoId" type="typens:mercentSalesOrderCreditmemoIdArray" />
+    </message>
+    <message name="mercentSalesOrderCreditmemoConfirmReceiptResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <message name="mercentSalesOrderCreditmemoUnConfirmReceiptRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="creditmemoIdList" type="typens:mercentSalesOrderCreditmemoIdArray" />
+    </message>
+    <message name="mercentSalesOrderCreditmemoUnConfirmReceiptResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="mercentSalesOrderListId">
+            <documentation>Retrieve list of order ids by filters</documentation>
+            <input message="typens:mercentSalesOrderListIdRequest" />
+            <output message="typens:mercentSalesOrderListIdResponse" />
+        </operation>
+        <operation name="mercentSalesOrderListIdByPoNumber">
+            <documentation>Retrieve list of order ids by po_number</documentation>
+            <input message="typens:mercentSalesOrderListIdByPoNumberRequest" />
+            <output message="typens:mercentSalesOrderListIdByPoNumberResponse" />
+        </operation>
+        <operation name="mercentSalesOrderCreate">
+            <documentation>Create sales order</documentation>
+            <input message="typens:mercentSalesOrderCreateRequest" />
+            <output message="typens:mercentSalesOrderCreateResponse" />
+        </operation>
+        <operation name="mercentSalesOrderDeletePending">
+            <documentation>Delete Mercent-submitted pending sales order</documentation>
+            <input message="typens:mercentSalesOrderDeletePendingRequest" />
+            <output message="typens:mercentSalesOrderDeletePendingResponse" />
+        </operation>
+        <operation name="mercentSalesOrderShipmentListNew">
+            <documentation>Get sales order shipment</documentation>
+            <input message="typens:mercentSalesOrderShipmentListNewRequest" />
+            <output message="typens:mercentSalesOrderShipmentListNewResponse" />
+        </operation>
+        <operation name="mercentSalesOrderShipmentConfirmReceipt">
+            <documentation>Confirm sales order shipment received, update sent_to_mercent</documentation>
+            <input message="typens:mercentSalesOrderShipmentConfirmReceiptRequest" />
+            <output message="typens:mercentSalesOrderShipmentConfirmReceiptResponse" />
+        </operation>
+        <operation name="mercentSalesOrderShipmentUnConfirmReceipt">
+            <documentation>UnConfirm sales order shipment received, update sent_to_mercent</documentation>
+            <input message="typens:mercentSalesOrderShipmentUnConfirmReceiptRequest" />
+            <output message="typens:mercentSalesOrderShipmentUnConfirmReceiptResponse" />
+        </operation>
+        <operation name="mercentSalesOrderCreditmemoListNew">
+            <documentation>Get sales order creditmemo</documentation>
+            <input message="typens:mercentSalesOrderCreditmemoListNewRequest" />
+            <output message="typens:mercentSalesOrderCreditmemoListNewResponse" />
+        </operation>
+        <operation name="mercentSalesOrderCreditmemoConfirmReceipt">
+            <documentation>Confirm sales order creditmemo received, update sent_to_mercent</documentation>
+            <input message="typens:mercentSalesOrderCreditmemoConfirmReceiptRequest" />
+            <output message="typens:mercentSalesOrderCreditmemoConfirmReceiptResponse" />
+        </operation>
+        <operation name="mercentSalesOrderCreditmemoUnConfirmReceipt">
+            <documentation>UnConfirm sales order creditmemo received, update sent_to_mercent</documentation>
+            <input message="typens:mercentSalesOrderCreditmemoUnConfirmReceiptRequest" />
+            <output message="typens:mercentSalesOrderCreditmemoUnConfirmReceiptResponse" />
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="mercentSalesOrderListId">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderListIdByPoNumber">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderCreate">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderDeletePending">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderShipmentListNew">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderShipmentConfirmReceipt">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderShipmentUnConfirmReceipt">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderCreditmemoListNew">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderCreditmemoConfirmReceipt">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="mercentSalesOrderCreditmemoUnConfirmReceipt">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
+</definitions>

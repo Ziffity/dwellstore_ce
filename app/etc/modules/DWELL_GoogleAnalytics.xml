@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DWELL_GoogleAnalytics>
+            <active>true</active>
+            <codePool>local</codePool>
+        </DWELL_GoogleAnalytics>
+    </modules>
+</config>

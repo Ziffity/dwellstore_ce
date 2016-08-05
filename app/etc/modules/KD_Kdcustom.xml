@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<KD_Kdcustom>
+			<active>true</active>
+			<codePool>local</codePool>
+	 	</KD_Kdcustom>
+	</modules>
+</config>

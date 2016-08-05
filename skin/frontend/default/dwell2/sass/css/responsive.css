@@ -1,0 +1,276 @@
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1200px) { /* line 3, ../sass/responsive.scss */
+  .footer-container { background: url("/skin/frontend/enterprise/dwell2/images/bg-footer.png") repeat-x scroll center top !important; background: #1f1f1f; }
+  /* line 8, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg { min-width: 100%; }
+  /* line 10, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg img { height: 100%; margin: 40px 0px 0px 0px; max-width: 100%; }
+  /* line 16, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content { width: 100%; }
+  /* line 18, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order { margin-top: 20px; color: #fff; font: 18px MiloSerifPro; }
+  /* line 22, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order span { color: #ebff0b; }
+  /* line 26, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address { margin: 19px auto; width: 52%; }
+  /* line 29, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address input[type="text"] { width: 98%; height: 30px; border: 1px solid #969696; background: transparent; padding: 0px 0px 0px 10px; }
+  /* line 36, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; color: #1f1f1f; cursor: pointer; height: 32px; padding: 5px 15px; position: relative; bottom: 32px; float: right; }
+  /* line 47, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address .coveringbox { float: left; width: 100%; }
+  /* line 52, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions { clear: both; color: #fff; font: 14px MiloSerifPro; bottom: 26px; position: relative; }
+  /* line 58, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions span { width: 130px; margin: auto; cursor: pointer; }
+  /* line 65, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .dwell-footer-logo img { max-width: 100%; margin-top: 16px; height: 49px; clear: both; }
+  /* line 72, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .rwd-footer-strip { background: url("/skin/frontend/enterprise/dwell2/images/footer-final_strip.png") repeat-x scroll center top; width: 100%; margin: 20px 0px 20px 0px; height: 1px; }
+  /* line 78, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer { display: inline-block; vertical-align: top; margin: 0px 0px 60px 0px; }
+  /* line 82, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul { color: #fff; display: inline-block; font: 14px/18px MiloSerifPro; text-align: right; padding: 0 17px 0 36px; vertical-align: top; }
+  /* line 90, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a.highlightdwell { color: #ebff0b; }
+  /* line 93, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a { color: #fff; text-decoration: none; }
+  /* line 96, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a:hover { color: #ebff0b; }
+  /* line 102, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links { display: inline-block; font: 14px/18px MiloSerifPro; margin: 0; padding: 0; text-align: left; vertical-align: top; margin: 20px 0px 0px 0px; }
+  /* line 112, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter_success { background: #1f1f1f; color: #fff; margin: auto; padding: 0px 10px 30px 16%; text-align: left; width: 75%; }
+  /* line 120, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter_error { background: #1f1f1f; color: #fff; margin: auto; padding: 0px 10px 30px 16%; text-align: left; width: 75%; } }
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 667px) { /* line 140, ../sass/responsive.scss */
+  .footer-container .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; bottom: 30px; color: #1f1f1f; cursor: pointer; float: right; height: 30px; left: 2px; padding: 5px 15px; position: relative; }
+  /* line 156, ../sass/responsive.scss */
+  .footer-container .footer-menu-outer ul.domains-menus li { line-height: 25px; }
+  /* line 161, ../sass/responsive.scss */
+  .footer-container .footer-menu-outer ul.menu-links li { margin-top: 5px; line-height: 22px; font-size: 14px MiloSerifPro; } }
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) { /*footer RWD Layout */
+  /* line 173, ../sass/responsive.scss */
+  .footer-container { background: url("/skin/frontend/enterprise/dwell2/images/bg-footer.png") repeat-x scroll center top !important; }
+  /* line 177, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg { min-width: 100%; }
+  /* line 179, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg img { height: 100%; max-width: 100%; }
+  /* line 184, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content { width: 100%; }
+  /* line 186, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order { margin-top: 20px; color: #fff; font: 18px MiloSerifPro; }
+  /* line 190, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order span { color: #ebff0b; }
+  /* line 194, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address { margin: 19px auto; width: 80%; }
+  /* line 197, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address input[type="text"] { width: 98%; height: 30px; border: 1px solid #969696; background: transparent; padding: 0px 0px 0px 10px; }
+  /* line 204, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; color: #1f1f1f; cursor: pointer; height: 32px; padding: 5px 15px; position: relative; bottom: 32px; float: right; }
+  /* line 215, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address .validation-failed { background: none !important; }
+  /* line 218, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address .validation-advice { margin: 0; padding: 0; float: left; font: 11px MiloSerifPro; width: 69%; text-align: left; }
+  /* line 227, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions { clear: both; color: #fff; font: 14px MiloSerifPro; position: relative; }
+  /* line 232, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions span { width: 130px; margin: auto; cursor: pointer; }
+  /* line 239, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .dwell-footer-logo img { max-width: 100%; margin-top: 16px; height: 49px; clear: both; }
+  /* line 246, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer { display: inline-block; vertical-align: top; margin: 0px 0px 60px 0px; }
+  /* line 250, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul { color: #fff; display: inline-block; font: 14px/18px MiloSerifPro; text-align: right; padding: 0 17px 0 36px; vertical-align: top; }
+  /* line 258, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a.highlightdwell { color: #ebff0b; }
+  /* line 261, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a { color: #fff; text-decoration: none; }
+  /* line 264, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a:hover { color: #ebff0b; }
+  /* line 270, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links { display: inline-block; font: 14px/18px MiloSerifPro; margin: 0; padding: 0; text-align: left; vertical-align: top; margin: 20px 0px 0px 0px; }
+  /* line 280, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter_success { background: #1f1f1f; color: #fff; margin: auto; padding: 0px 10px 30px 16%; text-align: left; width: 68%; }
+  /* line 288, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter_error { background: #1f1f1f; color: #fff; margin: auto; padding: 0px 10px 30px 0; text-align: left; width: 68%; }
+  /* line 301, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap { top: 24% !important; width: 90% !important; margin: auto; }
+  /* line 305, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin { background-color: #1f1f1f; color: #ffffff; width: 100%; box-shadow: 0px; }
+  /* line 310, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner { width: auto !important; }
+  /* line 312, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details { width: 100%; }
+  /* line 314, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details p.popup-header { font: 16px/15px MiloSerifPro-Bold; color: #fff; margin: 25px 0px 10px 0px; }
+  /* line 319, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details p.popup-content { font: 13px/15px MiloSerifPro; color: #fff; }
+  /* line 326, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-close { background: url("/skin/frontend/enterprise/dwell2/images/icon_close.png") no-repeat scroll center top !important; left: 46%; top: 8px; } }
+@media only screen and (max-width: 568px) { /* line 335, ../sass/responsive.scss */
+  .footer-container { background: #1f1f1f !important; width: 100%; }
+  /* line 340, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg { min-width: 100%; }
+  /* line 342, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg img { display: none; }
+  /* line 346, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content { width: 100%; }
+  /* line 347, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order { width: 88%; }
+  /* line 351, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .subscribe-blocks { top: 20px; position: relative; }
+  /* line 356, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address { margin: 19px 10px 0px 10px; width: 92%; margin: 5% auto; }
+  /* line 360, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address input[type="text"] { height: 40px; border: 1px solid #969696; background: transparent; padding: 0px 0px 0px 10px; }
+  /* line 366, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; color: #1f1f1f; cursor: pointer; height: 40px; padding: 5px 15px; position: relative; bottom: 41px; left: 2px; float: right; }
+  /* line 379, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer { display: inline-block; vertical-align: top; margin: 0px 0px 60px 0px; }
+  /* line 383, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul { color: #fff; display: inline-block; font: 14px/18px MiloSerifPro; padding: 0 17px 0 0px; text-align: left; vertical-align: top; float: left; }
+  /* line 392, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a.highlightdwell { color: #ebff0b; }
+  /* line 395, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a { color: #fff; text-decoration: none; line-height: 25px; }
+  /* line 398, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a:hover { color: #ebff0b; }
+  /* line 405, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links { display: inline-block; font: 14px/18px MiloSerifPro; margin: 0; padding: 0; text-align: left; vertical-align: top; float: right; margin: 20px 0px 0px 0px; }
+  /* line 415, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links li a { line-height: 22px; font-size: 14px MiloSerifPro; }
+  /* line 422, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter_success { background: #1f1f1f; color: #fff; margin: auto; padding: 0px 10px 30px 0px; text-align: left; width: 90%; }
+  /* line 430, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter_error { background: #1f1f1f; color: #fff; margin: auto; padding: 0px 10px 30px 12px; text-align: left; width: 90%; } }
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) { /* line 445, ../sass/responsive.scss */
+  .footer-container { background: #1f1f1f !important; width: 100%; }
+  /* line 450, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg { min-width: 100%; }
+  /* line 452, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg img { display: none; }
+  /* line 456, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content { width: 100%; }
+  /* line 458, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .subscribe-blocks { top: 20px; position: relative; }
+  /* line 462, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order { margin: 20px 8px 0px 10px; color: #fff; font: 15px/1.5em MiloSerifPro; text-align: left; }
+  /* line 467, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order span { color: #ebff0b; }
+  /* line 471, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address { margin: 19px 10px 0px 10px; width: 92%; margin: 5% auto; }
+  /* line 475, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address input[type="text"] { width: 98%; height: 40px; border: 1px solid #969696; background: transparent; padding: 0px 0px 0px 10px; }
+  /* line 482, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; color: #1f1f1f; cursor: pointer; height: 40px; padding: 5px 15px; position: relative; bottom: 41px; left: 4px; float: right; }
+  /* line 495, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions { clear: both; color: #fff; font: 12px MiloSerifPro; bottom: 26px; position: relative; }
+  /* line 501, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions span { width: 130px; margin: auto; cursor: pointer; }
+  /* line 508, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .dwell-footer-logo img { clear: both; height: auto; margin-top: 16px; max-width: 100%; width: 55%; }
+  /* line 516, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .rwd-footer-strip { background: transparent url("/skin/frontend/enterprise/dwell2/images/footer-final_strip.png") repeat-x scroll center top; height: 1px; margin: 20px 10px 20px 10px; width: 94%; text-align: center; }
+  /* line 523, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer { display: inline-block; vertical-align: top; margin: 0px 0px 60px 0px; }
+  /* line 527, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul { color: #fff; display: inline-block; font: 11px/18px MiloSerifPro; padding: 0 17px 0 0px; text-align: left; vertical-align: top; float: left; }
+  /* line 536, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a.highlightdwell { color: #ebff0b; }
+  /* line 539, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a { color: #fff; text-decoration: none; line-height: 25px; }
+  /* line 542, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a:hover { color: #ebff0b; }
+  /* line 549, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links { display: inline-block; font: 11px/18px MiloSerifPro; margin: 0; padding: 0; text-align: left; vertical-align: top; float: right; margin: 20px 0px 0px 0px; }
+  /* line 559, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links li a { line-height: 24px; font-size: 14px MiloSerifPro; } }
+@media only screen and (max-width: 375px) { /* line 572, ../sass/responsive.scss */
+  .footer-container { background: #1f1f1f !important; width: 100%; }
+  /* line 577, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content { width: 100%; }
+  /* line 579, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .subscribe-blocks { top: 20px; position: relative; width: 368px; }
+  /* line 584, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address { margin: 19px 10px 0; width: 83%; }
+  /* line 587, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address input[type="text"] { height: 40px; border: 1px solid #969696; background: transparent; padding: 0px 0px 0px 10px; }
+  /* line 593, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; color: #1f1f1f; cursor: pointer; height: 40px; padding: 5px 15px; position: relative; bottom: 41px; left: 6px; float: right; }
+  /* line 607, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .dwell-footer-logo img { clear: both; height: auto; margin-top: 16px; max-width: 100%; width: 55%; }
+  /* line 620, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap { left: 3% !important; top: 24% !important; }
+  /* line 623, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin { background-color: #1f1f1f; color: #ffffff; width: 100%; box-shadow: 0px; }
+  /* line 628, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner { width: auto !important; }
+  /* line 630, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details { width: 100%; }
+  /* line 632, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details p.popup-header { font: 16px/15px MiloSerifPro-Bold; color: #fff; margin: 25px 0px 10px 0px; }
+  /* line 637, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details p.popup-content { font: 13px/15px MiloSerifPro; color: #fff; }
+  /* line 644, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-close { background: url("/skin/frontend/enterprise/dwell2/images/icon_close.png") no-repeat scroll center top !important; left: 46%; top: 8px; } }
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) { /* line 654, ../sass/responsive.scss */
+  .footer-container { background: #1f1f1f !important; width: 100%; }
+  /* line 659, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg { min-width: 100%; }
+  /* line 661, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-bg img { display: none; }
+  /* line 665, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content { width: 100%; }
+  /* line 667, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .subscribe-blocks { top: 20px; position: relative; width: 100%; margin: auto; }
+  /* line 673, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order { margin: 20px 0px 0px 10px; color: #fff; font: 15px/1.5em MiloSerifPro; text-align: left; }
+  /* line 678, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .newsletter-order span { color: #ebff0b; }
+  /* line 682, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address { margin: 19px 10px 0px 10px; margin: 5% auto; }
+  /* line 685, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address input[type="text"] { height: 40px; border: 1px solid #969696; background: transparent; padding: 0px 0px 0px 10px; }
+  /* line 691, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .email-address button { background: #797979 none repeat scroll 0 0; border: 0 none; color: #1f1f1f; cursor: pointer; height: 40px; padding: 5px 15px; position: relative; bottom: 41px; left: 6px; float: right; }
+  /* line 704, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions { clear: both; color: #fff; font: 12px MiloSerifPro; bottom: 26px; position: relative; }
+  /* line 710, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .exclusions span { width: 130px; margin: auto; cursor: pointer; }
+  /* line 717, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .dwell-footer-logo img { clear: both; height: auto; margin-top: 16px; max-width: 100%; width: 55%; }
+  /* line 725, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .rwd-footer-strip { background: transparent url("/skin/frontend/enterprise/dwell2/images/footer-final_strip.png") repeat-x scroll center top; height: 1px; margin: 20px 10px 20px 10px; width: 94%; text-align: center; }
+  /* line 732, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer { display: inline-block; vertical-align: top; margin: 0px 0px 60px 0px; width: 95%; }
+  /* line 737, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul { color: #fff; display: inline-block; font: 11px/18px MiloSerifPro; padding: 0 17px 0 0px; text-align: left; vertical-align: top; float: left; }
+  /* line 746, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a.highlightdwell { color: #ebff0b; }
+  /* line 749, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a { color: #fff; text-decoration: none; font-size: 14px; line-height: 25px; }
+  /* line 753, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul li a:hover { color: #ebff0b; }
+  /* line 760, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links { display: inline-block; margin: 0; padding: 0; text-align: left; vertical-align: top; float: right; margin: 20px 0px 0px 0px; }
+  /* line 769, ../sass/responsive.scss */
+  .footer-container .dwell-footer .dwell-inner-footer .footer-next-content .footer-menu-outer ul.menu-links li a { line-height: 24px; font-size: 14px MiloSerifPro; }
+  /* line 781, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap { left: 2% !important; top: 24% !important; width: 100% !important; }
+  /* line 785, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin { background-color: #1f1f1f; color: #ffffff; width: 100%; box-shadow: 0px; }
+  /* line 790, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner { width: auto !important; }
+  /* line 792, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details { width: 100%; }
+  /* line 794, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details p.popup-header { font: 16px/15px MiloSerifPro-Bold; color: #fff; margin: 25px 0px 10px 0px; }
+  /* line 799, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-skin .fancybox-inner #details p.popup-content { color: #fff; font: 13px/17px MiloSerifPro; padding: 0; }
+  /* line 807, ../sass/responsive.scss */
+  .fancybox-overlay .fancybox-wrap .fancybox-close { background: url("/skin/frontend/enterprise/dwell2/images/icon_close.png") no-repeat scroll center top !important; left: 46%; top: 8px; } }

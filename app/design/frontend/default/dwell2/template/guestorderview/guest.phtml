@@ -1,0 +1,26 @@
+<div class="order-status">
+	<div class="order-status-body">
+		<p>Track your order by order number. Enter your order number and email to check your order status.</p><br>
+		<form action="<?php echo $this->getUrl('sales/order/status'); ?>" method="post">
+			<strong>Order Number:</strong><br /> <input type="text" required="required" name="order_id"><br><br>
+			<strong>Email Address:</strong><br /> <input type="email" required="required" name="email"><br><br>
+			<button title="Submit" class="button" type="submit" value="Submit"><span><span>Submit</span></span></button>
+		</form>
+	</div>
+</div>
+<div class="loaded_order_status"></div>
+<script type="text/javascript">
+	$f = jQuery('.order-status-body form');
+	$f.bind('submit',function() {
+		jQuery.ajax({
+			type:'post',
+			url:$f.attr('action'),
+			data:$f.serialize(),
+			success: function(data) {
+				jQuery('.loaded_order_status').html(data);
+			}
+		});
+
+	 return false;
+	});
+</script>

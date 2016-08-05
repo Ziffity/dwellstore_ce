@@ -1,0 +1,14 @@
+<config>
+    <modules>
+        <DWELL_DrupalSSO>
+            <version>1.0.1</version>
+        </DWELL_DrupalSSO>
+    </modules>
+    <global>
+        <helpers>
+            <DWELL_DrupalCart>
+                <class>DWELL_DrupalCart_Helper</class>
+            </DWELL_DrupalCart>
+        </helpers>
+    </global>
+</config>

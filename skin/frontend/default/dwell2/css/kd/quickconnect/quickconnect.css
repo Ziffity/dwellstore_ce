@@ -1,0 +1,39 @@
+/* CSS Document */
+
+.account-login.quickconnect-content{padding:10px;}
+
+.quickconnect-main{}
+.quickconnect-main .page-title{background: url("images/top-shadow.png") no-repeat scroll 50% 100% transparent;border-bottom: 0 none;color: #000000;font-size: 14px;margin: 0 0 4px;padding: 10px 0;text-align: left;text-transform: uppercase;}
+.quickconnect-main .page-title h1,.quickconnect-main .page-title h2{font-size: 14px; font-weight:bold;}
+
+.quickconnect-main .main-div{ background: url("images/top-shadow.png") no-repeat scroll 50% 0% transparent;border: 0 none;margin: 0;padding: 10px 0 0px;text-align: left;text-transform: uppercase;float:left;width:100%;}
+.quickconnect-main .main-div1{border: 0 none;margin: 0;padding: 10px 0 0px;text-align: left;text-transform: uppercase;float:left;width:350px;}
+.quickconnect-main button.button { overflow:visible; width:auto; border:0;margin:0; cursor:pointer; }
+.quickconnect-main button.button span { display:block; height:22px; border:0px solid #de5400; background:#f18200; font:bold 12px/22px Arial, Helvetica, sans-serif; text-align:left; white-space:nowrap; color:#fff; }
+.quickconnect-main button.button span span { border:0; padding:0 10px; }
+
+.quickconnect-main a.button { overflow:visible; width:auto; border:0; padding:0 0 0 6px; margin:0; background: url("images/quick-button-left.png") no-repeat scroll 0% 0 transparent; cursor:pointer; }
+.quickconnect-main a.button span { display:block; height:22px; border:0px solid #de5400; background:#f18200; padding:0 6px 0 0; font:bold 12px/22px Arial, Helvetica, sans-serif; text-align:left; white-space:nowrap; color:#fff; background: url("images/quick-button-right.png") no-repeat scroll 100% 0 transparent;}
+.quickconnect-main a.button span span { border:0; padding:0 10px; background: url("images/quick-button-mid.png") repeat-x scroll 0% 0 transparent;}
+
+.product-quickconnect{width:950px;}
+.product-quickconnect.product-comp-view{background:none;}
+.product-quickconnect.product-comp-view .product-name {background: url("images/top-shadow.png") no-repeat scroll 50% 100% transparent;padding: 0 0 10px;}
+
+.product-view.product-quickconnect .product-shop {width: 410px;padding:30px 0 0 20px;}
+.product-view.product-quickconnect .product-img-box {width: 500px;}
+.product-view.product-quickconnect .price-box {margin:5px auto;text-align:left;width:160px;}
+.product-view.product-quickconnect .add-to-box {margin: 10px auto;}
+.product-view.product-quickconnect .add-to-box .add-to-cart {margin: 0;}
+
+.product-view.product-quickconnect .product-name h1 {text-align:left;color:#231F20;}
+.product-view.product-quickconnect .product-name-left h1 {text-align:left;color:#231F20;}
+.product-view.product-quickconnect .product-shop .short-description {background:none;border-color: #BBBBBB;border-style: solid;border-width: 1px 0;padding: 10px 0;}
+.product-view.product-quickconnect .short-description h2, .product-view.product-quickconnect .box-description h2 {color:#005599}
+
+.full-detail{ color: #FFFFFF;float: left;}
+.full-detail a{ color: #FFFFFF;text-decoration:none;padding: 5px 50px;text-transform: uppercase;width: auto;background:#606060;}
+.calendar{z-index:10000;}
+.calendar-buton{float:left;}
+
+.product-view.product-quickconnect .product-img-box .more-views {float: left;margin:10px 0 10px 20px;padding: 0;}

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DWELL_Core>
+      <version>0.1.0</version>
+    </DWELL_Core>
+  </modules>
+  <global>
+	<models>
+	   <core>
+	   	 <rewrite>
+			<design_package>DWELL_Core_Model_Design_Package</design_package>
+		 </rewrite>
+	  </core>
+	</models>
+  </global>
+  <crontab>
+        <jobs>
+            <catalog_product_alert>
+               <schedule><cron_expr>0 * * * *</cron_expr></schedule>
+               <run><model>productalert/observer::process</model></run>
+            </catalog_product_alert>
+        </jobs>
+    </crontab>
+</config> 

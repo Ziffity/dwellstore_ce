@@ -1,0 +1,5 @@
+## Disable crawlers on dev
+ 
+## Enable robots.txt rules for all crawlers
+User-agent: *
+Disallow: /

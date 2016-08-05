@@ -1,0 +1,132 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+
+$magento_login_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'customer/account/login';
+$magento_register_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'index.php/customer/account/create/';
+
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/login.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Login */
+?>
+<div class="account-login">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <div class="col2-set">
+            <div class="col-1 registered-users">
+
+			<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+                            <?php echo $this->getBlockHtml('formkey'); ?>
+                <div class="content">
+                    <h2><?php echo $this->__('I Have an Account') ?></h2>
+                    <p><?php echo $this->__('Please sign in below with your login information') ?></p>
+                    <ul class="form-list">
+                        <li>
+                            <label for="email" class="required"><?php echo $this->__('Email Address') ?><em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+                            </div>
+                        </li>
+                        <li>
+                            <label for="pass" class="required"><?php echo $this->__('Password') ?><em>*</em></label>
+                            <div class="input-box">
+                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                            </div>
+                        </li>
+						<li>
+							<a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+						</li>
+                        <?php echo $this->getChildHtml('form.additional.info'); ?>
+                        <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                    </ul>
+                    <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+                 <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+                </div>
+				
+				<div class="buttons-set">
+					<button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+				</div>
+			</form>	
+           
+            </div>
+			<div class="col-1 new-users">
+                <div class="content">
+                    <h2><?php echo $this->__('Create an Account') ?></h2>
+                    <p><?php echo $this->__('BENIFITS OF AN ACCOUNT') ?></p>
+					<ul>
+					  <li>Save Favorites</li>
+					  <li>Save Addresses</li>
+					  <li>Fast Checkout</li>
+					</ul>
+                </div>
+				
+				<div class="buttons-set">
+					<button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button" onclick="redirectToRegister()"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+				</div>
+				<?php /*?>--------------------Create Account From----------------------<?php */?>
+				<div id="create-form" class="create-form" style="display:none;">
+				<?php echo $this->getChildHtml('customer_form_register'); ?>
+				</div>
+				
+				<?php /*?>--------------------Create Account From----------------------<?php */?>
+            </div>
+        </div>
+        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+            <input name="context" type="hidden" value="checkout" />
+        <?php endif; ?>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+	<script>
+    function redirectToRegister() {
+        document.location.href = '<?php
+   if (!$this->getIsMultishipping()) {
+   echo $magento_register_url;
+   }
+   else {
+   echo $magento_register_url . "?multishipping=1";
+   }
+ ?>';
+    }
+	
+	function showForm()
+	{
+	   if( $('create-form').visible() ){
+		  $('create-form').hide()
+	   }else{
+		  $('create-form').show()
+	   }
+	}
+	
+	</script>
+</div>
+</div>

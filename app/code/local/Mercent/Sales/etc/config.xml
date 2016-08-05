@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mercent_Sales>
+            <version>3.3.0</version>
+        </Mercent_Sales>
+    </modules>
+    <global>
+        <models>
+            <mercent_sales>
+                <class>Mercent_Sales_Model</class>
+            </mercent_sales>
+            <sales>
+                <rewrite>
+                    <service_quote>Mercent_Sales_Model_Service_Quote</service_quote>
+                </rewrite>
+            </sales>
+        </models>
+    </global>
+</config>

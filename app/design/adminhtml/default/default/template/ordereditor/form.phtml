@@ -1,0 +1,100 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<script type="text/javascript">
+    var order = new AdminOrder(<?php echo $this->getOrderDataJson() ?>);
+    order.setLoadBaseUrl('<?php echo $this->getLoadBlockUrl() ?>');
+    var payment = {};
+    payment.switchMethod = order.switchPaymentMethod.bind(order);	
+</script>
+
+<?php $orderId = $this->_getSession()->getOrder()->getIncrementId(); 
+if(isset($orderId) && $orderId != "")
+{
+?>
+<style>
+	.page-create-order .side-col {width:0px;}
+	.page-create-order .switcher {margin-left:25px;width:96%;}
+	.content-header {margin-left:25px;width:96%;}
+</style>
+<?php } ?>
+
+<form id="edit_form" action="<?php echo $this->getSaveUrl() ?>" method="post" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <div id="order-message">
+        <?php echo $this->getChildHtml('message') ?>
+    </div>
+    <div id="order-customer-selector" style="display:<?php echo $this->getCustomerSelectorDisplay() ?>">
+        <?php echo $this->getChildHtml('customer') ?>
+    </div>
+    <div id="order-store-selector" style="display:<?php echo $this->getStoreSelectorDisplay() ?>">
+        <?php echo $this->getChildHtml('store') ?>
+    </div>
+    <div id="order-data" style="display:<?php echo $this->getDataSelectorDisplay() ?>">
+        <?php echo $this->getChildHtml('data') ?>
+    </div>
+
+
+<input type="hidden" name="edit_order_number" value="<?php echo $this->_getSession()->getOrder()->getIncrementId(); ?>" />
+
+</form>
+
+
+
+<script>
+ 
+	function showCC()
+	{
+		document.getElementById('payment_form_set_acimpro').style.display = 'block';
+		document.getElementById('select_payment_form_acimpro').style.display = 'none';
+		
+document.getElementById("acimpro_cc_type").className = "";
+document.getElementById("acimpro_cc_number").className = "";
+document.getElementById("acimpro_expiration").className = "";
+document.getElementById("acimpro_expiration_yr").className = "";
+document.getElementById("acimpro_cc_cid").className = "";
+
+	}
+	
+	function showAlreadyPaymethod()
+	{
+		document.getElementById('select_payment_form_acimpro').style.display = 'block';
+		document.getElementById('payment_form_set_acimpro').style.display = 'none';
+		
+		
+document.getElementById("acimpro_cc_type").className = "required-entry validate-cc-type-select";
+document.getElementById("acimpro_cc_number").className = "input-text validate-cc-number validate-cc-type";
+document.getElementById("acimpro_expiration").className = "month validate-cc-exp required-entry";
+document.getElementById("acimpro_expiration_yr").className = "year required-entry";
+document.getElementById("acimpro_cc_cid").className = "input-text cvv required-entry validate-cc-cvn";
+
+document.getElementById("acimpro_cc_type_set").className = "";
+
+	}
+	
+
+</script>

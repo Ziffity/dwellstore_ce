@@ -1,0 +1,476 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<script type="text/javascript">
+<!--//---------------------------------+
+//  Developed by Roshan Bhattarai 
+//  Visit http://roshanbh.com.np for this script and more.
+//  This notice MUST stay intact for legal use
+// --------------------------------->
+
+jQuery(document).ready(function()
+{
+	//slides the element with class "menu_body" when paragraph with class "menu_head" is clicked 
+	jQuery("#firstpane h2.menu_head").click(function()
+    {
+		jQuery("h2.menu_head").each(function() {
+			jQuery(this).css({backgroundImage:"url(<?php echo $this->getSkinUrl('images/accordian/left.png'); ?>)", color:"#000"});
+		});
+		jQuery(this).css({backgroundImage:"url(<?php echo $this->getSkinUrl('images/accordian/down.png'); ?>)", color:"#ef3a43"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
+       	<?php /*?>jQuery(this).siblings().css({backgroundImage:"url(<?php echo $this->getSkinUrl('images/accordian/left.png'); ?>)"});<?php */?>
+	});
+	
+	jQuery('#firstpane h2:first-child').click();
+	
+});
+</script>
+<style type="text/css">
+
+</style>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->setEscapeMessageFlag(true)->toHtml() ?></div>
+<div class="product-view" itemscope itemtype="http://schema.org/Product">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+        <div class="product-essential">
+
+			<div class="product-img-box">
+				<?php echo $this->getChildHtml('media') ?>
+			</div>
+
+                <div class="product-shop">
+                    <div class="product-main-info">
+                        <div class="product-name">
+                            <h1 itemprop="name" <?php if (Mage::helper('registry')->isRegistryEnabled()) echo 'id="registry-product-detailed-title"';?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+							<?php $designer_name = $_product->getResource()->getAttribute('designer_name')->getFrontend()->getValue($_product); ?>
+							<?php $brand_name = $_product->getResource()->getAttribute('brand_name')->getFrontend()->getValue($_product); ?>
+                            <?php /*?><h5>Designed by <i><b><?php echo $designer_name = $_product->getResource()->getAttribute('designer_name')->getFrontend()->getValue($_product); ?></b></i> | <i><b><?php $brand_name = $_product->getResource()->getAttribute('brand_name')->getFrontend()->getValue($_product); echo ucwords(strtolower($brand_name)); ?></b></i></h5><?php */?>
+							
+							<?php if ($designer_name || $brand_name):?>
+								<h5>
+								<?php if ($designer_name && $designer_name!='' && $designer_name!='No'):?>
+									<?php echo $this->__('Designed by');?>
+									<?php echo $designer_name;?>
+								<?php endif;?>
+								<?php if ($designer_name  && $designer_name!='' && $designer_name!='No' && $brand_name && $brand_name!='' && $brand_name!='No'):?>|<?php endif;?>
+								<?php if ($brand_name && $brand_name!='' && $brand_name!='No'):?>
+									<?php echo $brand_name; ?>
+								<?php endif;?>						
+								</h5>
+							<?php endif;?>
+                        </div>
+                        <?php if (Mage::helper('registry')->isRegistryEnabled()): ?>
+                          <div id="registry-url" style="display:none;"><?php echo $this->helper('core/url')->getCurrentUrl(); ?></div>
+                          <?php // Including css inline to avoid stylesheet minification issues ?>
+                          <style> li#wish_list_button {padding-top:10px;padding-left:10px;}</style>
+                        <?php endif; ?>
+						<?php /*?><?php if ($_product->getDesignedBy() || $_product->getManufacturer()):?>
+							<div class="product-specification">
+							<?php if ($_product->getDesignedBy()):?>
+								<div style="float:left"><?php echo $this->__('Designed by');?></div>
+								<div class="product-designed-by">
+									<?php echo $_helper->productAttribute($_product, nl2br($_product->getDesignedBy()), 'designed_by') ?>
+								</div>
+							<?php endif;?>
+							<?php if ($_product->getDesignedBy() || $_product->getManufacturer()):?><div class="separator-line">|</div><?php endif;?>
+							<?php if ($_product->getManufacturer()):?>
+								<div class="product-brand">
+									<?php echo $_product->getAttributeText('manufacturer'); ?>
+								</div>
+							<?php endif;?>						
+							</div>
+						<?php endif;?><?php */?>	
+                                                <?php if($_product->getTypeId() == "configurable"){ ?>
+                                                <div class="price-area" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+                                                    <meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?>" />
+                                                    <?php }elseif($_product->getTypeId() == "grouped"){ ?>
+						<div class="price-area">
+                                                     <?php }else{ ?>
+						<div class="price-area" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                                    <meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getCurrentCurrencyCode();?>" />
+                                                    <?php } ?>
+                                                 
+						<?php echo $this->getPriceHtml($_product) ?>
+                        <p class="product-ids"><?php echo $this->__('<lablel>SKU:</lablel> %s', $this->escapeHtml($_product->getSku())); ?></p>
+						</div>
+						<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container1') ):?>
+                            <div class="options-container-small">
+                                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                            </div>
+                        <?php endif;?>
+                        <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                        <?php echo $this->getChildHtml('alert_urls') ?>
+                        
+                    </div>
+                    <?php echo $this->getChildHtml('tierprices') ?>
+
+                    <?php if (!$this->hasOptions()):?>
+						<?php echo $this->getChildHtml('product_type_data') ?>
+                        <div class="add-to-box">
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php //echo $this->getChildHtml('addto') ?>
+                        </div>
+                    <?php else:?>
+						<?php echo $this->getChildHtml('other');?>
+                        <?php if ($_product->isSaleable() && $this->hasOptions() ):?>
+                            <div class="options-container-small">
+                                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                            </div>
+							<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2') ):?>
+								<div id="ocb" class="options-container-big">
+									<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+								</div>
+							<?php endif;?>
+                        <?php else: ?>
+							<?php echo $this->getChildHtml('product_type_data') ?>
+                            <?php //echo $this->getChildHtml('addto') ?>
+                        <?php endif;?>
+						<?php //echo $this->getChildHtml('addto') ?>
+                    <?php endif; ?>
+					<?php if ($_product->getDescription()):?>
+						<div itemprop="description" id="desc" class="menu_body" style="display:block">
+							<?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description') ?>
+						</div>
+						<?php if ($_product->getSku() || $_product->getMpn()):?>
+							<div class="product_addtl_info">
+								<?php if ($_product->getSku()): ?>
+									<div class="item_number">Item Number: #<span itemprop="sku"><?php echo substr($_product->getSku(), 0, 5);?></span></div>
+								<?php endif; ?>
+								<?php if ($_product->getMpn()): ?>
+									<div class="mpn_number">MPN: <span itemprop="mpn"><?php echo substr($_product->getMpn(), 0, 12);?></span></div>
+								<?php endif; ?>
+							</div>
+						<?php endif;?>
+					<?php endif;?>
+					<div id="firstpane" class="menu_list">
+						
+						<?php 
+						$dd_text = $_product->getResource()->getAttribute('details_dimensions')->getFrontend()->getValue($_product);
+						if (trim($dd_text)):
+						?>
+							<h2 class="menu_head"><?php echo $this->__('Details & Dimensions') ?></h2>
+							<div class="menu_body">
+								<?php echo $dd_text ?>
+							</div>
+						<?php endif;?>
+						
+						<?php 
+						$designer_text = $_product->getResource()->getAttribute('designer_text')->getFrontend()->getValue($_product);
+						if (trim($designer_text)):
+						?>
+							<h2 class="menu_head"><?php echo $this->__('Designer') ?></h2>
+							<div class="menu_body">
+								<?php echo $designer_text; ?>
+					
+							</div>
+						<?php 
+						endif;
+						?>
+						<?php 
+						$brand_text = $_product->getResource()->getAttribute('brand_text')->getFrontend()->getValue($_product);
+						if (trim($brand_text)):
+						?>
+							<h2 class="menu_head"><?php echo $this->__('Brand') ?></h2>
+							<div class="menu_body">
+								<!--Brand Details-->
+								<?php echo $brand_text; ?>
+							</div>
+						<?php 
+						endif;
+						?>
+						<?php /*if ($_product->getUseCare()):?>
+							<h2 class="menu_head"><?php echo $this->__('Use & Care') ?></h2>
+							<div class="menu_body">
+								<?php echo $_helper->productAttribute($_product, nl2br($_product->getUseCare()), 'use_care') ?>
+							</div>
+						<?php endif;*/?>
+						<?php /*if ($_product->getReturnExchange()):?>
+							<h2 class="menu_head"><?php echo $this->__('Returns & Exchanges') ?></h2>
+							<div class="menu_body">
+								<?php echo $_helper->productAttribute($_product, nl2br($_product->getReturnExchange()), 'return_exchange') ?>
+							</div>
+						<?php endif;*/?>
+					</div>
+					
+					<?php echo $this->getChildHtml('extrahint') ?>
+					
+					<?php 
+					/* Ziffity Guna */
+					/* Disabled Gigya social share function on admin */
+					/* Added custom social share function */
+					?>
+					<?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+					<?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
+					<?php $productImage = $_product->getImageUrl() ?>
+					
+					<div class="socialicons"> 
+						<div class="socialsharetxt">Share</div>
+						<a class="icon icon-mono socialfacebook" onclick="facebook()"  title="<?php echo $this->__('Share on Facebook') ?>">Facebook</a>
+						<a class="icon icon-mono socialgoogleplus" onclick="google()"  title="<?php echo $this->__('Share on Google Plus') ?>">Google Plus</a>
+						<a class="icon icon-mono socialtwitter" onclick="twitter()"  title="<?php echo $this->__('Tweet') ?>">Twitter</a>
+						<a class="icon icon-mono socialpintreast" onclick="pinterest()"  title="<?php echo $this->__('Pin it') ?>">Pinterest</a>
+					</div>   
+					<?php /* End of Ziffity Guna */ ?>
+                </div>
+
+        </div>
+        <?php /*?><div class="product-collateral">
+            <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
+                <dl id="collateral-tabs" class="collateral-tabs">
+                <?php foreach ($detailedInfoGroup as $alias => $html):?>
+                    <dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
+                    <dd class="tab-container">
+                       <div class="tab-content"><?php echo $html ?></div>
+                    </dd>
+                <?php endforeach;?>
+                </dl>
+                <script type="text/javascript">
+                //<![CDATA[
+                    var collateralTabs = new Enterprise.Tabs('collateral-tabs');
+                    Event.observe(window, 'load', function() {
+                        collateralTabs.select();
+                    });
+                //]]>
+                </script>
+            <?php endif; ?>
+            <?php if ($this->canEmailToFriend()): ?>
+                <p class="emailto-link"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+            <?php endif; ?>
+        </div><?php */?>
+        <div class="clearer"></div>
+        <?php /*?><?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2') ):?>
+            <div class="options-container-big">
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            </div>
+        <?php endif;?><?php */?>
+    </form>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+		<?php echo $this->getChildHtml('relatedProducts') ?>
+        <?php echo $this->getChildHtml('productTagList') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+</div>
+            
+            
+            <?php
+            $child_prices = null;
+    		$special_prices = null;
+            	
+	if($_product->getTypeInstance() instanceof DWELL_Catalog_Model_Product_Type_Configurable)
+        {
+            $parent=$_product;
+            $child_prices = array();
+    		$special_prices = array();
+                      $maxRegular = '';
+            $minRegular = '';
+            $minSpecial='';
+            $maxSpecial='';
+            $pricesByAttributeValues = array();
+
+            $attributes = $parent->getTypeInstance(true)->getConfigurableAttributes($parent);
+            $basePrice = $parent->getPrice();
+            $baseSpecialPrice= $parent->getSpecialPrice();
+            foreach ($attributes as $attribute){
+               $prices = $attribute->getPrices();
+               foreach ($prices as $price){
+                   if ($price['is_percent']){ //if the price is specified in percents
+                       $pricesByAttributeValues[$price['value_index']] = (float)$price['pricing_value'] * $basePrice / 100;
+                   }
+                   else { //if the price is absolute value
+                       $pricesByAttributeValues[$price['value_index']] = (float)$price['pricing_value'];
+                   }
+               }
+                 // print_r( $prices);
+           // exit;
+            }
+
+         $children = Mage::getModel('catalog/product_type_configurable')
+    						->getUsedProducts(null,$parent);
+            foreach ($children  as $sProduct){
+               $totalPriceRegular = $basePrice;
+               $totalPriceSpecial= $baseSpecialPrice;
+            
+               foreach ($attributes as $attribute){
+
+                   $value = $sProduct->getData($attribute->getProductAttribute()->getAttributeCode());
+                   if (isset($pricesByAttributeValues[$value])){
+                      
+                       $totalPriceRegular += $pricesByAttributeValues[$value];
+                       $totalPriceSpecial += $pricesByAttributeValues[$value];
+             
+                 
+                   }
+               }
+               if(!$maxRegular || $totalPriceRegular > $maxRegular)
+                   $maxRegular = $totalPriceRegular;
+               if(!$minRegular || $totalPriceRegular < $minRegular)
+                   $minRegular = $totalPriceRegular;
+               
+                 if(!$maxSpecial || $totalPriceSpecial > $maxSpecial)
+                   $maxSpecial = $totalPriceSpecial;
+               if(!$minSpecial || $totalPriceSpecial < $minSpecial)
+                   $minSpecial = $totalPriceSpecial;
+     }
+     
+           
+
+     if($minRegular==$maxRegular)
+         $child_prices=array($minRegular); 
+     else
+         $child_prices=array($minRegular,$maxRegular); 
+     if($minSpecial==$maxSpecial)
+        $special_prices=array($minSpecial);  
+     else
+        $special_prices=array($minSpecial,$maxSpecial);
+	
+        if($baseSpecialPrice==  NULL) 
+            $special_prices=array();
+          }  
+            
+            ?>
+
+<script type="text/javascript">
+//<![CDATA[
+    var registry_enabled = <?php echo (Mage::helper('registry')->isRegistryEnabled()) ? 1 : 0; ?>;
+    
+	var default_stock_status = 'In stock';
+    if ($('.stock_status')) {
+    	default_stock_status = $('.stock_status').innerHTML;
+    }
+	
+	/* Ziffity Guna */
+	/* Changed class name special_price instead of price*/
+ 	var formatted_price_range = DwellConfigProdRange.getFormattedPriceRange(<?php echo count($special_prices)>0?   json_encode($special_prices): json_encode($child_prices);; ?>);
+ 	if (formatted_price_range) {
+ 		target = jQuery('.product-main-info .price-area .dwell-special-price').length > 0 ?
+ 			jQuery('.product-main-info .price-area .dwell-special-price .special_price') :
+ 			jQuery('.product-main-info .price-area .regular-price');
+ 		target.html(formatted_price_range);
+	}
+	/* End of Ziffity Guna */
+	
+	var formatted_special_price_range = DwellConfigProdRange.getFormattedSpecialPriceRange(<?php echo json_encode($child_prices); ?>);
+ 	if (formatted_special_price_range) {
+		jQuery('.product-main-info .price-area .old-price').html(formatted_special_price_range);
+	}
+
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+               form.action = url;
+            }
+            var e = null;
+            try {
+                this.form.submit();
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+
+    productAddToCartForm.submitLight = function(button, url){
+        if(this.validator) {
+            var nv = Validation.methods;
+            delete Validation.methods['required-entry'];
+            delete Validation.methods['validate-one-required'];
+            delete Validation.methods['validate-one-required-by-name'];
+            // Remove custom datetime validators
+            for (var methodName in Validation.methods) {
+                if (methodName.match(/^validate-datetime-.*/i)) {
+                    delete Validation.methods[methodName];
+                }
+            }
+
+            if (this.validator.validate()) {
+                if (url) {
+                    this.form.action = url;
+                }
+                this.form.submit();
+            }
+            Object.extend(Validation.methods, nv);
+        }
+    }.bind(productAddToCartForm);
+    
+    <?php foreach ($_GET as $k =>$v) :
+    		if (substr($k,0,2)=="a_") : ?>
+    			if (document.getElementById('attribute<?php echo substr($k,2);?>')) {
+	    			document.getElementById('attribute<?php echo substr($k,2);?>').setValue(<?php echo $v;?>);
+	    			spConfig.configureElement($('attribute<?php echo substr($k,2);?>'));
+					spConfig.configureForValues();
+				}
+    			//
+    		<?php endif;
+    	endforeach;
+    ?>
+  	
+//]]>
+</script>
+<script type="text/javascript">
+function facebook(){
+javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes')
+}
+function twitter(){
+javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes')
+}
+function pinterest(){
+javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php echo urlencode($productUrl); ?>&media=<?php echo urlencode($productImage); ?>&description=<?php echo urlencode($productName); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes')
+}
+function google(){
+javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes')
+}
+jQuery(document).ready(function(){
+    if ( jQuery( ".dwell_brand_link" ).length ) {
+    jQuery('.dwell_brand_link').hide();
+    }
+   });
+
+</script>

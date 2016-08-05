@@ -1,0 +1,11 @@
+<?php
+/**
+* @author Amasty Team
+* @copyright Copyright (c) 2012 Amasty (http://www.amasty.com)
+* @package Amasty_Xnotif
+*/   
+?>
+<p class="<?php echo $this->getHtmlClass() ?>">
+	<div><label><?php echo $this->__('Notify me when the item is back in stock.'); ?> </label></div>
+    <a href="<?php echo $this->escapeHtml(Mage::helper('amxnotif')->getSignupUrl()) ?>" class="button" ><span>Submit</span></a>
+</p>

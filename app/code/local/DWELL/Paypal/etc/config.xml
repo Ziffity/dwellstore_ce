@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DWELL_Paypal>
+      <version>0.1.0</version>
+    </DWELL_Paypal>
+  </modules>
+  <global>
+    <helpers>
+      <dwell_paypal>
+        <class>DWELL_Paypal_Helper</class>
+      </dwell_paypal>
+    </helpers>
+  </global>
+</config> 

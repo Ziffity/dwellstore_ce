@@ -1,0 +1,97 @@
+/* CSS Document */
+
+.account-login.quickconnect-content{padding:10px;}
+.account-login.quickconnect-login{background:#FFFFFF;}
+.account-login.quickconnect-login .content{background:transparent;min-height:100px;width:570px;float:left;padding:0px 20px;}
+.account-login.quickconnect-login .registered-users .content h2{background:url(images/top-shadow.png) no-repeat 50% 100% transparent;padding:10px 0 20px 23px;}
+.account-login.quickconnect-login .content h2 {border-bottom: 0 none;color: #000000;font-size: 16px;margin: 0 0 4px;padding:20px 0 10px 23px;text-align: center;text-transform: uppercase;background:none;}
+.quickconnect-login .form-list input.input-text {background: url("images/text-bg.png") repeat scroll 50% 100% transparent;border: 0 none;font-size: 12px;height: 20px;padding: 4px 10px;width: 230px;}
+#quickconnect-forget-link{padding-left: 10px;line-height:33px;color:#666;}
+.quickconnect-login .buttons-set button.button {float: left;margin-left: 5px;}
+.quickconnect-login .buttons-set{background:none; border:0px none;}
+.quickconnect-login.account-login .buttons-set { border:0px solid #bbb6a5; border-top:0; margin:0; padding:0px 0 10px 0px; background:transparent;text-align:center; }
+.account-login.quickconnect-login .content{border:0px none;min-height:auto;}
+.account-login.quickconnect-login .new-users .content{background:url("images/bottom-shadow.png") no-repeat scroll 50% 0 transparent;border:0px none;}
+
+.quickconnect-main{}
+.quickconnect-main .quickconnect-cms{background: url("images/quickconnect_bg.jpg") no-repeat scroll 0% 0% #FFFFFF;background-size:801px 375px;}
+.quickconnect-main .quickconnect-cms .cms-title{line-height:35px;margin:0px;text-align:center;}
+.quickconnect-main .quickconnect-cms .quickconnect-content{padding:10px 20px;background: url("images/top-shadow.png") no-repeat scroll 50% 0% #FFFFFF;}
+.quickconnect-main .quickconnect-cms .quickconnect-content2{background:url('images/quickconnect_bg2.jpg') no-repeat scroll 0% 0% #FFFFFF;padding:30px 50px}
+.quickconnect-main .account-create .page-title{ background: url("images/bottom-shadow.png") no-repeat scroll 50% 100% transparent;border: 0 none;margin: 0;padding: 10px 0;text-align: center;text-transform: uppercase;}
+
+.quickconnect-main .page-title{background: url("images/top-shadow.png") no-repeat scroll 50% 100% transparent;border-bottom: 0 none;color: #000000;font-size: 14px;margin: 0 0 4px;padding: 10px 0;text-align: center;text-transform: uppercase;}
+.quickconnect-main .page-title h1,.quickconnect-main .page-title h2{font-size: 14px; font-weight:bold;}
+
+.quickconnect-main .main-div{ background: url("images/top-shadow.png") no-repeat scroll 50% 0% transparent;border: 0 none;margin: 0;padding: 10px 0 0px;text-align: center;text-transform: uppercase;float:left;width:100%;}
+.quickconnect-main .main-div1{border: 0 none;margin: 0;padding: 10px 0 0px;text-align: center;text-transform: uppercase;float:left;width:350px;}
+.quickconnect-main .account-create h2.inner-title{font-size: 14px;font-weight: normal;text-transform: capitalize;}
+.quickconnect-main .account-create .page-title h1{font-size:16px;color:#0074BE;}
+.quickconnect-main .account-create .form-list label.required em { right:5px; }
+.quickconnect-main .account-create .form-list label {width: 160px; font-size: 14px;padding:0px 20px 0px 0px;text-transform: capitalize;text-align:right;}
+.quickconnect-main .account-create .form-list .input-box.small-field { display:block; float: left; width:130px;clear:none; }
+.quickconnect-main .account-create .form-list .input-box { display:block; float: left; width:250px;clear:none; }
+.quickconnect-main .account-create .form-list input.input-text {width: 230px;background: url("images/text-bg.png") repeat scroll 50% 100% transparent;border:0px none;padding: 4px 10px;}
+.quickconnect-main .account-create .form-list .small-field input.input-text{background: url("images/text-bg-small.png") repeat scroll 50% 100% transparent;border: 0 none;font-size: 12px;height: 16px;padding: 4px 10px;width: 107px;}
+.quickconnect-main .account-create .form-list .field { float:left; width:100%; padding:0px;}
+.quickconnect-main .account-create .form-list .customer-dob .dob-day input.input-text,
+.quickconnect-main .account-create .form-list .customer-dob .dob-month input.input-text{ width:42px; padding:4px; background: url("images/day-bg.png") repeat scroll 50% 100% transparent;} 
+.quickconnect-main .account-create .form-list .customer-dob .dob-year  input.input-text { width:72px; padding:4px; background: url("images/year-bg.png") repeat scroll 50% 100% transparent;}
+
+.quickconnect-main .account-create .form-list .customer-dob .dob-day, 
+.quickconnect-main .account-create .form-list .customer-dob .dob-month {margin: 0 10px 0 0;width: 50px;}
+.quickconnect-main .account-create .form-list .customer-dob .dob-year { width:80px; }
+
+.quickconnect-main .account-create .form-list select {width: 250px;background: url("images/text-bg.png") repeat scroll 50% 100% transparent;border:0px none;padding: 4px;}
+.quickconnect-main .account-create .buttons-set { clear:both; margin:15px 0 0;padding:10px;background: url("images/bottom-shadow.png") no-repeat scroll 50% 0 transparent; border:0px none;text-align:center;}
+.quickconnect-main .account-create .buttons-set button.button {  background: none repeat scroll 0 0 transparent;float: none;padding: 0;}
+
+#quickconnect-login-form{margin:0px auto;width:auto;display: none;padding:10px 20px;}
+#quickconnect-forget-form{margin:0px auto;width:auto;display: none;padding:10px 20px;}
+#quickconnect-create-form{margin:0px auto;width:auto;display: none;padding:10px 20px;}
+
+
+
+.quickconnect-main button.button { overflow:visible; width:auto; border:0; padding:0 0 0 6px; margin:0; background: url("images/quick-button-left.png") no-repeat scroll 0% 0 transparent; cursor:pointer; }
+.quickconnect-main button.button span { display:block; height:22px; border:0px solid #de5400; background:#f18200; padding:0 6px 0 0; font:bold 12px/22px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; background: url("images/quick-button-right.png") no-repeat scroll 100% 0 transparent;}
+.quickconnect-main button.button span span { border:0; padding:0 10px; background: url("images/quick-button-mid.png") repeat-x scroll 0% 0 transparent;}
+
+.quickconnect-main a.button { overflow:visible; width:auto; border:0; padding:0 0 0 6px; margin:0; background: url("images/quick-button-left.png") no-repeat scroll 0% 0 transparent; cursor:pointer; }
+.quickconnect-main a.button span { display:block; height:22px; border:0px solid #de5400; background:#f18200; padding:0 6px 0 0; font:bold 12px/22px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; background: url("images/quick-button-right.png") no-repeat scroll 100% 0 transparent;}
+.quickconnect-main a.button span span { border:0; padding:0 10px; background: url("images/quick-button-mid.png") repeat-x scroll 0% 0 transparent;}
+
+
+.quickconnect-main button#quickconnect-login-form-submit, .quickconnect-main button.quickconnect-blue-button { overflow:visible; width:auto; border:0; padding:0 0 0 13px; margin:0; background: url("images/quick-loginbutton-left.png") no-repeat scroll 0% 0 transparent; cursor:pointer; }
+.quickconnect-main button#quickconnect-login-form-submit span, .quickconnect-main button.quickconnect-blue-button span { display:block; height:33px; border:0px solid #de5400; background:#f18200; padding:0 13px 0 0; font:bold 13px/33px Arial, Helvetica, sans-serif; text-align:center; white-space:nowrap; color:#fff; background: url("images/quick-loginbutton-right.png") no-repeat scroll 100% 0 transparent;text-transform:uppercase;}
+.quickconnect-main button#quickconnect-login-form-submit span span, .quickconnect-main button.quickconnect-blue-button span span { border:0; padding:0 10px; background: url("images/quick-loginbutton-mid.png") repeat-x scroll 0% 0 transparent;}
+.quickconnect-left{width:320px;display:inline-block;}
+.quickconnect-right{width:410px;display:inline-block;padding-top:20px}
+.quickconnect-main .quickconnect-cms{}
+.quickconnect-main .quickconnect-cms .quickconnect-right .cms-title{padding:10px 20px 0px;text-align:left;text-transform:uppercase;color:#005FA7;}
+.quickconnect-main .quickconnect-cms .quickconnect-right .quickconnect-content{padding:0px 20px 10px;background:none;}
+
+.login-right{width:30%;float:right;}
+.login-left{width:65%;float:left;padding:20px 0px;}
+.create-right{width:190px;float:left; padding:10px 0px;}
+.account-create .form-list li {margin: 0 0 5px;}
+
+#quickconnect-create-form-message h3,#quickconnect-login-form-message h3,#quickconnect-forget-form-message h3{color:#FF0000;}
+
+.product-quickconnect{background:url(../../../images/kd/product-page-separator.jpg) no-repeat 50% 0%;}
+.product-quickconnect.product-comp-view{background:none;}
+.product-quickconnect.product-comp-view .product-name {background: url("images/top-shadow.png") no-repeat scroll 50% 100% transparent;padding: 0 0 10px;}
+
+.product-view.product-quickconnect .product-shop {width: 310px;}
+.product-view.product-quickconnect .product-img-box {width: 325px;}
+.product-view.product-quickconnect .price-box {margin:5px auto;text-align:center;width:160px;}
+.product-view.product-quickconnect .add-to-box {margin: 10px auto;width: 100px;}
+.product-view.product-quickconnect .add-to-box .add-to-cart {margin: 0;}
+
+.product-view.product-quickconnect .product-name h1 {text-align:center;color:#231F20;}
+.product-view.product-quickconnect .product-name-left h1 {text-align:left;color:#231F20;}
+.product-view.product-quickconnect .product-shop .short-description {background:none;border-color: #BBBBBB;border-style: solid;border-width: 1px 0;padding: 10px 0;}
+.product-view.product-quickconnect .short-description h2, .product-view.product-quickconnect .box-description h2 {color:#005599}
+
+
+.calendar{z-index:10000;}
+.calendar-buton{float:left;}

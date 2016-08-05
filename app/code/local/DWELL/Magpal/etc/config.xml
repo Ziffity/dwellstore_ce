@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DWELL_Magpal>
+      <version>0.1.0</version>
+    </DWELL_Magpal>
+  </modules>
+  <frontend>
+       <routers>
+      <magpal>
+        <use>standard</use>
+          <args>
+            <module>DWELL_Magpal</module>
+            <frontName>magpal</frontName>
+          </args>
+      </magpal>
+    </routers>
+    </frontend>
+  <global>
+    <helpers>
+      <DWELL_Magpal_Helper>
+        <class>DWELL_Magpal_Helper</class>
+      </DWELL_Magpal_Helper>
+    </helpers>
+	<models>
+	   <dwell_magpal>
+		<class>DWELL_Magpal_Model</class>
+	  </dwell_magpal>
+	</models>
+	
+   <events>
+	  <checkout_type_onepage_save_order_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <DWELL_Magpal_Model_Observer> <!-- identifier of the event handler -->
+            <type>singleton</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>DWELL_Magpal_Model_Observer</class> <!-- observers class alias -->
+            <method>updateCustomerNames</method>  <!-- observer's method to be called -->
+          </DWELL_Magpal_Model_Observer>
+        </observers>
+      </checkout_type_onepage_save_order_after>
+    </events>
+  </global>
+  
+
+</config> 

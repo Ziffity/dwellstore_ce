@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <modules>
+    <Ziffity_PdfWysiwygFiles>
+      <version>1.0.0</version>
+    </Ziffity_PdfWysiwygFiles>
+  </modules>
+  <adminhtml>
+    <cms>
+      <browser>
+        <extensions>
+          <allowed>
+            <jpg>1</jpg>
+            <jpeg>1</jpeg>
+            <png>1</png>
+            <gif>1</gif>
+            <pdf>1</pdf>
+          </allowed>
+		  <image_allowed>
+            <jpg>1</jpg>
+            <jpeg>1</jpeg>
+            <png>1</png>
+            <gif>1</gif>
+		    <pdf>1</pdf>
+          </image_allowed>
+        </extensions>
+      </browser>
+    </cms>
+  </adminhtml>
+  <global>
+        <helpers>
+            <wysiwyg_images>
+                <class>Ziffity_PdfWysiwygFiles_Helper</class>
+            </wysiwyg_images>
+            <cms>
+                <rewrite>
+                    <wysiwyg_images>Ziffity_PdfWysiwygFiles_Helper_Wysiwyg_Images</wysiwyg_images>
+                </rewrite>
+            </cms>
+        </helpers>
+   </global>
+</config>

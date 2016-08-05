@@ -1,0 +1,94 @@
+@media (max-width: 640px) {
+	.footer-container {width:100%;}
+	/*.footer-container {width:1000px!important;}*/
+	.footer-social {display:none;}
+	.footer-links {
+    	z-index: 1000;
+    	background-color: #525252;
+    	padding: 0;
+    	clear:both;
+    }
+    .footer ul {width:100%;}
+    .footer-links h2 {
+    	font-family:Lato,Arial,Helvetica,sans-serif;
+      font-size: 16px !important;
+      display: block;
+      border-top: 3px solid #999;
+      border-bottom: 0 none;
+      line-height: 30px;
+      text-align: left;
+      padding: 15px 0 0 14px;
+      color: #FFF;
+      width:986px!important;
+      font-weight:bold;
+    }
+    .footer-bottom-top {
+    	display:none;
+    }
+    .footer-bottom-bottom {
+    	background:#fff;
+    	text-align:left;
+    }
+    .footer-bottom-bottom ul li {
+    	display:block;
+		margin-left:10px;
+    	clear:both;
+	}
+	.footer-bottom-bottom ul li.last {
+		padding-bottom:20px;
+	}
+	.footer-bottom-bottom ul li a {
+		text-transform:none;
+		font-size:16px;
+		color:#116e82;
+	}
+    .footer-links .menu {
+      display: block;
+      margin: 10px;
+      clear: both;
+      padding: 0;
+    }
+    .footer-links .footer-head {
+    	padding-right:0px!important;
+    	/*width:100%;*/
+    }
+    .footer-links li {
+        margin: 0;
+        padding: 0;
+        clear: both;
+        display: block;
+        border: 0;
+        border-bottom: 1px solid #555;
+        width:977px!important;
+    }
+    .footer-links .footer-head .footer-list {
+    	margin:0px 10px 10px 10px;
+    	/*width:100%;*/
+    	
+    }
+    .footer ul li {
+    	margin-bottom:0px;
+    }
+    .footer-links .footer-head .footer-list li.first { 
+    	margin-top:0px;
+    }
+    .footer-links .footer-head .footer-list li a {
+          padding-left: 1em;
+          display: block;
+          text-decoration: none;
+          color: #ccc;
+          text-transform: uppercase;
+          text-align: left;
+          font-size: 16px;
+          line-height: 30px;
+         /*width:100%;*/
+          font-family:sans-serif;
+        }
+	.footer-links .footer-head .footer-list li a:hover {
+          color: #525252 !important;
+          background: #ebebeb !important;
+        }
+    .footer-links .menu li.last {
+        border-bottom: 0 none;
+      }
+}

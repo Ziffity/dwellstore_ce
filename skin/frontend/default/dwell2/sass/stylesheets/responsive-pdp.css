@@ -1,0 +1,81 @@
+@media screen and (min-width: 1024px) {
+  .owl-carousel.owl-loaded {
+    display: none; } }
+@media screen and (max-width: 1024px) {
+  .product-view .owl-carousel.owl-loaded {
+    display: block; }
+
+  .zoomContainer {
+    display: none; }
+
+  .product-essential .product-img-box .product-image, .product-essential .product-img-box .more-views {
+    display: none; }
+
+  .product-img-box, .product-shop {
+    width: 48%; } }
+/* Small Devices, Tablets */
+@media only screen and (max-width: 800px) {
+  .col1-layout .col-main {
+    padding-left: 0; }
+
+  .owl-carousel .owl-item img {
+    margin: auto;
+    width: auto !important;
+    clear: both; }
+
+  .page .main.col1-layout .col-main .product-view {
+    width: 88.5%; }
+
+  .catalog-product-view .product-view {
+    margin: 0 0 0 6% !important; }
+    .catalog-product-view .product-view #add_to_cart button {
+      width: 99% !important; }
+    .catalog-product-view .product-view .box-up-sell ul.products-grid li {
+      width: 50%;
+      margin: auto; }
+      .catalog-product-view .product-view .box-up-sell ul.products-grid li a.product-image img {
+        width: 100%;
+        height: auto; }
+
+  .product-view .product-shop {
+    width: 100%; }
+    .product-view .product-shop .add-to-links {
+      clear: left; }
+    .product-view .product-shop .amxnotif-block button.amcart-ignore {
+      margin-top: 10px;
+      position: relative;
+      left: inherit !important; }
+
+  .product-view .product-img-box {
+    width: 100%; }
+
+  li#registry_button {
+    display: none; }
+
+  #add_to_cart {
+    clear: both;
+    margin-right: 0;
+    width: 100%; }
+
+  .page .main.col1-layout .col-main .product-view .product-shop ul.add-to-links {
+    float: left;
+    width: 100%; }
+    .page .main.col1-layout .col-main .product-view .product-shop ul.add-to-links li#wish_list_button {
+      margin-top: 10px;
+      padding: 7px 0;
+      border: 1px solid #DDD;
+      width: 99%; }
+      .page .main.col1-layout .col-main .product-view .product-shop ul.add-to-links li#wish_list_button a {
+        text-align: center;
+        padding: 0px 0px 4px 0px; }
+
+  .product-view #amstockstatus-stockalert, .product-view .amxnotif-block {
+    width: 100%;
+    text-align: right; }
+    .product-view #amstockstatus-stockalert button.btn-cart.amcart-ignore, .product-view .amxnotif-block button.btn-cart.amcart-ignore {
+      margin-top: 10px;
+      position: relative;
+      left: inherit !important;
+      top: inherit !important; }
+      .product-view #amstockstatus-stockalert button.btn-cart.amcart-ignore > span, .product-view .amxnotif-block button.btn-cart.amcart-ignore > span {
+        min-width: 160px; } }

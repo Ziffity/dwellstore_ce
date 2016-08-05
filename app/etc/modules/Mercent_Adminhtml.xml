@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Module bootstrap file
+-->
+<config>
+    <modules>
+        <Mercent_Adminhtml>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mercent_Adminhtml>
+    </modules>
+</config>

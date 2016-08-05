@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<!--
+****************************************************
+  Copyright (c) Mercent Corporation.  All rights reserved.
+  THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+  PARTICULAR PURPOSE.
+  @author Tara Goshi 
+  Date: 2012-04-10
+  Summary: Integrates Magento Sites with Mercent Retail
+  SCOPE OF LICENSE
+  The software is licensed, not sold. This agreement only gives you some rights to use the software. Mercent reserves all other rights.
+  You may not 
+      * reverse engineer, decompile or disassemble the software, except and only to the extent that applicable law expressly permits, despite this limitation;
+      * publish the software for others to copy;
+      * rent, lease or lend the software;
+      * transfer the software or this agreement to any third party; or
+      * use the software for commercial software hosting services.
+
+*********************************************************
+-->
+
+<config>
+    <modules>
+        <Mercent_ProductFeed>
+            <version>3.3.0</version>
+        </Mercent_ProductFeed>
+    </modules>
+    <crontab>
+        <jobs>
+            <mercent_productfeed_exportproduct>
+                <run>
+                    <model>mercent_productfeed/observer::runProductFeed</model>
+                </run>
+            </mercent_productfeed_exportproduct>
+            <mercent_productfeed_exportinventory>
+                <run>
+                    <model>mercent_productfeed/observer::runInventoryFeed</model>
+                </run>
+            </mercent_productfeed_exportinventory>
+        </jobs>
+    </crontab>
+    <default>
+        <mercent_productfeedconfig>
+            <!--productfeed_group>
+                <productfeed_ftpserver>sftp.mercent.com</productfeed_ftpserver>
+                <productfeed_ftpfolder>incoming</productfeed_ftpfolder>
+            </productfeed_group-->
+            <productfeedschedule_group>
+                <productfeedschedule_frequency>24</productfeedschedule_frequency>
+            </productfeedschedule_group>
+            <productfeedinventoryschedule_group>
+                <productfeedinventoryschedule_frequency>2</productfeedinventoryschedule_frequency>
+            </productfeedinventoryschedule_group>
+        </mercent_productfeedconfig>
+    </default>
+    <global>
+        <models>
+            <mercent_productfeed>
+                <class>Mercent_ProductFeed_Model</class>
+            </mercent_productfeed>
+        </models>
+        <helpers>
+            <productfeed>
+                <class>Mercent_ProductFeed_Helper</class>
+            </productfeed>
+        </helpers>
+    </global>
+</config>
